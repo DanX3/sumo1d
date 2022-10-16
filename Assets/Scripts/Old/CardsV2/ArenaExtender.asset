@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039ff80ba8e011e4b8ad9691ca1338f3, type: 3}
   m_Name: ArenaExtender
   m_EditorClassIdentifier: 
+  cost: 2
   name: 
-  cost: 0
-  effect: {fileID: 0}
-  duration: 0
+  description: 
+  duration: 1
+  modifiers:
+  - value: 5
+    diff: 5

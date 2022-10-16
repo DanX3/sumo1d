@@ -13,9 +13,6 @@ public class Condition
 [System.Serializable]
 public class ValueModifier
 {
-    MonoBehaviour effect;
-    public Condition condition;
-    public Target target;
-    public EColor value;
+    public Attribute value;
     public int diff;
 }

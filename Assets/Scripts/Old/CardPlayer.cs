@@ -10,7 +10,7 @@ public class CardPlayer : MonoBehaviour
     {
         foreach (var card in cards)
         {
-            card.Play();
+            card.Play(Refs.Instance.player, Refs.Instance.opponent);
         }
     }
 }

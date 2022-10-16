@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public enum EColor
+public enum Attribute
 {
-    Pow,
-    Spi,
-    Wei,
+    Power,
+    Spirit,
+    Weight,
+    Reflex,
+    Critical,
+    Arena,
 }

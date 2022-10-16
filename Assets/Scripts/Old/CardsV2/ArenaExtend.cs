@@ -5,12 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CardV2", menuName = "Cards/ArenaExtender", order = 1)]
 public class ArenaExtend : PowerupV2
 {
-    public override int GetPowerup()
+    public override Powerup GetPowerup()
     {
-        return 1;
+        return null;
     }
 
-    public override void Play()
+    public override void Play(Player player, Player opponent)
     {
         Debug.Log("Played arena extender");
     }

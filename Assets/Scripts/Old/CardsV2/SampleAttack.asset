@@ -9,13 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50000ca4729b1d6419469bff2fd8e494, type: 3}
-  m_Name: FattenUp
+  m_Script: {fileID: 11500000, guid: 2f036e50002b0d141b88bc734a38ecaa, type: 3}
+  m_Name: SampleAttack
   m_EditorClassIdentifier: 
-  cost: 2
-  name: 
-  description: 
-  duration: 2
-  modifiers:
-  - value: 2
-    diff: 2
+  cost: 1
+  name: Sample Attack
+  description: If you have more than 3 powerups, this attack has +5 power
+  damage: 5

@@ -28,10 +28,8 @@ class SubCountPair
     }
 }
 
-public class Publisher : MonoBehaviour
+public class Publisher
 {
-
-
     Dictionary<string, List<SubCountPair>> subs = new Dictionary<string, List<SubCountPair>>();
 
     public void Subscribe(string signalName, ISubscriber sub, int count = 1, bool once = false)

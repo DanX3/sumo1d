@@ -4,10 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PowerUp : MonoBehaviour
+public class Powerup : MonoBehaviour
 {
     public List<ValueModifier> modifiers;
-
-    public virtual void OnActivate() { }
-    public virtual void OnDeactivate() { }
 }

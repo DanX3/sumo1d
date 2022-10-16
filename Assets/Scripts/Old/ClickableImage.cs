@@ -24,7 +24,7 @@ public class ClickableImage : MonoBehaviour, IPointerClickHandler, ISubscriber
     // Start is called before the first frame update
     void Start()
     {
-        FindObjectOfType<Publisher>().Subscribe(signalName, this, count);
+        // Refs.Instance.pub.Subscribe("")
     }
 
     // Update is called once per frame

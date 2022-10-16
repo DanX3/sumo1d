@@ -9,5 +9,5 @@ public abstract class CardV2 : ScriptableObject
     public new string name;
     public string description;
 
-    public abstract void Play();
+    public abstract void Play(Player user, Player target);
 }
