@@ -10,9 +10,9 @@ public class PlayerStats
     public Stats bonus;
     public int arenaBonus;
 
-    List<Powerup> powerups;
+    // List<Powerup> powerups;
 
-    public int powerupCount { get => powerups.Count; }
+    // public int powerupCount { get => powerups.Count; }
 
     public PlayerStats(int power, int spirit, int weight, int reflex, int critical)
     {
@@ -20,17 +20,17 @@ public class PlayerStats
         bonus = new Stats(0, 0, 0, 0, 0);
     }
 
-    public void AddPowerup(Powerup powerup)
-    {
-        foreach (var modifier in powerup.modifiers)
-            ChangeBonus(modifier.value, modifier.diff);
-    }
+    // public void AddPowerup(Powerup powerup)
+    // {
+    //     foreach (var modifier in powerup.modifiers)
+    //         ChangeBonus(modifier.value, modifier.diff);
+    // }
 
-    public void RemovePowerup(Powerup powerup)
-    {
-        foreach (var modifier in powerup.modifiers)
-            ChangeBonus(modifier.value, -modifier.diff);
-    }
+    // public void RemovePowerup(Powerup powerup)
+    // {
+    //     foreach (var modifier in powerup.modifiers)
+    //         ChangeBonus(modifier.value, -modifier.diff);
+    // }
 
     private void ChangeBonus(Attribute attribute, int diff)
     {
