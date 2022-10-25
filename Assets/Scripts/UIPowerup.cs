@@ -13,7 +13,7 @@ public class UIPowerup : MonoBehaviour
 
     public float tooltipOffset { get => transform.position.x < 0.5f * Screen.width ? 200f : -50f ; }
 
-    void Start()
+void Start()
     {
         if (transform.position.x > 0.5f * Screen.width)
             parent.transform.localScale = new Vector3(-1f, 1f, 1f);
