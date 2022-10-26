@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class InstantCard : Card
+public class CardAttack : Card
 {
     public override CardType GetCardType()
     {
-        return CardType.Instant;
+        return CardType.Attack;
     }
     
     public override void Play(Player user, Player target)
     {
         base.Play(user, target);
 
-        // TODO: do instant stuff
+        // TODO: do damage to target
     }
 }

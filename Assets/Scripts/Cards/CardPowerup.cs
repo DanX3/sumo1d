@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-public class PowerupCard : Card
+public class CardPowerup : Card
 {
     public int durationInTurns;
 
