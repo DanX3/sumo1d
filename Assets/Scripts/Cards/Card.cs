@@ -14,7 +14,7 @@ public abstract class Card : MonoBehaviour
     public abstract CardType GetCardType();
 
 
-    public void Play(Player user, Player target)
+    public virtual void Play(Player user, Player target)
     {
         modifiers = GetComponents<CardModifier>().ToList();
 
@@ -28,7 +28,7 @@ public abstract class Card : MonoBehaviour
     {
         foreach (var modifier in modifiers)
         {
-            modifier.Remove();
+            modifier.Discard();
         }
     }
 }

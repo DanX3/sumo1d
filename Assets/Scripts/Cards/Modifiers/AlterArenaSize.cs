@@ -10,7 +10,7 @@ public class AlterArenaSize : CardModifier
         Debug.Log($"Shrinking {targetArena} arena size by {value}");
     }
 
-    public override void Remove()
+    public override void Discard()
     {
         throw new System.NotImplementedException();
     }

@@ -5,10 +5,15 @@ public class PowerupCard : Card
 {
     public int durationInTurns;
 
-    private List<CardModifier> modifiers = new List<CardModifier>();
-
     public override CardType GetCardType()
     {
         return CardType.Powerup;
+    }
+
+    public override void Play(Player user, Player target)
+    {
+        base.Play(user, target);
+
+        // TODO: apply powerup to player
     }
 }

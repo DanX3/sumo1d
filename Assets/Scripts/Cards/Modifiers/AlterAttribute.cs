@@ -10,7 +10,7 @@ public class AlterAttribute : CardModifier
         Debug.Log($"Modifing {targetAttribute} by {value}");
     }
 
-    public override void Remove()
+    public override void Discard()
     {
         throw new System.NotImplementedException();
     }
