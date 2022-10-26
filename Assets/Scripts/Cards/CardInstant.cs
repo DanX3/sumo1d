@@ -7,9 +7,9 @@ public class CardInstant : Card
         return CardType.Instant;
     }
     
-    public override void Play(Player user, Player target)
+    public override void Play(Player targets)
     {
-        base.Play(user, target);
+        base.Play(targets);
 
         // TODO: do instant stuff
     }

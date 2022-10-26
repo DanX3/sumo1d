@@ -10,9 +10,9 @@ public class CardPowerup : Card
         return CardType.Powerup;
     }
 
-    public override void Play(Player user, Player target)
+    public override void Play(Player targets)
     {
-        base.Play(user, target);
+        base.Play(targets);
 
         // TODO: apply powerup to player
     }

@@ -7,9 +7,9 @@ public class CardAttack : Card
         return CardType.Attack;
     }
     
-    public override void Play(Player user, Player target)
+    public override void Play(Player targets)
     {
-        base.Play(user, target);
+        base.Play(targets);
 
         // TODO: do damage to target
     }

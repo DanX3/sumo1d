@@ -14,8 +14,10 @@ public enum PlayerAttribute
     Critical
 }
 
-public enum PlayerType
+public enum TargetType
 {
-    Player, 
-    Opponent
+    Self,
+    Other, 
+    Both
 }
+

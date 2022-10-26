@@ -14,4 +14,11 @@ public class Player : MonoBehaviour
     {
         stats = new PlayerStats(3, 3, 3, 3, 3);
     }
+
+    public Player GetOpponent()
+    {
+        return GameManager.Instance.player.id == id
+                ? GameManager.Instance.opponent
+                : GameManager.Instance.player;
+    }
 }
