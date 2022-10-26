@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public PlayerStats stats;
     public Deck<int> deck;
 
+    private int playedCardsInTurnCount; // TODO diventera' il numero di elementi dentro la history delle carte giocate nel turno
 
     void Start()
     {
@@ -20,5 +21,10 @@ public class Player : MonoBehaviour
         return GameManager.Instance.player.id == id
                 ? GameManager.Instance.opponent
                 : GameManager.Instance.player;
+    }
+    
+    public int GetPlayedCardsInTurnCount()
+    {
+        return playedCardsInTurnCount;
     }
 }
