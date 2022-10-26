@@ -10,7 +10,7 @@ public enum PlayerAttribute
     Power,
     Spirit,
     Weight,
-    Reflexes,
+    Reflex,
     Critical
 }
 

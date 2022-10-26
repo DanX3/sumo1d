@@ -9,18 +9,23 @@ public abstract class Card : MonoBehaviour
     public int manaCost;
 
     private List<CardModifier> modifiers = new List<CardModifier>();
+
+    private Player user;
+    private Player target;
     
-    
+
     public abstract CardType GetCardType();
 
 
     public virtual void Play(Player user, Player target)
     {
+        this.user = user;
+        this.target = target;
         modifiers = GetComponents<CardModifier>().ToList();
 
         foreach (var modifier in modifiers)
         {
-            modifier.Play();
+            modifier.Play(user, target);
         }
     }
 
@@ -28,7 +33,7 @@ public abstract class Card : MonoBehaviour
     {
         foreach (var modifier in modifiers)
         {
-            modifier.Discard();
+            modifier.Discard(user, target);
         }
     }
 }
