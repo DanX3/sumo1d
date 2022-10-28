@@ -8,7 +8,7 @@ public class AlterArenaSize : CardModifier
         throw new System.NotImplementedException();
     }
 
-    public override void Discard(Player user)
+    public override void Remove(Player user)
     {
         throw new System.NotImplementedException();
     }

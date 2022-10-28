@@ -9,17 +9,20 @@ public abstract class Card : MonoBehaviour
     public int manaCost;
 
     private List<CardModifier> modifiers = new List<CardModifier>();
-    private Player user;
+    protected Player user;
 
 
     public abstract CardType GetCardType();
 
+    // TODO deve fare cose quando viene pescata
 
     public virtual void Play(Player user)
     {
         this.user = user;
 
-        modifiers = GetComponents<CardModifier>().ToList();
+        modifiers = GetComponents<CardModifier>()
+                        .OrderBy(m => m.playOrder)
+                        .ToList();
 
         foreach (var modifier in modifiers)
         {
@@ -31,7 +34,7 @@ public abstract class Card : MonoBehaviour
     {
         foreach (var modifier in modifiers)
         {
-            modifier.Discard(user);
+            modifier.Remove(user);
         }
     }
 }

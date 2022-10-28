@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 
 public class CardPowerup : Card
 {
@@ -15,5 +13,14 @@ public class CardPowerup : Card
         base.Play(targets);
 
         // TODO: apply powerup to player
+    }
+
+    private void OnTurnPassed()
+    {
+        // TODO: agganciare a evento di fine turno 
+        durationInTurns--;
+
+        if (durationInTurns == 0)
+            Discard();
     }
 }
