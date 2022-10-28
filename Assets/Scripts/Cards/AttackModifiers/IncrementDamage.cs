@@ -6,6 +6,6 @@ public class IncrementDamage : AttackModifier
 
     public override int Apply(int damage)
     {
-        return Mathf.RoundToInt(damage + value);
+        return damage + value;
     }
 }
