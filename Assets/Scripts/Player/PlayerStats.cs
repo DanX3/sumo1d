@@ -10,37 +10,21 @@ public class PlayerStats
     public Stats bonus;
     public int arenaBonus;
 
-    // List<Powerup> powerups;
-
-    // public int powerupCount { get => powerups.Count; }
-
     public PlayerStats(int power, int spirit, int weight, int reflex, int critical)
     {
         baseStats = new Stats(power, spirit, weight, reflex, critical);
         bonus = new Stats(0, 0, 0, 0, 0);
     }
 
-    // public void AddPowerup(Powerup powerup)
-    // {
-    //     foreach (var modifier in powerup.modifiers)
-    //         ChangeBonus(modifier.value, modifier.diff);
-    // }
-
-    // public void RemovePowerup(Powerup powerup)
-    // {
-    //     foreach (var modifier in powerup.modifiers)
-    //         ChangeBonus(modifier.value, -modifier.diff);
-    // }
-
-    private void ChangeBonus(Attribute attribute, int diff)
+    public void AlterAttribute(PlayerAttribute attribute, int delta)
     {
         switch (attribute)
         {
-            case Attribute.Power: bonus.power += diff; break;
-            case Attribute.Spirit: bonus.spirit += diff; break;
-            case Attribute.Weight: bonus.weight += diff; break;
-            case Attribute.Reflex: bonus.reflex += diff; break;
-            case Attribute.Critical: bonus.critical += diff; break;
+            case PlayerAttribute.Power: bonus.power += delta; break;
+            case PlayerAttribute.Spirit: bonus.spirit += delta; break;
+            case PlayerAttribute.Weight: bonus.weight += delta; break;
+            case PlayerAttribute.Reflex: bonus.reflex += delta; break;
+            case PlayerAttribute.Critical: bonus.critical += delta; break;
         }
     }
 

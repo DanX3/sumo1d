@@ -89,11 +89,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6149010345201840891, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -256.49622
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6149010345201840891, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 42.692474
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6149010345201840891, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -107,5 +107,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8952685438176689609, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
+      propertyPath: m_text
+      value: '3
+
+'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
+--- !u!1 &840622554963395573 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6149010345201840890, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
+  m_PrefabInstance: {fileID: 6845420400989663503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5924519448272945937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840622554963395573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dce9809c5532438a988e3948a92fe28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardName: 
+  description: 
+  manaCost: 0
+  durationInTurns: 0
