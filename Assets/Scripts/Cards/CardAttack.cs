@@ -4,7 +4,6 @@ using System.Linq;
 public class CardAttack : Card
 {
     public int baseDamage;
-    private int realDamage;
 
     private List<AttackModifier> attackModifiers;
 
@@ -20,16 +19,18 @@ public class CardAttack : Card
                             .OrderBy(m => m.playOrder)
                             .ToList();
 
-        CalculateDamage();
+        CalculateDamage(user);
 
         // TODO user.DoDamage();
     }
 
-    private void CalculateDamage()
+    private int CalculateDamage(Player user)
     {
-        realDamage = baseDamage;
+        int realDamage = baseDamage;
 
         foreach (AttackModifier modifier in attackModifiers)
-            realDamage = modifier.Apply(realDamage);
+            realDamage = modifier.Apply(user, realDamage);
+
+        return realDamage;
     }
 }
