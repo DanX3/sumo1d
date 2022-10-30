@@ -8,11 +8,12 @@ public class CardPowerup : Card
         return CardType.Powerup;
     }
 
-    public override void Play(Player targets)
+    public override void Play(Player target)
     {
-        base.Play(targets);
+        base.Play(target);
 
         // TODO: apply powerup to player
+        target.OnTurnEnd += OnTurnPassed;
     }
 
     private void OnTurnPassed()

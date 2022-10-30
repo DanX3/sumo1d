@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour
 {
     [SerializeField] Image progress;
-    [SerializeField] Text text;
+    //[SerializeField] Text text;
+    [SerializeField] TMPro.TMP_Text text;
 
     int basevalue;
 

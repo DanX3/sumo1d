@@ -9,11 +9,16 @@ public class PlayerStats
     public Stats baseStats;
     public Stats bonus;
     public int arenaBonus;
+    public List<CardPowerup> powerups = new List<CardPowerup>();
+    public int hp;
+
+    public int maxHp = 50;
 
     public PlayerStats(int power, int spirit, int weight, int reflex, int critical)
     {
         baseStats = new Stats(power, spirit, weight, reflex, critical);
         bonus = new Stats(0, 0, 0, 0, 0);
+        hp = maxHp; 
     }
 
     public void AlterAttribute(PlayerAttribute attribute, int delta)

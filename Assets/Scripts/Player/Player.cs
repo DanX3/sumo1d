@@ -8,6 +8,10 @@ public class Player : MonoBehaviour
     public Publisher publisher;
     public PlayerStats stats;
     public Deck<int> deck;
+    public delegate void VoidEvent();
+    public VoidEvent OnTurnStart;
+    public VoidEvent OnTurnEnd;
+    
 
     private int playedCardsInTurnCount; // TODO diventera' il numero di elementi dentro la history delle carte giocate nel turno
 
@@ -26,5 +30,25 @@ public class Player : MonoBehaviour
     public int GetPlayedCardsInTurnCount()
     {
         return playedCardsInTurnCount;
+    }
+
+    public void DrawCard(int count)
+    {
+
+    }
+
+    public void PlayCard(int index)
+    {
+
+    }
+
+    public void StartTurn()
+    {
+        OnTurnStart?.Invoke();
+    }
+
+    public void EndTurn()
+    {
+        OnTurnEnd?.Invoke();
     }
 }
