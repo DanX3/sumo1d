@@ -41,16 +41,14 @@ public class Player : MonoBehaviour
         if (card.GetCardType() != CardType.Attack)
             playedCardsHistory.Add(this, card);
 
+        card.Play(this);
     }
 
-    public void DoDamage(int cardDamage)
+    public void DoDamage(Card card, int totalDamage, bool isCritical)
     {
-        // bool isCritical = IsCriticalHit();
-        // int damageDone = isCritical ? Mathf.FloorToInt(cardDamage * .5f) : cardDamage;
+        GetOpponent().GetDamage(totalDamage);
 
-        // GetOpponent().GetDamage(damageDone);
-
-        // playedCardsHistory.Add(this, card, damageDone, isCritical);
+        playedCardsHistory.Add(this, card, totalDamage, isCritical);
     }
 
     public bool IsCriticalHit()
