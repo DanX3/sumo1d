@@ -3,6 +3,8 @@ public class CardPowerup : Card
 {
     public int durationInTurns;
 
+    private Player targetPlayer;
+
     public override CardType GetCardType()
     {
         return CardType.Powerup;
@@ -10,18 +12,22 @@ public class CardPowerup : Card
 
     public override void Play(Player target)
     {
+        targetPlayer = target;
+        target.stats.powerups.Add(this);
+
         base.Play(target);
 
-        // TODO: apply powerup to player
         target.OnTurnEnd += OnTurnPassed;
     }
 
     private void OnTurnPassed()
     {
-        // TODO: agganciare a evento di fine turno 
         durationInTurns--;
 
         if (durationInTurns == 0)
+        {
+            targetPlayer.stats.powerups.Remove(this);
             Discard();
+        }
     }
 }
