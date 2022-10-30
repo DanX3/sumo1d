@@ -6,48 +6,32 @@ using System.Linq;
 
 public class PlayedCardsHistory
 {
-    public List<PlayedCardInTurn> cardsHistory = new List<PlayedCardInTurn>();
+    public List<PlayedCardsInTurn> history = new List<PlayedCardsInTurn>();
 
-    public void Add(Player player, Card card)
-    {
-        int turn = GameManager.Instance.turnCounter;
-        Debug.Log(cardsHistory.Count);
-
-        if (turn < cardsHistory.Count)
-            cardsHistory.Add(new PlayedCardInTurn());
-
-        PlayedCard newPlayedCard = new PlayedCard(player, card);
-
-        cardsHistory[turn].playedCards.Add(newPlayedCard);
-    }
-
-    public void Add(Player player, Card card, int damagedDealt, bool didCritical)
+    public void Add(Card card, int damagedDealt = 0, bool? didCritical = null)
     {
         int turn = GameManager.Instance.turnCounter;
         
-        if (turn < cardsHistory.Count)
-            cardsHistory.Add(new PlayedCardInTurn());
+        if (turn < history.Count)
+            history.Add(new PlayedCardsInTurn());
 
-        PlayedCard newPlayedCard = new PlayedCard(player, card, damagedDealt, didCritical);
+        PlayedCard newPlayedCard = new PlayedCard(card, damagedDealt, didCritical);
 
-        cardsHistory[turn].playedCards.Add(newPlayedCard);
+        history[turn].playedCards.Add(newPlayedCard);
     }
 
-    public List<PlayedCard> PlayerCardHistoryInTurn(Player player, int turn)
+    public List<PlayedCard> PlayerCardHistoryInTurn(int turn)
     {
-        if (turn < cardsHistory.Count)
+        if (turn < history.Count)
             return new List<PlayedCard>();
 
-        return cardsHistory[turn].PlayerPlayedCards(player);
+        return history[turn].playedCards;
     }
 }
 
-public record PlayedCardInTurn
+public record PlayedCardsInTurn
 {
     public List<PlayedCard> playedCards = new List<PlayedCard>();
-
-    public List<PlayedCard> PlayerPlayedCards(Player player) => playedCards.FindAll(c => c.player == player);
-
 
     public int GetTotalDamage() => playedCards.Sum(p => p.damageDealt);
     public int GetTotalManaUsed() => playedCards.Sum(p => p.card.manaCost);
@@ -55,7 +39,9 @@ public record PlayedCardInTurn
 
 public record PlayedCard
 {
-    public Player player;
+     // TODO
+     // bisogna stare attenti perchè se eliminiamo il gameobject dal gioco 
+     // (tipo quando un powerup viene rimosso), questa reference punterà a null
     public Card card;
     public int damageDealt;
     public bool? didCritical;
@@ -64,9 +50,8 @@ public record PlayedCard
     {
     }
 
-    public PlayedCard(Player player, Card card, int damageDealt = 0, bool? didCritical = null)
+    public PlayedCard(Card card, int damageDealt = 0, bool? didCritical = null)
     {
-        this.player = player;
         this.card = card;
         this.damageDealt = damageDealt;
         this.didCritical = didCritical;

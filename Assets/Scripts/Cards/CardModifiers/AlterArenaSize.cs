@@ -1,4 +1,3 @@
-
 public class AlterArenaSize : CardModifier
 {
     public int value;

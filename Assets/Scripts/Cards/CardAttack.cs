@@ -15,7 +15,7 @@ public class CardAttack : Card
         return CardType.Attack;
     }
 
-    public override void Play(Player user)
+    public override void Play(Player user) // TODO: forse ha senso fare come per i cardModifier (con targets e user)
     {
         base.Play(user);
         attackModifiers = GetComponents<AttackModifier>().ToList();

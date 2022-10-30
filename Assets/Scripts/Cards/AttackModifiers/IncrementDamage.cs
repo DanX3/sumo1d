@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class IncrementDamage : AttackModifier
 {
     public int value;

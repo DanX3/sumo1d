@@ -7,15 +7,14 @@ public abstract class CardModifier : MonoBehaviour
     protected List<Player> targets = new List<Player>();
 
     public abstract void Apply(Player user);
+    public abstract void Remove(Player user);
+
 
     public void Play(Player user)
     {
         InitTargets(user);
         Apply(user);
     }
-
-    public abstract void Remove(Player user);
-
 
     private void InitTargets(Player user)
     {

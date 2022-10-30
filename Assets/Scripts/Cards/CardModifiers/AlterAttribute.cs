@@ -1,4 +1,3 @@
-
 public class AlterAttribute : CardModifier
 {
     public PlayerAttribute targetAttribute;
