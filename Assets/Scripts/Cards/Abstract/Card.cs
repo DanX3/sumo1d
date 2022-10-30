@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public abstract class Card : MonoBehaviour, IPointerClickHandler
+public abstract class Card : MonoBehaviour
 {
     public string cardName;
     public string description;
@@ -12,9 +12,6 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     private List<CardModifier> modifiers = new List<CardModifier>();
     protected Player user;
     
-    public UIHand hand;
-
-
     public abstract CardType GetCardType();
 
     public virtual void Play(Player user)
@@ -37,10 +34,5 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
         {
             modifier.Remove(user);
         }
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        FindObjectOfType<UIHand>().PlayCard(transform.GetSiblingIndex());
     }
 }

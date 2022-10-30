@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,12 +8,12 @@ public class Player : MonoBehaviour
     public int id;
     public Publisher publisher;
     public PlayerStats stats;
-    
+
     public Deck<Card> deck;
     public PlayedCardsHistory playedCardsHistory;
     public List<Card> deckCards = new List<Card>();
     public UIStats uiStats;
-    
+
     public delegate void VoidEvent();
     public VoidEvent OnTurnStart;
     public VoidEvent OnTurnEnd;
@@ -37,9 +38,29 @@ public class Player : MonoBehaviour
 
     public void PlayCard(Card card)
     {
-        // TODO: se carta attacco dobbiamo chiamare il costrutture 
-        // playedCardsHistory.Add(int turn, Player player, Card card, int damagedDealt, bool didCritical);
-        playedCardsHistory.Add(GameManager.Instance.turnCounter, this, card);
+        if (card.GetCardType() != CardType.Attack)
+            playedCardsHistory.Add(this, card);
+
+    }
+
+    public void DoDamage(int cardDamage)
+    {
+        // bool isCritical = IsCriticalHit();
+        // int damageDone = isCritical ? Mathf.FloorToInt(cardDamage * .5f) : cardDamage;
+
+        // GetOpponent().GetDamage(damageDone);
+
+        // playedCardsHistory.Add(this, card, damageDone, isCritical);
+    }
+
+    public bool IsCriticalHit()
+    {
+        return Random.Range(0f, 1f) < stats.critChance;
+    }
+
+    public void GetDamage(int damage)
+    {
+        Debug.Log($"GetDamage({damage})");
     }
 
     public void StartTurn()
@@ -51,5 +72,5 @@ public class Player : MonoBehaviour
     {
         OnTurnEnd?.Invoke();
     }
-    
+
 }

@@ -8,8 +8,10 @@ public class PlayedCardsHistory
 {
     public List<PlayedCardInTurn> cardsHistory = new List<PlayedCardInTurn>();
 
-    public void Add(int turn, Player player, Card card)
+    public void Add(Player player, Card card)
     {
+        int turn = GameManager.Instance.turnCounter;
+
         if (cardsHistory[turn] == null)
             cardsHistory[turn] = new PlayedCardInTurn();
 
@@ -18,8 +20,10 @@ public class PlayedCardsHistory
         cardsHistory[turn].playedCards.Add(newPlayedCard);
     }
 
-    public void Add(int turn, Player player, Card card, int damagedDealt, bool didCritical)
+    public void Add(Player player, Card card, int damagedDealt, bool didCritical)
     {
+        int turn = GameManager.Instance.turnCounter;
+        
         if (cardsHistory[turn] == null)
             cardsHistory[turn] = new PlayedCardInTurn();
 

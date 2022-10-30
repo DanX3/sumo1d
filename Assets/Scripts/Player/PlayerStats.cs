@@ -56,7 +56,4 @@ public class PlayerStats
     public float powMul { get => 0.375f + 0.125f * (baseStats.power + bonus.power); }
     public float weiMul { get => 1.625f - 0.125f * (baseStats.weight + bonus.weight); }
     public float critChance { get => 0.01f * (5f + 5f * critical); }
-
-    // public bool IsCriticalHit() => Random.Range(0f, 1f) < critChance;
-
 }

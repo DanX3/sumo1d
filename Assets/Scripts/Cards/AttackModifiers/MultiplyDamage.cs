@@ -6,6 +6,6 @@ public class MultiplyDamage : AttackModifier
 
     public override int Apply(Player user, int damage)
     {
-        return Mathf.RoundToInt(damage * multiplier);
+        return Mathf.FloorToInt(damage * multiplier);
     }
 }
