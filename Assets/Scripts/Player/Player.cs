@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public Deck<Card> deck;
     public PlayedCardsHistory playedCardsHistory;
     public List<Card> deckCards = new List<Card>();
+    public UIStats uiStats;
     
     public delegate void VoidEvent();
     public VoidEvent OnTurnStart;
@@ -18,7 +19,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        stats = new PlayerStats(3, 3, 3, 3, 3);
+        stats = new PlayerStats(this, 3, 3, 3, 3, 3);
         deck = new Deck<Card>(deckCards);
     }
 
