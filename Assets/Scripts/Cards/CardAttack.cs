@@ -18,9 +18,7 @@ public class CardAttack : Card
     public override void Play(Player user)
     {
         base.Play(user);
-        attackModifiers = GetComponents<AttackModifier>()
-                            .OrderBy(m => m.playOrder)
-                            .ToList();
+        attackModifiers = GetComponents<AttackModifier>().ToList();
                             
         int cardDamage = CalculateCardDamage(user);
         bool isCritical = user.IsCriticalHit();

@@ -9,7 +9,7 @@ public class Tester : MonoBehaviour
 
     void Start()
     {
-        stats.Init(3, 4, 5, 6, 7);
+        // stats.Init(3, 4, 5, 6, 7);
         stats.SetStat(Stat.Power, 5);
         stats.SetStat(Stat.Critical, 4);
         StartCoroutine(TestSlots());

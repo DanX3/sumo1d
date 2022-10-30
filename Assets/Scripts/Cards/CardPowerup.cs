@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 public class CardPowerup : Card
 {
     public int durationInTurns;

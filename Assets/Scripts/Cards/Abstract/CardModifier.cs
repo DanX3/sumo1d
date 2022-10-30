@@ -3,7 +3,6 @@ using UnityEngine;
 
 public abstract class CardModifier : MonoBehaviour
 {
-    public int playOrder;
     public TargetType targetType;
     protected List<Player> targets = new List<Player>();
 

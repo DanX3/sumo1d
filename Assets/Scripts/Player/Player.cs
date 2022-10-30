@@ -10,9 +10,10 @@ public class Player : MonoBehaviour
     public PlayerStats stats;
 
     public Deck<Card> deck;
-    public PlayedCardsHistory playedCardsHistory;
+    public PlayedCardsHistory playedCardsHistory = new PlayedCardsHistory();
     public List<Card> deckCards = new List<Card>();
     public UIStats uiStats;
+    public bool isOpponent;
 
     public delegate void VoidEvent();
     public VoidEvent OnTurnStart;
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour
     {
         stats = new PlayerStats(this, 3, 3, 3, 3, 3);
         deck = new Deck<Card>(deckCards);
+        uiStats.Init(stats);
     }
 
     public Player GetOpponent()
@@ -38,8 +40,8 @@ public class Player : MonoBehaviour
 
     public void PlayCard(Card card)
     {
-        if (card.GetCardType() != CardType.Attack)
-            playedCardsHistory.Add(this, card);
+        // if (card.GetCardType() != CardType.Attack)
+        //     playedCardsHistory.Add(this, card);
 
         card.Play(this);
     }
@@ -48,7 +50,7 @@ public class Player : MonoBehaviour
     {
         GetOpponent().GetDamage(totalDamage);
 
-        playedCardsHistory.Add(this, card, totalDamage, isCritical);
+        // playedCardsHistory.Add(this, card, totalDamage, isCritical);
     }
 
     public bool IsCriticalHit()

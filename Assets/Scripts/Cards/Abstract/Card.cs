@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public abstract class Card : MonoBehaviour
+public abstract class Card : MonoBehaviour, IPointerClickHandler
 {
     public string cardName;
     public string description;
@@ -18,9 +18,7 @@ public abstract class Card : MonoBehaviour
     {
         this.user = user;
 
-        modifiers = GetComponents<CardModifier>()
-                        .OrderBy(m => m.playOrder)
-                        .ToList();
+        modifiers = GetComponents<CardModifier>().ToList();
 
         foreach (var modifier in modifiers)
         {
@@ -34,5 +32,11 @@ public abstract class Card : MonoBehaviour
         {
             modifier.Remove(user);
         }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("On click");
+        FindObjectOfType<UIHand>().PlayCard(transform.GetSiblingIndex());
     }
 }

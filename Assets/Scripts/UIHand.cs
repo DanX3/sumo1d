@@ -15,7 +15,26 @@ public class UIHand : MonoBehaviour
             return;
 
         var card = transform.GetChild(index).GetComponent<Card>();
-        card.Play(GameManager.Instance.player);
+        GameManager.Instance.player.PlayCard(card);
+        // card.Play(GameManager.Instance.player);
         Destroy(card.gameObject);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            PlayCard(0);
+        
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            PlayCard(1);
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+            PlayCard(2);
+
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+            PlayCard(3);
+
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+            PlayCard(4);
     }
 }
