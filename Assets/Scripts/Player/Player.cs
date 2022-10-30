@@ -7,17 +7,19 @@ public class Player : MonoBehaviour
     public int id;
     public Publisher publisher;
     public PlayerStats stats;
-    public Deck<int> deck;
+    
+    public Deck<Card> deck;
+    public PlayedCardsHistory playedCardsHistory;
+    public List<Card> deckCards = new List<Card>();
+    
     public delegate void VoidEvent();
     public VoidEvent OnTurnStart;
     public VoidEvent OnTurnEnd;
-    
-
-    private int playedCardsInTurnCount; // TODO diventera' il numero di elementi dentro la history delle carte giocate nel turno
 
     void Start()
     {
         stats = new PlayerStats(3, 3, 3, 3, 3);
+        deck = new Deck<Card>(deckCards);
     }
 
     public Player GetOpponent()
@@ -26,20 +28,17 @@ public class Player : MonoBehaviour
                 ? GameManager.Instance.opponent
                 : GameManager.Instance.player;
     }
-    
-    public int GetPlayedCardsInTurnCount()
-    {
-        return playedCardsInTurnCount;
-    }
 
     public void DrawCard(int count)
     {
 
     }
 
-    public void PlayCard(int index)
+    public void PlayCard(Card card)
     {
-
+        // TODO: se carta attacco dobbiamo chiamare il costrutture 
+        // playedCardsHistory.Add(int turn, Player player, Card card, int damagedDealt, bool didCritical);
+        playedCardsHistory.Add(GameManager.Instance.turnCounter, this, card);
     }
 
     public void StartTurn()
@@ -51,4 +50,5 @@ public class Player : MonoBehaviour
     {
         OnTurnEnd?.Invoke();
     }
+    
 }

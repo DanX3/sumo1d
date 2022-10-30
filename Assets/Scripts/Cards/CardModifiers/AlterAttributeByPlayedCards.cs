@@ -5,7 +5,7 @@ public class AlterAttributeByPlayedCards : CardModifier
 
     public override void Apply(Player user)
     {
-        value = user.GetPlayedCardsInTurnCount();
+        value = user.playedCardsHistory.PlayerCardHistoryInTurn(user, GameManager.Instance.turnCounter).Count;
 
         foreach(Player target in targets)
             target.stats.AlterAttribute(targetAttribute, value);

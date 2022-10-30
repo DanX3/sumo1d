@@ -7,7 +7,7 @@ public class GameManager : Singleton<GameManager>
     public Player player;
     public Player opponent;
     bool isPlayerTurn;
-    int turnCounter = 0;
+    public int turnCounter = 0;
 
     public void Init()
     {

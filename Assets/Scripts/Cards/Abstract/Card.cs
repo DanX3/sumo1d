@@ -14,8 +14,6 @@ public abstract class Card : MonoBehaviour
 
     public abstract CardType GetCardType();
 
-    // TODO deve fare cose quando viene pescata
-
     public virtual void Play(Player user)
     {
         this.user = user;
