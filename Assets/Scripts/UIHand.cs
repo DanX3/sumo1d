@@ -21,9 +21,16 @@ public class UIHand : MonoBehaviour
     {
         if (index >= transform.childCount)
             return;
-
+        
         var card = transform.GetChild(index).GetComponent<Card>();
+        if (GameManager.Instance.manaSlots.manaLeft < card.manaCost)
+        {
+            Debug.LogWarning("Not enough mana to play the card");
+            return;
+        }
+
         GameManager.Instance.player.PlayCard(card);
+        GameManager.Instance.manaSlots.UseMana(card.manaCost);
         GameManager.Instance.player.deck.Discard(index);
         // card.Play(GameManager.Instance.player);
         // Destroy(card.gameObject);

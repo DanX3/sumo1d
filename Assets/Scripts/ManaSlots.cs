@@ -18,11 +18,19 @@ public class ManaSlots : MonoBehaviour
         Init();
     }
 
+    public int manaLeft { get => transform.childCount - manaUsed; }
+
     public void Init()
     {
         foreach (Transform t in transform)
             manaImages.Add(t.GetComponent<Image>());
         Reset();
+    }
+
+    public void UseMana(int count)
+    {
+        for (int i = 0; i < count; i++)
+            UseMana();
     }
 
     public void UseMana()
@@ -65,5 +73,6 @@ public class ManaSlots : MonoBehaviour
     public void Reset()
     {
         manaImages.ForEach(image => image.color = unusedColor);
+        manaUsed = 0;
     }
 }

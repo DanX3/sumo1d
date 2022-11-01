@@ -12,6 +12,7 @@ public class GameManager : Singleton<GameManager>
     public VerticalLayoutGroup opponentPowerupList;
     bool isPlayerTurn;
     [HideInInspector] public int turnCounter = 0;
+    public ManaSlots manaSlots;
 
     void Start() => Init();
 
@@ -34,7 +35,8 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("Player start turn");
         endTurnButton.interactable = true;
-        player.deck.Draw(4);
+        player.deck.Draw(6);
+        manaSlots.Reset();
     }
 
     void OnPlayerEndTurn()
