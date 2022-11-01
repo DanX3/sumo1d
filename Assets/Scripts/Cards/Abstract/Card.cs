@@ -8,11 +8,21 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     public string cardName;
     public string description;
     public int manaCost;
+    public TMPro.TMP_Text manaLabel;
+    public TMPro.TMP_Text nameLabel;
+    public TMPro.TMP_Text descLabel;
 
     private List<CardModifier> modifiers = new List<CardModifier>();
     protected Player user;
-    
+
     public abstract CardType GetCardType();
+
+    void Start()
+    {
+        manaLabel.text = "" + manaCost;
+        nameLabel.text = cardName;
+        descLabel.text = description;
+    }
 
     public virtual void Play(Player user)
     {

@@ -33,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6149010345201840890, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
       propertyPath: m_Name
-      value: CardAttacks
+      value: BaseCardAttack
       objectReference: {fileID: 0}
     - target: {fileID: 6149010345201840891, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
       propertyPath: m_Pivot.x
@@ -121,6 +121,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
+--- !u!114 &1452597574757264175 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8952685438176689609, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
+  m_PrefabInstance: {fileID: 7500457336269788902}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2624622894884822511 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5510843163069303561, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
+  m_PrefabInstance: {fileID: 7500457336269788902}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2824178003415270206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5703673529646405080, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
+  m_PrefabInstance: {fileID: 7500457336269788902}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4414467037798097948 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6149010345201840890, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
@@ -141,3 +174,7 @@ MonoBehaviour:
   cardName: 
   description: 
   manaCost: 0
+  manaLabel: {fileID: 1452597574757264175}
+  nameLabel: {fileID: 2624622894884822511}
+  descLabel: {fileID: 2824178003415270206}
+  baseDamage: 0

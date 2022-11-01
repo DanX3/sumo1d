@@ -8,8 +8,10 @@ public class GameManager : Singleton<GameManager>
     public Player player;
     public Player opponent;
     public Button endTurnButton;
+    public VerticalLayoutGroup playerPowerupList;
+    public VerticalLayoutGroup opponentPowerupList;
     bool isPlayerTurn;
-    public int turnCounter = 0;
+    [HideInInspector] public int turnCounter = 0;
 
     void Start() => Init();
 

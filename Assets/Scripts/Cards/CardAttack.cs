@@ -7,6 +7,8 @@ public class CardAttack : Card
 {
     public int baseDamage;
     private readonly float CRITICAL_MULTIPLIER = 0.5f;
+    
+
 
     private List<AttackModifier> attackModifiers;
 

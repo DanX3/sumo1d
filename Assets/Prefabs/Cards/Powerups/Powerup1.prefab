@@ -99,6 +99,18 @@ PrefabInstance:
       propertyPath: cardName
       value: Powerup1
       objectReference: {fileID: 0}
+    - target: {fileID: 5924519448272945937, guid: d5817f651b73bce449613d2685e9fef5, type: 3}
+      propertyPath: manaCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5924519448272945937, guid: d5817f651b73bce449613d2685e9fef5, type: 3}
+      propertyPath: description
+      value: Increment weight by 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5924519448272945937, guid: d5817f651b73bce449613d2685e9fef5, type: 3}
+      propertyPath: durationInTurns
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5817f651b73bce449613d2685e9fef5, type: 3}
 --- !u!1 &6018950425289299718 stripped
@@ -106,22 +118,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 840622554963395573, guid: d5817f651b73bce449613d2685e9fef5, type: 3}
   m_PrefabInstance: {fileID: 6353987842691585267}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4066517247378152254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6018950425289299718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd6bd9e04f32c4a7e9ad941931151321, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playOrder: 0
-  targetType: 1
-  targetAttribute: 3
-  value: -1
 --- !u!114 &5809752510151320274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,7 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6bd9e04f32c4a7e9ad941931151321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playOrder: 0
   targetType: 0
   targetAttribute: 2
   value: 1

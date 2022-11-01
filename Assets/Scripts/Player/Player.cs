@@ -13,9 +13,12 @@ public class Player : MonoBehaviour
     public PlayedCardsHistory playedCardsHistory = new PlayedCardsHistory();
     public List<Card> deckCards = new List<Card>();
     public UIStats uiStats;
+    public PowerupList powerupList;
     public bool isOpponent;
 
     public delegate void VoidEvent();
+    public delegate void CardEvent(Card card);
+    public CardEvent OnCardPlayed;
     public VoidEvent OnTurnStart;
     public VoidEvent OnTurnEnd;
 
@@ -27,6 +30,8 @@ public class Player : MonoBehaviour
         deck = new Deck<Card>(deckCards);
         deck.OnCardDrawn += DrawCardFromDeck;
         deck.OnDiscardCard += (index) => FindObjectOfType<UIHand>().DiscardCard(index);
+        OnCardPlayed += powerupList.OnCardPlayed;
+        OnTurnStart += powerupList.TurnPassed;
     }
 
     public Player GetOpponent()
@@ -47,6 +52,7 @@ public class Player : MonoBehaviour
         //     playedCardsHistory.Add(this, card);
 
         card.Play(this);
+        OnCardPlayed?.Invoke(card);
     }
 
     public void DoDamage(Card card, int totalDamage, bool isCritical)

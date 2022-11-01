@@ -7,16 +7,25 @@ public class UIPowerup : MonoBehaviour
 {
     [SerializeField] PowerupTooltip tooltipPrefab;
     [SerializeField] Transform parent;
+    [SerializeField] TMPro.TMP_Text turnsLeftLabel;
 
+    int turnsLeft;
     PowerupTooltip tooltip;
     public string powerupMessage;
 
-    public float tooltipOffset { get => transform.position.x < 0.5f * Screen.width ? 200f : -50f ; }
+    public float tooltipOffset { get => transform.position.x < 0.5f * Screen.width ? 200f : -50f; }
 
-void Start()
+    void Start()
     {
         if (transform.position.x > 0.5f * Screen.width)
             parent.transform.localScale = new Vector3(-1f, 1f, 1f);
+    }
+
+    public void Init(CardPowerup card)
+    {
+        powerupMessage = card.description;
+        turnsLeftLabel.text = card.durationInTurns + "";
+        turnsLeft = card.durationInTurns;
     }
 
     public void OnPointerEnter()
@@ -30,7 +39,14 @@ void Start()
     {
         if (tooltip == null)
             return;
-            
+
         Destroy(tooltip.gameObject);
+    }
+
+    public void DescreaseTurnsLeft()
+    {
+        turnsLeftLabel.text = --turnsLeft + "";
+        if (turnsLeft <= 0)
+            Destroy(gameObject);
     }
 }

@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6149010345201840890, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
       propertyPath: m_Name
-      value: CardPowerup
+      value: BaseCardPowerup
       objectReference: {fileID: 0}
     - target: {fileID: 6149010345201840891, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
       propertyPath: m_Pivot.x
@@ -135,4 +135,40 @@ MonoBehaviour:
   cardName: 
   description: 
   manaCost: 0
+  manaLabel: {fileID: 2504426281238924486}
+  nameLabel: {fileID: 1334652354230860294}
+  descLabel: {fileID: 1285871483124196567}
   durationInTurns: 0
+--- !u!114 &1285871483124196567 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5703673529646405080, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
+  m_PrefabInstance: {fileID: 6845420400989663503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1334652354230860294 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5510843163069303561, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
+  m_PrefabInstance: {fileID: 6845420400989663503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2504426281238924486 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8952685438176689609, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
+  m_PrefabInstance: {fileID: 6845420400989663503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
