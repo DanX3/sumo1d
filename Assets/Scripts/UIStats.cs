@@ -30,6 +30,8 @@ public class UIStats : MonoBehaviour
         weightBar.Init(stats.baseStats.weight);
         reflexesBar.Init(stats.baseStats.reflex);
         criticalBar.Init(stats.baseStats.critical);
+
+        stats.onRefreshStat += SetStat;
     }
 
     public void SetStat(Stat stat, int value)

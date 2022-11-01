@@ -13,15 +13,17 @@ public class PlayerStats
     public int hp;
 
     public int maxHp = 50;
-    Player player;
+
+    public delegate void RefreshStatEvent(Stat stat, int value);
+    public RefreshStatEvent onRefreshStat;
     
 
-    public PlayerStats(Player player, int power, int spirit, int weight, int reflex, int critical)
+    public PlayerStats(int power, int spirit, int weight, int reflex, int critical)
     {
-        this.player = player;
         baseStats = new Stats(power, spirit, weight, reflex, critical);
         bonus = new Stats(0, 0, 0, 0, 0);
         hp = maxHp; 
+        RefreshUI();
     }
 
     public void AlterAttribute(PlayerAttribute attribute, int delta)
@@ -40,11 +42,11 @@ public class PlayerStats
 
     public void RefreshUI()
     {
-        player.uiStats.SetStat(Stat.Power, baseStats.power + bonus.power);
-        player.uiStats.SetStat(Stat.Spirit, baseStats.spirit + bonus.spirit);
-        player.uiStats.SetStat(Stat.Weight, baseStats.weight + bonus.weight);
-        player.uiStats.SetStat(Stat.Reflexes, baseStats.reflex + bonus.reflex);
-        player.uiStats.SetStat(Stat.Critical, baseStats.critical + bonus.critical);
+        onRefreshStat?.Invoke(Stat.Power, baseStats.power + bonus.power);
+        onRefreshStat?.Invoke(Stat.Spirit, baseStats.spirit + bonus.spirit);
+        onRefreshStat?.Invoke(Stat.Weight, baseStats.weight + bonus.weight);
+        onRefreshStat?.Invoke(Stat.Reflexes, baseStats.reflex + bonus.reflex);
+        onRefreshStat?.Invoke(Stat.Critical, baseStats.critical + bonus.critical);
     }
 
     public int power { get => baseStats.power + bonus.power; }

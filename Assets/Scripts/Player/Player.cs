@@ -19,11 +19,14 @@ public class Player : MonoBehaviour
     public VoidEvent OnTurnStart;
     public VoidEvent OnTurnEnd;
 
-    void Start()
+    public void Init()
     {
-        stats = new PlayerStats(this, 3, 3, 3, 3, 3);
-        deck = new Deck<Card>(deckCards);
+        stats = new PlayerStats(3, 3, 3, 3, 3);
         uiStats.Init(stats);
+        stats.RefreshUI();
+        deck = new Deck<Card>(deckCards);
+        deck.OnCardDrawn += DrawCardFromDeck;
+        deck.OnDiscardCard += (index) => FindObjectOfType<UIHand>().DiscardCard(index);
     }
 
     public Player GetOpponent()
@@ -33,9 +36,9 @@ public class Player : MonoBehaviour
                 : GameManager.Instance.player;
     }
 
-    public void DrawCard(int count)
+    void DrawCardFromDeck(Card card)
     {
-
+        FindObjectOfType<UIHand>().AddCard(card);
     }
 
     public void PlayCard(Card card)

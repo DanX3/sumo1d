@@ -13,6 +13,8 @@ public class Deck<T>
 
     public delegate void DrawnCard(T card);
     public DrawnCard OnCardDrawn;
+    public delegate void DiscardCard(int index);
+    public DiscardCard OnDiscardCard;
 
     public Deck(IEnumerable<T> availableCards)
     {
@@ -38,6 +40,7 @@ public class Deck<T>
 
         var drawnCard = deck.Pop();
         hand.Add(drawnCard);
+        Debug.Log("Hand size: " + hand.Count);
         OnCardDrawn?.Invoke(drawnCard);
     }
 
@@ -58,13 +61,15 @@ public class Deck<T>
         var discarded = hand[handIndex];
         discards.Push(hand[handIndex]);
         hand.RemoveAt(handIndex);
+        OnDiscardCard?.Invoke(handIndex);
+        Debug.Log("Hand size: " + hand.Count);
         return discarded;
     }
 
     public void DiscardHand()
     {
-        while (hand.Count > 0)
-            Discard(0);
+        for (int i = hand.Count - 1; i >= 0; i--)
+            Discard(i);
     }
 
     public void Shuffle()

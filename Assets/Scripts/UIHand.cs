@@ -6,7 +6,15 @@ public class UIHand : MonoBehaviour
 {
     public void AddCard(Card card)
     {
+        Instantiate(card, transform);
+    }
 
+    public void DiscardCard(int index)
+    {
+        if (index >= transform.childCount)
+            return;
+        
+        Destroy(transform.GetChild(index).gameObject);
     }
 
     public void PlayCard(int index)
@@ -16,8 +24,9 @@ public class UIHand : MonoBehaviour
 
         var card = transform.GetChild(index).GetComponent<Card>();
         GameManager.Instance.player.PlayCard(card);
+        GameManager.Instance.player.deck.Discard(index);
         // card.Play(GameManager.Instance.player);
-        Destroy(card.gameObject);
+        // Destroy(card.gameObject);
     }
 
     void Update()
