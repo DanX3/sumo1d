@@ -19,6 +19,7 @@ public class GameManager : Singleton<GameManager>
 
     public void Init()
     {
+        Application.targetFrameRate = 30;
         player.Init();
         opponent.Init();
 
@@ -40,14 +41,14 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("Player start turn");
         endTurnButton.interactable = true;
-        player.deck.Draw(6);
+        player.deckManager.Draw(6);
         manaSlots.Reset();
     }
 
     void OnPlayerEndTurn()
     {
         Debug.Log("Player end turn");
-        player.deck.DiscardHand();
+        player.deckManager.DiscardHand();
         endTurnButton.interactable = false;
         opponent.OnTurnStart?.Invoke();
     }
@@ -86,15 +87,8 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("GAME OVER");
     }
 
-    public void PlayPlayerCard(int index)
+    public void PlayPlayerCard(Card card)
     {
-        if (player.deck.hand.Count <= index)
-        {
-            Debug.LogWarning($"Tried to play card with index {index} but hands has only {player.deck.hand.Count} cards");
-            return;
-        }
-
-        var card = player.deck.hand[index];
         if (manaSlots.manaLeft < card.manaCost)
         {
             Debug.LogWarning("Not enough mana to play the card");
@@ -103,6 +97,5 @@ public class GameManager : Singleton<GameManager>
 
         player.PlayCard(card);
         manaSlots.UseMana(card.manaCost);
-        player.deck.Discard(index);
     }
 }

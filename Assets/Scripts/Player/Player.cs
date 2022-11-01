@@ -9,9 +9,8 @@ public class Player : MonoBehaviour
     public Publisher publisher;
     public PlayerStats stats;
 
-    public Deck<Card> deck;
+    public DeckManager deckManager;
     public PlayedCardsHistory playedCardsHistory = new PlayedCardsHistory();
-    public List<Card> deckCards = new List<Card>();
     public UIStats uiStats;
     public PowerupList powerupList;
     public bool isOpponent;
@@ -34,9 +33,7 @@ public class Player : MonoBehaviour
         stats = new PlayerStats(3, 3, 3, 3, 3);
         uiStats.Init(stats);
         stats.RefreshUI();
-        deck = new Deck<Card>(deckCards);
-        deck.OnCardDrawn += DrawCardFromDeck;
-        deck.OnDiscardCard += (index) => FindObjectOfType<UIHand>().DiscardCard(index);
+        deckManager.Init();
         OnCardPlayed += powerupList.OnCardPlayed;
         OnTurnStart += powerupList.TurnPassed;
         maxHp = hp = StartHP;
@@ -49,17 +46,10 @@ public class Player : MonoBehaviour
                 : GameManager.Instance.player;
     }
 
-    void DrawCardFromDeck(Card card)
-    {
-        FindObjectOfType<UIHand>().AddCard(card);
-    }
-
     public void PlayCard(Card card)
     {
-        // if (card.GetCardType() != CardType.Attack)
-        //     playedCardsHistory.Add(this, card);
-
         card.Play(this);
+        deckManager.Discard(card);
         OnCardPlayed?.Invoke(card);
     }
 

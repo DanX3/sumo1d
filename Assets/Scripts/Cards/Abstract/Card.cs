@@ -47,6 +47,6 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("On click");
-        FindObjectOfType<UIHand>().PlayCard(transform.GetSiblingIndex());
+        GameManager.Instance.PlayPlayerCard(this);
     }
 }

@@ -298,6 +298,7 @@ GameObject:
   m_Component:
   - component: {fileID: 700971588}
   - component: {fileID: 700971587}
+  - component: {fileID: 700971589}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -318,13 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  deckCards:
-  - {fileID: 8501000804230201349, guid: 97161b9eff42147a9b79331934c51abd, type: 3}
-  - {fileID: 726761016850618338, guid: 65c3d260818d74b249d6c62fd16d1d53, type: 3}
-  - {fileID: 726761016850618338, guid: 65c3d260818d74b249d6c62fd16d1d53, type: 3}
-  - {fileID: 726761016850618338, guid: 65c3d260818d74b249d6c62fd16d1d53, type: 3}
-  - {fileID: 8501000804230201349, guid: 97161b9eff42147a9b79331934c51abd, type: 3}
-  - {fileID: 8501000804230201349, guid: 97161b9eff42147a9b79331934c51abd, type: 3}
+  deckManager: {fileID: 700971589}
   uiStats: {fileID: 1371983999}
   powerupList: {fileID: 2106272622}
   isOpponent: 0
@@ -343,6 +338,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &700971589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700971586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 526de4197ec77cb4d8b3f6639199965d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deckList:
+  - {fileID: 726761016850618338, guid: 65c3d260818d74b249d6c62fd16d1d53, type: 3}
+  - {fileID: 8501000804230201349, guid: 97161b9eff42147a9b79331934c51abd, type: 3}
+  - {fileID: 8501000804230201349, guid: 97161b9eff42147a9b79331934c51abd, type: 3}
+  - {fileID: 8501000804230201349, guid: 97161b9eff42147a9b79331934c51abd, type: 3}
+  - {fileID: 726761016850618338, guid: 65c3d260818d74b249d6c62fd16d1d53, type: 3}
+  - {fileID: 726761016850618338, guid: 65c3d260818d74b249d6c62fd16d1d53, type: 3}
 --- !u!1 &720873236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1321,9 +1335,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1282421043}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 277851baadf865b4a87f06ff3b21559c, type: 3}
+  m_Script: {fileID: 11500000, guid: b6e6c979ebafde84caf372656935af02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 700971587}
 --- !u!224 &1371983998 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4602496999888040191, guid: b4d30b346655c61408b1846180fe88d4, type: 3}
@@ -1372,6 +1387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1629161747}
   - component: {fileID: 1629161746}
+  - component: {fileID: 1629161748}
   m_Layer: 0
   m_Name: Opponent
   m_TagString: Untagged
@@ -1392,7 +1408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1
-  deckCards: []
+  deckManager: {fileID: 1629161748}
   uiStats: {fileID: 829183884}
   powerupList: {fileID: 1444285546}
   isOpponent: 1
@@ -1411,6 +1427,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1629161748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629161745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 526de4197ec77cb4d8b3f6639199965d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deckList:
+  - {fileID: 726761016850618338, guid: 65c3d260818d74b249d6c62fd16d1d53, type: 3}
+  - {fileID: 8501000804230201349, guid: 97161b9eff42147a9b79331934c51abd, type: 3}
+  - {fileID: 8501000804230201349, guid: 97161b9eff42147a9b79331934c51abd, type: 3}
+  - {fileID: 8501000804230201349, guid: 97161b9eff42147a9b79331934c51abd, type: 3}
+  - {fileID: 726761016850618338, guid: 65c3d260818d74b249d6c62fd16d1d53, type: 3}
+  - {fileID: 726761016850618338, guid: 65c3d260818d74b249d6c62fd16d1d53, type: 3}
 --- !u!1 &1737462974
 GameObject:
   m_ObjectHideFlags: 0

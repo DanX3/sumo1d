@@ -4,44 +4,21 @@ using UnityEngine;
 
 public class UIHand : MonoBehaviour
 {
-    public void AddCard(Card card)
+    public Player player;
+
+    private void Awake()
     {
-        Instantiate(card, transform);
+        player.deckManager.OnDrawCard += AddCard;
+        player.deckManager.OnDiscardCard += RemoveCard;
     }
 
-    public void DiscardCard(int index)
+    private void AddCard(Card card)
     {
-        if (index >= transform.childCount)
-            return;
-        
-        Destroy(transform.GetChild(index).gameObject);
+        card.transform.SetParent(transform, false);
     }
 
-    public void PlayCard(int index)
+    private void RemoveCard(Card card)
     {
-        if (index >= transform.childCount)
-            return;
-        
-        GameManager.Instance.PlayPlayerCard(index);
-        // card.Play(GameManager.Instance.player);
-        // Destroy(card.gameObject);
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            PlayCard(0);
-        
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-            PlayCard(1);
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-            PlayCard(2);
-
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-            PlayCard(3);
-
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-            PlayCard(4);
+        card.transform.SetParent(player.transform, false);
     }
 }
