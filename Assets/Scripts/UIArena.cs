@@ -7,7 +7,7 @@ public class UIArena : MonoBehaviour
 {
 
     int hp;
-    int startHp;
+    public int startHp = Player.StartHP;
     float startSizeX;
 
     public void Init(int hp)
@@ -26,7 +26,7 @@ public class UIArena : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(Tester());
+        // StartCoroutine(Tester());
     }
 
     IEnumerator Tester()

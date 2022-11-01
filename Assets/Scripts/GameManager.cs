@@ -13,6 +13,7 @@ public class GameManager : Singleton<GameManager>
     bool isPlayerTurn;
     [HideInInspector] public int turnCounter = 0;
     public ManaSlots manaSlots;
+    public UIContactPoint contactPoint;    
 
     void Start() => Init();
 
@@ -24,8 +25,12 @@ public class GameManager : Singleton<GameManager>
         // callback setup
         player.OnTurnStart += OnPlayerStartTurn;
         player.OnTurnEnd += OnPlayerEndTurn;
+        player.OnDefeat += OnPlayerLose;
+        player.OnDamage += (damage, criticalHit) => contactPoint.Move(damage);
         opponent.OnTurnStart += OnOpponentStartTurn;
         opponent.OnTurnEnd += OnOpponentEndTurn;
+        opponent.OnDefeat += OnPlayerWin;
+        opponent.OnDamage += (damage, criticalHit) => contactPoint.Move(-damage);
 
         turnCounter = 0;
         player.OnTurnStart?.Invoke();
@@ -71,5 +76,13 @@ public class GameManager : Singleton<GameManager>
     }
 
 
+    void OnPlayerWin()
+    {
+        Debug.Log("YOU WIN");
+    }
 
+    void OnPlayerLose()
+    {
+        Debug.Log("GAME OVER");
+    }
 }

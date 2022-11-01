@@ -17,10 +17,17 @@ public class Player : MonoBehaviour
     public bool isOpponent;
 
     public delegate void VoidEvent();
+    public delegate void DamageEvent(int damage, bool isCritical);
+    public DamageEvent OnDamage;
     public delegate void CardEvent(Card card);
     public CardEvent OnCardPlayed;
     public VoidEvent OnTurnStart;
     public VoidEvent OnTurnEnd;
+    public VoidEvent OnDefeat;
+
+    public static int StartHP = 50;
+
+    int hp, maxHp;
 
     public void Init()
     {
@@ -32,6 +39,7 @@ public class Player : MonoBehaviour
         deck.OnDiscardCard += (index) => FindObjectOfType<UIHand>().DiscardCard(index);
         OnCardPlayed += powerupList.OnCardPlayed;
         OnTurnStart += powerupList.TurnPassed;
+        maxHp = hp = StartHP;
     }
 
     public Player GetOpponent()
@@ -57,8 +65,9 @@ public class Player : MonoBehaviour
 
     public void DoDamage(Card card, int totalDamage, bool isCritical)
     {
+        OnDamage?.Invoke(totalDamage, isCritical);
         GetOpponent().GetDamage(totalDamage);
-
+        hp += totalDamage;
         // playedCardsHistory.Add(this, card, totalDamage, isCritical);
     }
 
@@ -69,7 +78,10 @@ public class Player : MonoBehaviour
 
     public void GetDamage(int damage)
     {
+        hp -= damage;
         Debug.Log($"GetDamage({damage})");
+        if (hp <= 0)
+            OnDefeat?.Invoke();
     }
 
     public void StartTurn()
