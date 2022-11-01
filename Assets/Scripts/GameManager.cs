@@ -85,4 +85,24 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("GAME OVER");
     }
+
+    public void PlayPlayerCard(int index)
+    {
+        if (player.deck.hand.Count <= index)
+        {
+            Debug.LogWarning($"Tried to play card with index {index} but hands has only {player.deck.hand.Count} cards");
+            return;
+        }
+
+        var card = player.deck.hand[index];
+        if (manaSlots.manaLeft < card.manaCost)
+        {
+            Debug.LogWarning("Not enough mana to play the card");
+            return;
+        }
+
+        player.PlayCard(card);
+        manaSlots.UseMana(card.manaCost);
+        player.deck.Discard(index);
+    }
 }
