@@ -54,13 +54,16 @@ public class Player : MonoBehaviour
         OnCardPlayed?.Invoke(card);
     }
 
-    public void DoDamage(Card card, int totalDamage, bool isCritical)
+    public void DoDamage(Card card, int damage, bool isCritical)
     {
-        OnDamageDealt?.Invoke(totalDamage, isCritical);
-        Debug.Log(isOpponent ? "Opponent" : "Player" + " deals " + totalDamage + (isCritical ? "!" : ""));
-        GetOpponent().GetDamage(totalDamage, isCritical);
-        hp += totalDamage;
-        // playedCardsHistory.Add(this, card, totalDamage, isCritical);
+        OnDamageDealt?.Invoke(damage, isCritical);
+
+        Debug.Log(isOpponent ? "Opponent" : "Player" + " deals " + damage + (isCritical ? "!" : ""));
+        
+        GetOpponent().GetDamage(damage, isCritical);
+        hp += damage;
+
+        playedCardsHistory.Add(card, damage, isCritical);
     }
 
     public bool IsCriticalHit(float critMul, int critAdd)

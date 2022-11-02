@@ -11,7 +11,7 @@ public class GameManager : Singleton<GameManager>
     public VerticalLayoutGroup playerPowerupList;
     public VerticalLayoutGroup opponentPowerupList;
     bool isPlayerTurn;
-    [HideInInspector] public int turnCounter = 0;
+    public int turnCounter = 0;
     public ManaSlots manaSlots;
     public UIContactPoint contactPoint;    
 
