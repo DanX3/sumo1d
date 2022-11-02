@@ -4,8 +4,5 @@ public class MultiplyDamage : AttackModifier
 {
     public float multiplier;
 
-    public override int Apply(Player user, int damage)
-    {
-        return Mathf.FloorToInt(damage * multiplier);
-    }
+    public override float GetDamageMul(Player user) => multiplier;
 }

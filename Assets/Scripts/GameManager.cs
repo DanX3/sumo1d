@@ -27,11 +27,11 @@ public class GameManager : Singleton<GameManager>
         player.OnTurnStart += OnPlayerStartTurn;
         player.OnTurnEnd += OnPlayerEndTurn;
         player.OnDefeat += OnPlayerLose;
-        player.OnDamage += (damage, criticalHit) => contactPoint.Move(damage);
+        player.OnDamageDealt += (damage, criticalHit) => contactPoint.Move(damage);
         opponent.OnTurnStart += OnOpponentStartTurn;
         opponent.OnTurnEnd += OnOpponentEndTurn;
         opponent.OnDefeat += OnPlayerWin;
-        opponent.OnDamage += (damage, criticalHit) => contactPoint.Move(-damage);
+        opponent.OnDamageDealt += (damage, criticalHit) => contactPoint.Move(-damage);
 
         turnCounter = 0;
         player.OnTurnStart?.Invoke();
@@ -41,7 +41,7 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("Player start turn");
         endTurnButton.interactable = true;
-        player.deckManager.Draw(6);
+        player.deckManager.Draw(player.stats.handCount);
         manaSlots.Reset();
     }
 

@@ -352,10 +352,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckList:
   - {fileID: 726761016850618338, guid: 65c3d260818d74b249d6c62fd16d1d53, type: 3}
-  - {fileID: 8501000804230201349, guid: 97161b9eff42147a9b79331934c51abd, type: 3}
-  - {fileID: 8501000804230201349, guid: 97161b9eff42147a9b79331934c51abd, type: 3}
-  - {fileID: 8501000804230201349, guid: 97161b9eff42147a9b79331934c51abd, type: 3}
+  - {fileID: 8501000804230201349, guid: ecc5cd94d46966f4894579ae37c57e6a, type: 3}
   - {fileID: 726761016850618338, guid: 65c3d260818d74b249d6c62fd16d1d53, type: 3}
+  - {fileID: 8501000804230201349, guid: d2db96093b05a274f8e3603473eae4b8, type: 3}
   - {fileID: 726761016850618338, guid: 65c3d260818d74b249d6c62fd16d1d53, type: 3}
 --- !u!1 &720873236
 GameObject:

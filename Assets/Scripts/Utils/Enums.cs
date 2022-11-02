@@ -21,3 +21,19 @@ public enum TargetType
     Both
 }
 
+public enum PowerupBonus
+{
+    Power,
+    Spirit,
+    Weight,
+    Reflex,
+    Critical,
+    DamageAdd,
+    DamageMul,
+    CritAdd,
+    CritMul,
+    HandCount,
+    Arena,
+    DamageThreshold
+}
+

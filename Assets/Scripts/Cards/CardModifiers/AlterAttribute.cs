@@ -1,6 +1,6 @@
 public class AlterAttribute : CardModifier
 {
-    public PlayerAttribute targetAttribute;
+    public PowerupBonus targetAttribute;
     public int value;
 
     public override void Apply(Player user)

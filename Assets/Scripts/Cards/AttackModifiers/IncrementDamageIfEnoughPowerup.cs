@@ -3,10 +3,6 @@ public class IncrementDamageIfEnoughPowerup : AttackModifier
     public int neededPowerupsCount;
     public int incrementValue;
 
-    public override int Apply(Player user, int damage)
-    {
-        return user.stats.powerups.Count >= neededPowerupsCount 
-            ? damage + incrementValue
-            : damage;
-    }
+    public override int GetDamageAdd(Player user) => 
+        user.stats.powerups.Count >= neededPowerupsCount ? incrementValue : 0;
 }

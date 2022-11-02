@@ -7,6 +7,8 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
 {
     public string cardName;
     public string description;
+    
+    [Range(0, 8)]
     public int manaCost;
     public TMPro.TMP_Text manaLabel;
     public TMPro.TMP_Text nameLabel;
@@ -17,7 +19,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
 
     public abstract CardType GetCardType();
 
-    void Start()
+    protected void Start()
     {
         manaLabel.text = "" + manaCost;
         nameLabel.text = cardName;

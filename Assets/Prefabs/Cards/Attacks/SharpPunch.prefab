@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6645664374986614950, guid: 114ce5220f4218544b90e02e56e7ae08, type: 3}
       propertyPath: cardName
-      value: Test Attack
+      value: Sharp Punch
       objectReference: {fileID: 0}
     - target: {fileID: -6645664374986614950, guid: 114ce5220f4218544b90e02e56e7ae08, type: 3}
       propertyPath: manaCost
@@ -21,11 +21,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6645664374986614950, guid: 114ce5220f4218544b90e02e56e7ae08, type: 3}
       propertyPath: description
-      value: Deals (5 * 2) + 1 damage
+      value: Double chance to crit
       objectReference: {fileID: 0}
     - target: {fileID: 4414467037798097948, guid: 114ce5220f4218544b90e02e56e7ae08, type: 3}
       propertyPath: m_Name
-      value: Attack1
+      value: SharpPunch
       objectReference: {fileID: 0}
     - target: {fileID: 4414467037798097949, guid: 114ce5220f4218544b90e02e56e7ae08, type: 3}
       propertyPath: m_Pivot.x
@@ -118,7 +118,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4414467037798097948, guid: 114ce5220f4218544b90e02e56e7ae08, type: 3}
   m_PrefabInstance: {fileID: 6213916657111783263}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-9095601662743965071
+--- !u!114 &-4119382021980171053
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,20 +127,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7745929843613086531}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90b2b68bb90cf48ef99bc7119829ce29, type: 3}
+  m_Script: {fileID: 11500000, guid: 144d9da417af1c74e97e14965405f704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 2
---- !u!114 &7443016819760210539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7745929843613086531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8afbad5a7cda34f6c83d69647aaba655, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  value: 1
+  value: 2

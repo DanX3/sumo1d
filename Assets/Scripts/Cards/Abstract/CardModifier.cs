@@ -18,14 +18,11 @@ public abstract class CardModifier : MonoBehaviour
 
     private void InitTargets(Player user)
     {
-        if (targetType == TargetType.Self)
+        if (targetType == TargetType.Self || targetType == TargetType.Both)
             targets.Add(user);
-        else if (targetType == TargetType.Other)
+
+
+        if (targetType == TargetType.Other || targetType == TargetType.Both)
             targets.Add(user.GetOpponent());
-        else
-        {
-            targets.Add(user);
-            targets.Add(user.GetOpponent());
-        }
     }
 }

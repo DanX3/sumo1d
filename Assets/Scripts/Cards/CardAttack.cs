@@ -3,14 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+
 public class CardAttack : Card
 {
     public int baseDamage;
-    private readonly float CRITICAL_MULTIPLIER = 0.5f;
-    
+    private readonly float CRITICAL_MULTIPLIER = 1.5f;
+    [SerializeField] TMPro.TMP_Text damageLabel;
 
 
     private List<AttackModifier> attackModifiers;
+
+    new void Start()
+    {
+        base.Start();
+        damageLabel.text = baseDamage + "";
+    }
 
     public override CardType GetCardType()
     {
@@ -22,13 +29,19 @@ public class CardAttack : Card
         base.Play(user);
         attackModifiers = GetComponents<AttackModifier>().ToList();
                             
-        int cardDamage = CalculateCardDamage(user);
-        bool isCritical = user.IsCriticalHit();
-        int totalDamage = isCritical 
-            ? Mathf.FloorToInt(cardDamage * CRITICAL_MULTIPLIER) 
-            : cardDamage;
+        int damage = CalculateCardDamage(user);
 
-        user.DoDamage(this, totalDamage, isCritical);
+        // critical hit
+        float critChance = CalculateCardCritical(user.stats.critChance);
+        bool isCritical = Player.IsCriticalHit(critChance);
+        if (isCritical)
+            damage = Mathf.FloorToInt(damage * CRITICAL_MULTIPLIER);
+
+        // nulls damage if lower than opponent damage threshold
+        if (damage < user.GetOpponent().stats.damageThreshold)
+            damage = 0;
+
+        user.DoDamage(this, damage, isCritical);
     }
 
     private int CalculateCardDamage(Player user)
@@ -36,8 +49,20 @@ public class CardAttack : Card
         int realDamage = baseDamage;
 
         foreach (AttackModifier modifier in attackModifiers)
-            realDamage = modifier.Apply(user, realDamage);
+        {
+            realDamage = Mathf.FloorToInt(realDamage * modifier.GetDamageMul(user) + modifier.GetDamageAdd(user));
+        }
 
         return realDamage;
+    }
+
+    private float CalculateCardCritical(float critChance)
+    {
+        foreach (AttackModifier modifier in attackModifiers)
+        {
+            critChance = critChance * modifier.GetCritMul(user) + modifier.GetCritAdd(user);
+        }
+
+        return critChance;
     }
 }

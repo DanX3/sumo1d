@@ -93,19 +93,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 840622554963395573, guid: d5817f651b73bce449613d2685e9fef5, type: 3}
       propertyPath: m_Name
-      value: Powerup1
+      value: Huge
       objectReference: {fileID: 0}
     - target: {fileID: 5924519448272945937, guid: d5817f651b73bce449613d2685e9fef5, type: 3}
       propertyPath: cardName
-      value: Powerup1
+      value: Huge
       objectReference: {fileID: 0}
     - target: {fileID: 5924519448272945937, guid: d5817f651b73bce449613d2685e9fef5, type: 3}
       propertyPath: manaCost
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5924519448272945937, guid: d5817f651b73bce449613d2685e9fef5, type: 3}
       propertyPath: description
-      value: Increment weight by 1
+      value: Ignore all damage lower than 10
       objectReference: {fileID: 0}
     - target: {fileID: 5924519448272945937, guid: d5817f651b73bce449613d2685e9fef5, type: 3}
       propertyPath: durationInTurns
@@ -131,5 +131,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetType: 0
-  targetAttribute: 2
-  value: 1
+  targetAttribute: 11
+  value: 10

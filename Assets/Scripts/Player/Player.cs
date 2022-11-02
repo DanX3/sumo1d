@@ -17,7 +17,8 @@ public class Player : MonoBehaviour
 
     public delegate void VoidEvent();
     public delegate void DamageEvent(int damage, bool isCritical);
-    public DamageEvent OnDamage;
+    public DamageEvent OnDamageDealt;
+    public DamageEvent OnDamageReceived;
     public delegate void CardEvent(Card card);
     public CardEvent OnCardPlayed;
     public VoidEvent OnTurnStart;
@@ -55,21 +56,27 @@ public class Player : MonoBehaviour
 
     public void DoDamage(Card card, int totalDamage, bool isCritical)
     {
-        OnDamage?.Invoke(totalDamage, isCritical);
-        GetOpponent().GetDamage(totalDamage);
+        OnDamageDealt?.Invoke(totalDamage, isCritical);
+        Debug.Log(isOpponent ? "Opponent" : "Player" + " deals " + totalDamage + (isCritical ? "!" : ""));
+        GetOpponent().GetDamage(totalDamage, isCritical);
         hp += totalDamage;
         // playedCardsHistory.Add(this, card, totalDamage, isCritical);
     }
 
-    public bool IsCriticalHit()
+    public bool IsCriticalHit(float critMul, int critAdd)
     {
-        return Random.Range(0f, 1f) < stats.critChance;
+        return Random.Range(0f, 1f) < (critMul * stats.critChance + critAdd);
     }
 
-    public void GetDamage(int damage)
+    public static bool IsCriticalHit(float chance)
     {
+        return Random.Range(0f, 1f) < chance;
+    }
+
+    public void GetDamage(int damage, bool isCritical)
+    {
+        OnDamageReceived?.Invoke(damage, isCritical);
         hp -= damage;
-        Debug.Log($"GetDamage({damage})");
         if (hp <= 0)
             OnDefeat?.Invoke();
     }
