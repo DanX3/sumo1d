@@ -5,13 +5,13 @@ public class AlterAttribute : CardModifier
 
     public override void Apply(Player user)
     {
-        foreach(Player target in targets)
+        foreach (Player target in targets)
             target.stats.AlterAttribute(targetAttribute, value);
     }
 
     public override void Remove(Player user)
     {
-        foreach(Player target in targets)
+        foreach (Player target in targets)
             target.stats.AlterAttribute(targetAttribute, -value);
     }
 }

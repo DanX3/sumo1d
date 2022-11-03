@@ -30,7 +30,6 @@ public class UIArena : MonoBehaviour
         Debug.Log(bonus.ToString() + ", " + delta);
         if (bonus != PowerupBonus.Arena)
             return;
-        
 
         AddDiff(Mathf.RoundToInt(delta));
     }
