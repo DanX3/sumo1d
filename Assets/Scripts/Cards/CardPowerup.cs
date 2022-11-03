@@ -1,26 +1,11 @@
-
 using UnityEngine;
-
-public enum Weakness
-{
-    None,
-    OnDamageReceived,
-    OnDamageDealt,
-    OnCardsPlayed,
-    OnPlayerStartTurn,
-    OnPlayerEndTurn,
-    OnManaUsed,
-    OnAttacksPlayed,
-    OnPowerupPlayed,
-    OnInstantPlayed,
-}
 
 public class CardPowerup : Card
 {
     [Range(1, 10)] public int durationInTurns = 1;
 
     private Player targetPlayer;
-    public Weakness weakness;
+    public PowerupWeakness weakness;
     public int weaknessCount = 1;
     int weaknessLeft;
 
@@ -46,9 +31,9 @@ public class CardPowerup : Card
         target.OnTurnEnd += OnTurnPassed;
         switch (weakness)
         {
-            case Weakness.None:
+            case PowerupWeakness.None:
                 break;
-            case Weakness.OnDamageReceived:
+            case PowerupWeakness.OnDamageReceived:
                 target.OnDamageDealt += (_, _) => TickWeakness();
                 break;
         }

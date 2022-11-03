@@ -37,3 +37,16 @@ public enum PowerupBonus
     DamageThreshold
 }
 
+public enum PowerupWeakness
+{
+    None,
+    OnDamageReceived,
+    OnDamageDealt,
+    OnCardsPlayed,
+    OnPlayerStartTurn,
+    OnPlayerEndTurn,
+    OnManaUsed,
+    OnAttacksPlayed,
+    OnPowerupPlayed,
+    OnInstantPlayed,
+}

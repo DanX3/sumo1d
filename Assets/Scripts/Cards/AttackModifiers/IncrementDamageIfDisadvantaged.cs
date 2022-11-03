@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class AddIfDisadvantaged : AttackModifier
+public class IncrementDamageIfDisadvantaged : AttackModifier
 {
     public int value;
 

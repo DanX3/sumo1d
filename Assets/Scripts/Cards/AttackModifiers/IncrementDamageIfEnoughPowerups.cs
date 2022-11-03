@@ -1,4 +1,4 @@
-public class IncrementDamageIfEnoughPowerup : AttackModifier
+public class IncrementDamageIfEnoughPowerups : AttackModifier
 {
     public int neededPowerupsCount;
     public int incrementValue;
