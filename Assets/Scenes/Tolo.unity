@@ -353,12 +353,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckList:
   - {fileID: 726761016850618338, guid: 65c3d260818d74b249d6c62fd16d1d53, type: 3}
-  - {fileID: 8501000804230201349, guid: ecc5cd94d46966f4894579ae37c57e6a, type: 3}
+  - {fileID: 726761016850618338, guid: cc7da2cf450a88b4eae278b3751303cb, type: 3}
   - {fileID: 726761016850618338, guid: 97db0ef0b33213740bfde4ec977530f5, type: 3}
+  - {fileID: 1640227817367688678, guid: dc44f09a81415d24497e0b4dfb1b15bd, type: 3}
+  - {fileID: 1640227817367688678, guid: b1229005560521d46a6ab3aab0163f7a, type: 3}
   - {fileID: 8501000804230201349, guid: d2db96093b05a274f8e3603473eae4b8, type: 3}
-  - {fileID: 726761016850618338, guid: 97db0ef0b33213740bfde4ec977530f5, type: 3}
-  - {fileID: 726761016850618338, guid: 97db0ef0b33213740bfde4ec977530f5, type: 3}
-  - {fileID: 726761016850618338, guid: 97db0ef0b33213740bfde4ec977530f5, type: 3}
+  - {fileID: 8501000804230201349, guid: ecc5cd94d46966f4894579ae37c57e6a, type: 3}
+  - {fileID: 8501000804230201349, guid: ecc5cd94d46966f4894579ae37c57e6a, type: 3}
+  - {fileID: 8501000804230201349, guid: ecc5cd94d46966f4894579ae37c57e6a, type: 3}
+  - {fileID: 8501000804230201349, guid: ecc5cd94d46966f4894579ae37c57e6a, type: 3}
 --- !u!1 &720873236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,7 +1045,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.2784314, g: 0.2784314, b: 0.2784314, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
