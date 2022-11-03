@@ -66,16 +66,6 @@ public class Player : MonoBehaviour
         hp += damage;
     }
 
-    public bool IsCriticalHit(float critMul, int critAdd)
-    {
-        return Random.Range(0f, 1f) < (critMul * stats.critChance + critAdd);
-    }
-
-    public static bool IsCriticalHit(float chance)
-    {
-        return Random.Range(0f, 1f) < chance;
-    }
-
     public void GetDamage(int damage, bool isCritical)
     {
         OnDamageReceived?.Invoke(damage, isCritical);

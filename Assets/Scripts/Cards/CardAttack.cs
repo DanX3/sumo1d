@@ -28,12 +28,12 @@ public class CardAttack : Card
     {
         base.Play(user);
         attackModifiers = GetComponents<AttackModifier>().ToList();
-                            
+
         int damage = CalculateCardDamage(user);
 
         // critical hit
         float critChance = CalculateCardCritical(user.stats.critChance);
-        bool isCritical = Player.IsCriticalHit(critChance);
+        bool isCritical = Random.Range(0f, 1f) < critChance;
         if (isCritical)
             damage = Mathf.FloorToInt(damage * CRITICAL_MULTIPLIER);
 
