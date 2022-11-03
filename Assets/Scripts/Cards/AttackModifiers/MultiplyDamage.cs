@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class MultiplyDamage : AttackModifier
 {
     public float multiplier;

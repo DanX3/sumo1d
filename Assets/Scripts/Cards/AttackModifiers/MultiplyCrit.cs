@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class MultiplyCrit : AttackModifier
 {
     public float value;
