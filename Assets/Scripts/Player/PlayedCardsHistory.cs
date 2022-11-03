@@ -1,6 +1,3 @@
-using System.ComponentModel;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -13,17 +10,19 @@ public class PlayedCardsHistory
     {
         int turn = GameManager.Instance.turnCounter;
 
-        if (turn <= history.Count)
+        if (turn >= history.Count)
             history.Add(new PlayedCardsInTurn());
 
         PlayedCard newPlayedCard = new PlayedCard(card, damageDealt, didCritical);
+
+        Debug.Log($"Add to history: turn {turn} \t card: {card.cardName} \t dmg: {damageDealt} \t crit? {didCritical}");
 
         history[turn].playedCards.Add(newPlayedCard);
     }
 
     public List<PlayedCard> GetTurnHistory(int turn)
     {
-        if (turn <= history.Count)
+        if (turn >= history.Count)
             return new List<PlayedCard>();
 
         return history[turn].playedCards;

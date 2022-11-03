@@ -24,7 +24,7 @@ public class CardAttack : Card
         return CardType.Attack;
     }
 
-    public override void Play(Player user) // TODO: forse ha senso fare come per i cardModifier (con targets e user)
+    public override void Play(Player user)
     {
         base.Play(user);
         attackModifiers = GetComponents<AttackModifier>().ToList();
@@ -40,6 +40,8 @@ public class CardAttack : Card
         // nulls damage if lower than opponent damage threshold
         if (damage < user.GetOpponent().stats.damageThreshold)
             damage = 0;
+
+        user.playedCardsHistory.Add(this, damage, isCritical);
 
         user.DoDamage(this, damage, isCritical);
     }

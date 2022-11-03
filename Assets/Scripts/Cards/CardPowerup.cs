@@ -37,6 +37,8 @@ public class CardPowerup : Card
                 target.OnDamageDealt += (_, _) => TickWeakness();
                 break;
         }
+        
+        user.playedCardsHistory.Add(this);
     }
 
 

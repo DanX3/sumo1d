@@ -12,5 +12,7 @@ public class CardInstant : Card
 
         foreach (var effect in GetComponents<InstantEffect>())
             effect.Play(user);
+
+        user.playedCardsHistory.Add(this);
     }
 }

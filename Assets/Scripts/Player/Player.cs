@@ -64,8 +64,6 @@ public class Player : MonoBehaviour
         
         GetOpponent().GetDamage(damage, isCritical);
         hp += damage;
-
-        playedCardsHistory.Add(card, damage, isCritical);
     }
 
     public bool IsCriticalHit(float critMul, int critAdd)
