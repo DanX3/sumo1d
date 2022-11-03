@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public DeckManager deckManager;
     public PlayedCardsHistory playedCardsHistory = new PlayedCardsHistory();
     public UIStats uiStats;
+    public UIArena uiArena;
     public PowerupList powerupList;
     public bool isOpponent;
 
@@ -38,6 +39,7 @@ public class Player : MonoBehaviour
         OnCardPlayed += powerupList.OnCardPlayed;
         OnTurnStart += powerupList.TurnPassed;
         maxHp = hp = StartHP;
+        uiArena.Init(this);
     }
 
     public Player GetOpponent()
@@ -49,8 +51,8 @@ public class Player : MonoBehaviour
 
     public void PlayCard(Card card)
     {
-        card.Play(this);
         deckManager.Discard(card);
+        card.Play(this);
         OnCardPlayed?.Invoke(card);
     }
 

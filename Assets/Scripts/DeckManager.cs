@@ -15,6 +15,8 @@ public class DeckManager : MonoBehaviour
     public Action<Card> OnDrawCard;
     public Action<Card> OnDiscardCard;
 
+    public int handCount { get => _hand.Count; }
+
     public void Init()
     {
         ClearAll();

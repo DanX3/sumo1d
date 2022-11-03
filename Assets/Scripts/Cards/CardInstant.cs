@@ -5,11 +5,12 @@ public class CardInstant : Card
     {
         return CardType.Instant;
     }
-    
-    public override void Play(Player targets)
-    {
-        base.Play(targets);
 
-        // TODO: do instant stuff
+    public override void Play(Player user)
+    {
+        base.Play(user);
+
+        foreach (var effect in GetComponents<InstantEffect>())
+            effect.Play(user);
     }
 }

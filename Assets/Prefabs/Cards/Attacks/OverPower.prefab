@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6645664374986614950, guid: 114ce5220f4218544b90e02e56e7ae08, type: 3}
       propertyPath: manaCost
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6645664374986614950, guid: 114ce5220f4218544b90e02e56e7ae08, type: 3}
       propertyPath: baseDamage
@@ -25,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4414467037798097948, guid: 114ce5220f4218544b90e02e56e7ae08, type: 3}
       propertyPath: m_Name
-      value: Overpower
+      value: OverPower
       objectReference: {fileID: 0}
     - target: {fileID: 4414467037798097949, guid: 114ce5220f4218544b90e02e56e7ae08, type: 3}
       propertyPath: m_Pivot.x

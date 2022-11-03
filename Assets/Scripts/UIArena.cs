@@ -10,10 +10,11 @@ public class UIArena : MonoBehaviour
     public int startHp = Player.StartHP;
     float startSizeX;
 
-    public void Init(int hp)
+    public void Init(Player player)
     {
-        startHp = this.hp = hp;
+        hp = startHp = player.stats.baseStats.arena;
         startSizeX = GetComponent<RectTransform>().sizeDelta.x;
+        player.stats.OnPowerupBonus += OnPowerupBonus;
     }
 
     public void AddDiff(int diff)
@@ -24,18 +25,14 @@ public class UIArena : MonoBehaviour
         GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, targetSize);
     }
 
-    void Start()
+    void OnPowerupBonus(PowerupBonus bonus, float delta)
     {
-        // StartCoroutine(Tester());
-    }
+        Debug.Log(bonus.ToString() + ", " + delta);
+        if (bonus != PowerupBonus.Arena)
+            return;
+        
 
-    IEnumerator Tester()
-    {
-        Init(100); yield return new WaitForSeconds(2f);
-        AddDiff(10); yield return new WaitForSeconds(2f);
-        AddDiff(10); yield return new WaitForSeconds(2f);
-        AddDiff(-20); yield return new WaitForSeconds(2f);
-        AddDiff(-50); yield return new WaitForSeconds(2f);
+        AddDiff(Mathf.RoundToInt(delta));
     }
 
 }
