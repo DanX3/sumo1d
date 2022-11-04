@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
     public UIStats uiStats;
     public UIArena uiArena;
     public PowerupList powerupList;
-    public bool isOpponent;
 
     public delegate void VoidEvent();
     public delegate void DamageEvent(int damage, bool isCritical);
@@ -42,15 +41,26 @@ public class Player : MonoBehaviour
         uiArena.Init(this);
     }
 
+    public bool IsThePlayer()
+    {
+        return GameManager.Instance.player.id == id;
+    }
+
     public Player GetOpponent()
     {
-        return GameManager.Instance.player.id == id
-                ? GameManager.Instance.opponent
-                : GameManager.Instance.player;
+        return IsThePlayer() ? GameManager.Instance.opponent : GameManager.Instance.player;
     }
 
     public void PlayCard(Card card)
     {
+        if (GameManager.Instance.manaSlots.manaLeft < card.manaCost)
+        {
+            Debug.LogWarning("Not enough mana to play the card");
+            return;
+        }
+
+        GameManager.Instance.manaSlots.UseMana(card.manaCost);
+
         deckManager.Discard(card);
         card.Play(this);
         OnCardPlayed?.Invoke(card);
@@ -60,8 +70,8 @@ public class Player : MonoBehaviour
     {
         OnDamageDealt?.Invoke(damage, isCritical);
 
-        Debug.Log(isOpponent ? "Opponent" : "Player" + " deals " + damage + (isCritical ? "!" : ""));
-        
+        Debug.Log(IsThePlayer() ? "Player" : "Opponent" + " deals " + damage + (isCritical ? "!" : ""));
+
         GetOpponent().GetDamage(damage, isCritical);
         hp += damage;
     }

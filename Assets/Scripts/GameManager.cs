@@ -94,16 +94,4 @@ public class GameManager : Singleton<GameManager>
     {
         SceneManager.LoadScene("HomeScene");
     }
-
-    public void PlayPlayerCard(Card card)
-    {
-        if (manaSlots.manaLeft < card.manaCost)
-        {
-            Debug.LogWarning("Not enough mana to play the card");
-            return;
-        }
-
-        player.PlayCard(card);
-        manaSlots.UseMana(card.manaCost);
-    }
 }

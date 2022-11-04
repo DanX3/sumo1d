@@ -49,6 +49,6 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("On click");
-        GameManager.Instance.PlayPlayerCard(this);
+        GameManager.Instance.player.PlayCard(this);
     }
 }
