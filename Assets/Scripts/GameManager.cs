@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
@@ -80,11 +81,18 @@ public class GameManager : Singleton<GameManager>
     void OnPlayerWin()
     {
         Debug.Log("YOU WIN");
+        EndGame();
     }
 
     void OnPlayerLose()
     {
         Debug.Log("GAME OVER");
+        EndGame();
+    }
+
+    void EndGame()
+    {
+        SceneManager.LoadScene("HomeScene");
     }
 
     public void PlayPlayerCard(Card card)
