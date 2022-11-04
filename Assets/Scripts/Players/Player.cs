@@ -69,8 +69,8 @@ public class Player : MonoBehaviour
     public void DoDamage(Card card, int damage, bool isCritical)
     {
         OnDamageDealt?.Invoke(damage, isCritical);
-
-        Debug.Log(IsThePlayer() ? "Player" : "Opponent" + " deals " + damage + (isCritical ? "!" : ""));
+        
+        Debug.Log((IsThePlayer() ? "Player" : "Opponent") + " deals " + damage + (isCritical ? "!" : ""));
 
         GetOpponent().GetDamage(damage, isCritical);
         hp += damage;

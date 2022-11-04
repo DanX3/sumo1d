@@ -27,7 +27,8 @@ public class UIArena : MonoBehaviour
 
     void OnPowerupBonus(PowerupBonus bonus, float delta)
     {
-        Debug.Log(bonus.ToString() + ", " + delta);
+        Debug.Log($"Powerup: {bonus} + {delta}");
+        
         if (bonus != PowerupBonus.Arena)
             return;
 
