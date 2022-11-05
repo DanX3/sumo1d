@@ -6,7 +6,7 @@ using System;
 
 public class DeckManager : MonoBehaviour
 {
-    public List<DeckRow> deckList = new List<DeckRow>();
+    public List<Card> deckList = new List<Card>();
 
     private Stack<Card> _deck = new Stack<Card>();
     private List<Card> _hand = new List<Card>();
@@ -23,15 +23,10 @@ public class DeckManager : MonoBehaviour
 
         ClearAll();
 
-        foreach (DeckRow deckRow in deckList)
+        foreach (Card card in deckList)
         {
-            Debug.Log($"Adding {deckRow.count} cards '{deckRow.card.cardName}'");
-
-            for (int i = 0; i < deckRow.count; i++)
-            {
-                var newCard = Instantiate(deckRow.card, transform).GetComponent<Card>();
-                _deck.Push(newCard);
-            }
+            var newCard = Instantiate(card, transform).GetComponent<Card>();
+            _deck.Push(newCard);
         }
 
         ShuffleDeck();

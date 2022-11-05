@@ -17,7 +17,6 @@ public class CardPowerup : Card
         base.Start();
         weaknessLeft = weaknessCount;
         durationLabel.text = durationInTurns + "";
-        turnsLeft = durationInTurns;
     }
 
     public override CardType GetCardType()
@@ -27,6 +26,7 @@ public class CardPowerup : Card
 
     public override void Play(Player target)
     {
+        turnsLeft = durationInTurns;
         this.target = target;
         target.stats.powerups.Add(this);
 

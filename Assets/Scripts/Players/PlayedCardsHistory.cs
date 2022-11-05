@@ -10,8 +10,9 @@ public class PlayedCardsHistory
     {
         int turn = GameManager.Instance.turnCounter;
 
-        if (turn >= history.Count)
-            history.Add(turn, new PlayedCardsInTurn());
+        if (!history.ContainsKey(turn))
+            history[turn] = new PlayedCardsInTurn();
+            // history.Add(turn, new PlayedCardsInTurn(,));
 
         PlayedCard newPlayedCard = new PlayedCard(card, damageDealt, didCritical);
 
@@ -22,7 +23,7 @@ public class PlayedCardsHistory
 
     public List<PlayedCard> GetTurnHistory(int turn)
     {
-        if (turn >= history.Count)
+        if (!history.ContainsKey(turn))
             return new List<PlayedCard>();
 
         return history[turn].playedCards;
