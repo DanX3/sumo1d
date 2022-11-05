@@ -60,6 +60,11 @@ public class DeckManager : MonoBehaviour
             if (_deck.Count == 0)
                 ReshuffleDiscards();
 
+            // player has all the cards in its hand
+            // interrupt drawing
+            if (_deck.Count == 0)
+                break;
+
             var card = _deck.Pop();
             _hand.Add(card);
 
