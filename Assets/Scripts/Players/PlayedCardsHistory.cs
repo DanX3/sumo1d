@@ -12,7 +12,6 @@ public class PlayedCardsHistory
 
         if (!history.ContainsKey(turn))
             history[turn] = new PlayedCardsInTurn();
-            // history.Add(turn, new PlayedCardsInTurn(,));
 
         PlayedCard newPlayedCard = new PlayedCard(card, damageDealt, didCritical);
 

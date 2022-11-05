@@ -9,7 +9,7 @@ public class ManaSlots : MonoBehaviour
     public Color unusedColor;
     public Color usedColor;
 
-    int manaUsed = 0;
+    public int manaUsed = 0;
 
     List<Image> manaImages = new List<Image>();
 

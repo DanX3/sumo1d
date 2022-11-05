@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -57,25 +55,26 @@ public class GameManager : Singleton<GameManager>
     void OnOpponentStartTurn()
     {
         Debug.Log("Opponent start turn");
+        opponent.GetComponent<OpponentManager>().DoTurn();
         opponent.OnTurnEnd?.Invoke();
     }
 
     void OnOpponentEndTurn()
     {
-        Debug.Log("Opponent end turn");
-        turnCounter++;
-        player.OnTurnStart?.Invoke();
-
         // shrink arena
         player.stats.AlterAttribute(PowerupBonus.Arena, -5);
         opponent.stats.AlterAttribute(PowerupBonus.Arena, -5);
+
+        Debug.Log("Opponent end turn");
+        turnCounter++;
+
+        player.OnTurnStart?.Invoke();
     }
 
     public void OnEndTurnPressed()
     {
         player.OnTurnEnd?.Invoke();
     }
-
 
     void OnPlayerWin()
     {

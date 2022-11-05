@@ -6,11 +6,11 @@ public class OpponentManager : MonoBehaviour
 {
     public List<OpponentAction> actions;
 
-    private Player player;
+    private Player opponent;
 
     void Awake()
     {
-        player = GetComponent<Player>();        
+        opponent = GetComponent<Player>();
     }
 
     public List<Card> GetRandomAction(int mana)
@@ -21,10 +21,11 @@ public class OpponentManager : MonoBehaviour
         return possibleActions[randomIndex].cards;
     }
 
-    public void DoTurn(int usableMana)
+    public void DoTurn()
     {
+        var usableMana = GameManager.Instance.manaSlots.manaUsed;
         foreach (Card card in GetRandomAction(usableMana))
-            player.PlayCard(card);
+            opponent.PlayCard(card);
     }
 }
 
@@ -33,4 +34,5 @@ public class OpponentAction
 {
     public int totalMana;
     public List<Card> cards;
+    // TODO: controllare che total mana sia <= di somma mana totale carte
 }

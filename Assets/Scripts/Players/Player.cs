@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
         stats = new PlayerStats(3, 3, 3, 3, 3);
         uiStats.Init(stats);
         stats.RefreshUI();
-        deckManager.Init();
+        deckManager?.Init();
         OnCardPlayed += powerupList.OnCardPlayed;
         OnTurnStart += powerupList.TurnPassed;
         maxHp = hp = StartHP;
@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
 
         GameManager.Instance.manaSlots.UseMana(card.manaCost);
 
-        deckManager.Discard(card);
+        deckManager?.Discard(card);
         card.Play(this);
         OnCardPlayed?.Invoke(card);
     }
