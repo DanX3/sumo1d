@@ -14,7 +14,7 @@ public class GameManager : Singleton<GameManager>
     bool isPlayerTurn;
     public int turnCounter = 0;
     public ManaSlots manaSlots;
-    public UIContactPoint contactPoint;    
+    public UIContactPoint contactPoint;
 
     void Start() => Init();
 
@@ -65,11 +65,10 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("Opponent end turn");
         turnCounter++;
         player.OnTurnStart?.Invoke();
-    }
 
-    void ShrinkArena()
-    {
-
+        // shrink arena
+        player.stats.AlterAttribute(PowerupBonus.Arena, -5);
+        opponent.stats.AlterAttribute(PowerupBonus.Arena, -5);
     }
 
     public void OnEndTurnPressed()
