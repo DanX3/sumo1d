@@ -33,6 +33,12 @@ public class CardPowerup : Card
         base.Play(target);
 
         target.OnTurnEnd += OnTurnPassed;
+
+        // V   V   V    V   V   V    V   V   V    V   V   V    V   V   V    
+        // V                                                           V
+        // V                Implement here weaknesses                  V
+        // V                                                           V
+        // V   V   V    V   V   V    V   V   V    V   V   V    V   V   V    
         switch (weakness)
         {
             case PowerupWeakness.None:
@@ -47,7 +53,7 @@ public class CardPowerup : Card
 
     private void Remove()
     {
-        Debug.Log($"Powerup: removing {this.cardName}");
+        // Debug.LogWarning($"Powerup: removing {this.cardName}");
 
         target.OnTurnEnd -= OnTurnPassed;
         target.stats.powerups.Remove(this);
@@ -56,6 +62,7 @@ public class CardPowerup : Card
 
     private void OnTurnPassed()
     {
+        // Debug.Log("Turn Passed for " + gameObject.name);
         if (--turnsLeft <= 0)
             Remove();
     }

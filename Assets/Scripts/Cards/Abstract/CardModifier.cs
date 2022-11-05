@@ -18,6 +18,8 @@ public abstract class CardModifier : MonoBehaviour
 
     private void InitTargets(Player user)
     {
+        targets.Clear();
+        
         if (targetType == TargetType.Self || targetType == TargetType.Both)
             targets.Add(user);
 
