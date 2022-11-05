@@ -6,7 +6,7 @@ using System;
 
 public class DeckManager : MonoBehaviour
 {
-    public List<Card> deckList = new List<Card>();
+    public List<DeckRow> deckList = new List<DeckRow>();
 
     private Stack<Card> _deck = new Stack<Card>();
     private List<Card> _hand = new List<Card>();
@@ -19,15 +19,22 @@ public class DeckManager : MonoBehaviour
 
     public void Init()
     {
-        Debug.Log("init");
+        Debug.Log("Init Deck");
 
         ClearAll();
 
-        foreach (Card cardPrefab in deckList)
+        foreach (DeckRow deckRow in deckList)
         {
-            var card = Instantiate(cardPrefab, transform).GetComponent<Card>();
-            _deck.Push(card);
+            Debug.Log($"Adding {deckRow.count} cards '{deckRow.card.cardName}'");
+
+            for (int i = 0; i < deckRow.count; i++)
+            {
+                var newCard = Instantiate(deckRow.card, transform).GetComponent<Card>();
+                _deck.Push(newCard);
+            }
         }
+
+        ShuffleDeck();
     }
 
     public void ClearAll()
@@ -56,8 +63,6 @@ public class DeckManager : MonoBehaviour
             var card = _deck.Pop();
             _hand.Add(card);
 
-            Debug.Log($"draw card {card.cardName}");
-            Debug.Log($"card remains: {_deck.Count}");
             OnDrawCard?.Invoke(card);
         }
     }
@@ -66,7 +71,6 @@ public class DeckManager : MonoBehaviour
     {
         _hand.Remove(card);
         _discardPile.Push(card);
-        Debug.Log($"discard card {card.cardName}");
 
         OnDiscardCard?.Invoke(card);
     }
@@ -80,7 +84,7 @@ public class DeckManager : MonoBehaviour
     public void ShuffleDeck()
     {
         var random = new System.Random();
-        _deck.OrderBy(k => random.Next());
+        _deck = new Stack<Card>(_deck.OrderBy(k => random.Next()));
     }
 
     public void ReshuffleDiscards()
@@ -90,4 +94,11 @@ public class DeckManager : MonoBehaviour
 
         ShuffleDeck();
     }
+}
+
+[System.Serializable]
+public class DeckRow
+{
+    public int count = 1;
+    public Card card;
 }
