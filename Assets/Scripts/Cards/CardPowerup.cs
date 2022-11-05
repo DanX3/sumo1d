@@ -3,6 +3,8 @@ using UnityEngine;
 public class CardPowerup : Card
 {
     [Range(1, 10)] public int durationInTurns = 1;
+    int turnsLeft;
+    [SerializeField] TMPro.TMP_Text durationLabel;
 
     private Player target;
     public PowerupWeakness weakness;
@@ -14,6 +16,8 @@ public class CardPowerup : Card
     {
         base.Start();
         weaknessLeft = weaknessCount;
+        durationLabel.text = durationInTurns + "";
+        turnsLeft = durationInTurns;
     }
 
     public override CardType GetCardType()
@@ -52,7 +56,7 @@ public class CardPowerup : Card
 
     private void OnTurnPassed()
     {
-        if (--durationInTurns <= 0)
+        if (--turnsLeft <= 0)
             Remove();
     }
 
