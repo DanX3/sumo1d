@@ -1,6 +1,3 @@
-using System.Runtime.CompilerServices;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -69,7 +66,7 @@ public class Player : MonoBehaviour
     public void DoDamage(Card card, int damage, bool isCritical)
     {
         OnDamageDealt?.Invoke(damage, isCritical);
-        
+
         Debug.Log((IsThePlayer() ? "Player" : "Opponent") + " deals " + damage + (isCritical ? "!" : ""));
 
         GetOpponent().GetDamage(damage, isCritical);
@@ -93,5 +90,4 @@ public class Player : MonoBehaviour
     {
         OnTurnEnd?.Invoke();
     }
-
 }

@@ -10,7 +10,7 @@ public class DeckManager : MonoBehaviour
 
     private Stack<Card> _deck = new Stack<Card>();
     private List<Card> _hand = new List<Card>();
-    private List<Card> _discardPile = new List<Card>();
+    private Stack<Card> _discardPile = new Stack<Card>();
 
     public Action<Card> OnDrawCard;
     public Action<Card> OnDiscardCard;
@@ -19,6 +19,8 @@ public class DeckManager : MonoBehaviour
 
     public void Init()
     {
+        Debug.Log("init");
+
         ClearAll();
 
         foreach (Card cardPrefab in deckList)
@@ -46,10 +48,16 @@ public class DeckManager : MonoBehaviour
 
     public void Draw(int count = 1)
     {
-        for(int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++)
         {
+            if (_deck.Count == 0)
+                ReshuffleDiscards();
+
             var card = _deck.Pop();
             _hand.Add(card);
+
+            Debug.Log($"draw card {card.cardName}");
+            Debug.Log($"card remains: {_deck.Count}");
             OnDrawCard?.Invoke(card);
         }
     }
@@ -57,7 +65,9 @@ public class DeckManager : MonoBehaviour
     public void Discard(Card card)
     {
         _hand.Remove(card);
-        _discardPile.Add(card);
+        _discardPile.Push(card);
+        Debug.Log($"discard card {card.cardName}");
+
         OnDiscardCard?.Invoke(card);
     }
 
@@ -71,5 +81,13 @@ public class DeckManager : MonoBehaviour
     {
         var random = new System.Random();
         _deck.OrderBy(k => random.Next());
+    }
+
+    public void ReshuffleDiscards()
+    {
+        while (_discardPile.Count > 0)
+            _deck.Push(_discardPile.Pop());
+
+        ShuffleDeck();
     }
 }
