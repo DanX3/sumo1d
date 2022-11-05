@@ -4,14 +4,14 @@ using System.Linq;
 
 public class PlayedCardsHistory
 {
-    public List<PlayedCardsInTurn> history = new List<PlayedCardsInTurn>();
+    public Dictionary<int, PlayedCardsInTurn> history = new Dictionary<int, PlayedCardsInTurn>();
 
     public void Add(Card card, int damageDealt = 0, bool? didCritical = null)
     {
         int turn = GameManager.Instance.turnCounter;
 
         if (turn >= history.Count)
-            history.Add(new PlayedCardsInTurn());
+            history.Add(turn, new PlayedCardsInTurn());
 
         PlayedCard newPlayedCard = new PlayedCard(card, damageDealt, didCritical);
 
