@@ -4,7 +4,7 @@ public class CardPowerup : Card
 {
     [Range(1, 10)] public int durationInTurns = 1;
 
-    private Player targetPlayer;
+    private Player target;
     public PowerupWeakness weakness;
     public int weaknessCount = 1;
     int weaknessLeft;
@@ -23,7 +23,7 @@ public class CardPowerup : Card
 
     public override void Play(Player target)
     {
-        targetPlayer = target;
+        this.target = target;
         target.stats.powerups.Add(this);
 
         base.Play(target);
@@ -37,26 +37,28 @@ public class CardPowerup : Card
                 target.OnDamageDealt += (_, _) => TickWeakness();
                 break;
         }
-        
+
         user.playedCardsHistory.Add(this);
     }
 
+    private void Remove()
+    {
+        Debug.Log($"Powerup: removing {this.cardName}");
+
+        target.OnTurnEnd -= OnTurnPassed;
+        target.stats.powerups.Remove(this);
+        Discard();
+    }
 
     private void OnTurnPassed()
     {
         if (--durationInTurns <= 0)
-        {
-            targetPlayer.stats.powerups.Remove(this);
-            Discard();
-        }
+            Remove();
     }
 
     private void TickWeakness()
     {
         if (--weaknessLeft <= 0)
-        {
-            targetPlayer.stats.powerups.Remove(this);
-            Discard();
-        }
+            Remove();
     }
 }
