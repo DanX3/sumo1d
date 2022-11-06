@@ -7,18 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3870168857555609490, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
-      propertyPath: m_Color.b
-      value: 0.49056602
-      objectReference: {fileID: 0}
-    - target: {fileID: 3870168857555609490, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
-      propertyPath: m_Color.g
-      value: 0.30598995
-      objectReference: {fileID: 0}
-    - target: {fileID: 3870168857555609490, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
-      propertyPath: m_Color.r
-      value: 0.1638305
-      objectReference: {fileID: 0}
     - target: {fileID: 6149010345201840890, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
       propertyPath: m_Name
       value: QuickMove
@@ -53,11 +41,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6149010345201840891, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 137.0076
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6149010345201840891, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 230.615
+      value: 288.8889
       objectReference: {fileID: 0}
     - target: {fileID: 6149010345201840891, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
       propertyPath: m_LocalPosition.x
