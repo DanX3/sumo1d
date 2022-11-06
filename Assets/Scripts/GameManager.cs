@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class GameManager : Singleton<GameManager>
 {
     public Player player;
+    [HideInInspector]
     public Player opponent;
     public OpponentSpawner opponentSpawner;
     public Button endTurnButton;

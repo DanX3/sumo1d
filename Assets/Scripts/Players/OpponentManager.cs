@@ -9,6 +9,7 @@ public class OpponentManager : MonoBehaviour
     public string opponentName;
     public string opponentDescription;
     public int opponentLevel;
+    public GameObject model;
     public List<OpponentAction> actions;
 
     [HideInInspector]
@@ -33,10 +34,12 @@ public class OpponentManager : MonoBehaviour
     public List<Card> GetRandomAction(int mana)
     {
         var possibleActions = actions.FindAll(a => a.totalMana == mana);
+        if (possibleActions.Count == 0)
+            return new List<Card>();
+
         int randomIndex = Random.Range(0, possibleActions.Count);
 
         Debug.Log($"Doing action #{randomIndex} for mana {mana}");
-
         return possibleActions[randomIndex].cards;
     }
 
