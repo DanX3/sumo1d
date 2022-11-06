@@ -35,7 +35,7 @@ public record PlayedCardsInTurn
 
     public int TotalDamage() => playedCards.Sum(p => p.damageDealt ?? 0);
     public int CritsCount() => playedCards.Count(p => p.didCritical ?? false);
-    public int TotalManaUsed() => playedCards.Sum(p => p.card.manaCost);
+    public int TotalManaUsed() => playedCards.Sum(p => p.card.currentManaCost);
 
     public PlayedCardsInTurn()
     {

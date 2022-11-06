@@ -20,7 +20,7 @@ public class OpponentManager : MonoBehaviour
     {
         foreach (var action in actions)
         {
-            int realTotalMana = action.cards.Sum(c => c.manaCost);
+            int realTotalMana = action.cards.Sum(c => c.GetManaCost());
             if (realTotalMana != action.totalMana)
                 Debug.LogWarning($"Action {actions.IndexOf(action)} cards total mana is {realTotalMana} instead of {action.totalMana}");
         }

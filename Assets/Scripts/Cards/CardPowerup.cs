@@ -9,7 +9,7 @@ public class CardPowerup : Card
     private Player target;
     public PowerupWeakness weakness;
     public int weaknessCount = 1;
-    int weaknessLeft;
+    private int weaknessLeft;
     public Player.VoidEvent OnRemoved;
 
 
@@ -28,6 +28,7 @@ public class CardPowerup : Card
     public override void Play(Player target)
     {
         turnsLeft = durationInTurns;
+        weaknessLeft = weaknessCount;
         this.target = target;
         target.stats.powerups.Add(this);
 
@@ -54,18 +55,19 @@ public class CardPowerup : Card
                 target.OnCardPlayed += WeaknessTickCard;
                 break;
             case PowerupWeakness.OnAttacksPlayed:
-                target.OnCardPlayed += (card) => { if (card.GetCardType() == CardType.Attack) TickWeakness(); };
+                target.OnCardPlayed += WeaknessTickAttack;
                 break;
             case PowerupWeakness.OnPowerupPlayed:
-                target.OnCardPlayed += (card) => { if (card.GetCardType() == CardType.Powerup) TickWeakness(); };
+                target.OnCardPlayed += WeaknessTickPowerup;
                 break;
             case PowerupWeakness.OnInstantPlayed:
-                target.OnCardPlayed += (card) => { if (card.GetCardType() == CardType.Instant) TickWeakness(); };
+                target.OnCardPlayed += WeaknessTickInstant;
                 break;
         }
 
         user.playedCardsHistory.Add(this);
     }
+
 
     void WeaknessTickDamage(int damage, bool isCritical)
     {
@@ -75,6 +77,24 @@ public class CardPowerup : Card
     void WeaknessTickCard(Card card)
     {
         TickWeakness();
+    }
+
+    void WeaknessTickAttack(Card card)
+    {
+        if (card.GetCardType() == CardType.Attack)
+            TickWeakness();
+    }
+
+    void WeaknessTickPowerup(Card card)
+    {
+        if (card.GetCardType() == CardType.Powerup)
+            TickWeakness();
+    }
+
+    void WeaknessTickInstant(Card card)
+    {
+        if (card.GetCardType() == CardType.Instant)
+            TickWeakness();
     }
 
     private void Remove()
@@ -97,15 +117,15 @@ public class CardPowerup : Card
             case PowerupWeakness.OnCardsPlayed:
                 target.OnCardPlayed -= WeaknessTickCard;
                 break;
-            // case PowerupWeakness.OnAttacksPlayed:
-            //     target.OnCardPlayed += (card) => { if (card.GetCardType() == CardType.Attack) TickWeakness(); };
-            //     break;
-            // case PowerupWeakness.OnPowerupPlayed:
-            //     target.OnCardPlayed += (card) => { if (card.GetCardType() == CardType.Powerup) TickWeakness(); };
-            //     break;
-            // case PowerupWeakness.OnInstantPlayed:
-            //     target.OnCardPlayed += (card) => { if (card.GetCardType() == CardType.Instant) TickWeakness(); };
-            //     break;
+            case PowerupWeakness.OnAttacksPlayed:
+                target.OnCardPlayed -= WeaknessTickAttack;
+                break;
+            case PowerupWeakness.OnPowerupPlayed:
+                target.OnCardPlayed -= WeaknessTickPowerup;
+                break;
+            case PowerupWeakness.OnInstantPlayed:
+                target.OnCardPlayed -= WeaknessTickInstant;
+                break;
         }
 #endif
         OnRemoved?.Invoke();

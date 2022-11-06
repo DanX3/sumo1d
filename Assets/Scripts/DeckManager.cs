@@ -90,9 +90,21 @@ public class DeckManager : MonoBehaviour
     public void ReshuffleDiscards()
     {
         while (_discardPile.Count > 0)
-            _deck.Push(_discardPile.Pop());
+        {
+            var card = _discardPile.Pop();
+            card.OnReshuffled();
+            _deck.Push(card);
+        }
 
         ShuffleDeck();
+    }
+
+    public Card? GetRandomCardInHand()
+    {
+        if (_hand.Count == 0)
+            return null;
+        
+        return _hand[new System.Random().Next() % _hand.Count];
     }
 }
 
