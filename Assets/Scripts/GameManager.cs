@@ -68,7 +68,7 @@ public class GameManager : Singleton<GameManager>
     void OnOpponentStartTurn()
     {
         Debug.Log("Opponent start turn");
-        opponent.GetComponent<OpponentManager>().DoTurn();
+        opponent.GetComponent<OpponentActionsManager>().DoTurn();
         // opponent.OnTurnEnd?.Invoke();
     }
 

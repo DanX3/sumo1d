@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Player))]
-public class OpponentManager : MonoBehaviour
+public class OpponentActionsManager : MonoBehaviour
 {
     public List<OpponentAction> actions;
 
