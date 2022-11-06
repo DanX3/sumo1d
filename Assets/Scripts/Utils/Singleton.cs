@@ -27,8 +27,8 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                     singletonObject.name = typeof(T).ToString() + " (Singleton)";
                 }
 
-                // Make instance persistent.
-                DontDestroyOnLoad(m_Instance.gameObject);
+                // // Make instance persistent.
+                // DontDestroyOnLoad(m_Instance.gameObject);
             }
 
             return m_Instance;

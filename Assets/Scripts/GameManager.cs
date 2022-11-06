@@ -13,16 +13,17 @@ public class GameManager : Singleton<GameManager>
     public int turnCounter = 0;
     public ManaSlots manaSlots;
     public UIContactPoint contactPoint;
+    public int maxOpponentLevel = 10;
 
-    void Start()
-    {
-        opponentSpawner.SpawnOpponent();
-        Init();
-    }
+    private const string PLAYER_PREFS_OPPONENT_LEVEL = "OpponentLevel";
+
+    void Start() => Init();
 
     public void Init()
     {
-        Application.targetFrameRate = 30;
+        opponentSpawner.SpawnOpponent();
+
+        Application.targetFrameRate = 60;
         player.Init();
         opponent.Init();
 
@@ -40,19 +41,6 @@ public class GameManager : Singleton<GameManager>
 
         turnCounter = 0;
         player.OnTurnStart?.Invoke();
-    }
-
-    public void RemoveCallbacks()
-    {
-        player.OnTurnStart -= OnPlayerStartTurn;
-        player.OnTurnEnd -= OnPlayerEndTurn;
-        player.OnDefeat -= OnPlayerLose;
-        player.OnDamageDealt -= (damage, criticalHit) => contactPoint.Move(damage);
-        opponent.OnTurnStart -= OnOpponentStartTurn;
-        opponent.OnTurnEnd -= OnOpponentEndTurn;
-        opponent.OnDefeat -= OnOpponentDefeat;
-        opponent.stats.OnPowerupBonus -= CheckPlayersInArena;
-        opponent.OnDamageDealt -= (damage, criticalHit) => contactPoint.Move(-damage);
     }
 
     void CheckPlayersInArena(PowerupBonus stat, float delta)
@@ -106,7 +94,16 @@ public class GameManager : Singleton<GameManager>
 
     public void OnOpponentDefeat()
     {
-        opponentSpawner.SpawnNextOpponent();
+        int currentOpponentLevel = PlayerPrefs.GetInt(PLAYER_PREFS_OPPONENT_LEVEL, 1) + 1;
+
+        if (currentOpponentLevel > maxOpponentLevel)
+        {
+            GameManager.Instance.OnPlayerWin();
+            return;
+        }
+
+        PlayerPrefs.SetInt(PLAYER_PREFS_OPPONENT_LEVEL, currentOpponentLevel);
+        SceneManager.LoadScene("BattleScene");
     }
 
     public void OnPlayerWin()
@@ -123,6 +120,14 @@ public class GameManager : Singleton<GameManager>
 
     void EndGame()
     {
+        PlayerPrefs.SetInt(PLAYER_PREFS_OPPONENT_LEVEL, 1);
         SceneManager.LoadScene("HomeScene");
     }
+
+#if UNITY_EDITOR
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt(PLAYER_PREFS_OPPONENT_LEVEL, 1);
+    }
+#endif
 }

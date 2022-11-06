@@ -5,50 +5,31 @@ using UnityEngine;
 
 public class OpponentSpawner : MonoBehaviour
 {
-	public UIStats opponentUiStat;
-	public UIArena opponentUiArena;
-	public PowerupList opponentPowerupList;
-	public List<OpponentManager> opponents;
-	public Transform opponentModelParent;
+    public UIStats opponentUiStat;
+    public UIArena opponentUiArena;
+    public PowerupList opponentPowerupList;
+    public List<OpponentManager> opponents;
+    public Transform opponentModelParent;
 
-    private int currentOpponentLevel = 1;
-    private int maxOpponentLevel = 10;
-
-
-    public void SpawnNextOpponent()
+    public void SpawnOpponent()
     {
-		GameManager.Instance.RemoveCallbacks();
-		GameObject.Destroy(GameManager.Instance.opponent.GetComponent<OpponentManager>().model.gameObject);
-		GameObject.Destroy(GameManager.Instance.opponent.gameObject);
+        OpponentManager nextOpponent = GameObject.Instantiate(GetNextRandomOpponent());
+        Player opponent = nextOpponent.opponent;
+        GameManager.Instance.opponent = opponent;
 
-        currentOpponentLevel++;
+        nextOpponent.model.gameObject.transform.SetParent(opponentModelParent, true);
 
-        if (currentOpponentLevel > maxOpponentLevel)
-        {
-            GameManager.Instance.OnPlayerWin();
-            return;
-        }
-
-		SpawnOpponent();
-		GameManager.Instance.Init();
+        opponent.uiArena = opponentUiArena;
+        opponent.uiStats = opponentUiStat;
+        opponent.powerupList = opponentPowerupList;
     }
-	
-	public void SpawnOpponent()
-	{
-		OpponentManager nextOpponent = GameObject.Instantiate(GetNextRandomOpponent());
-		Player opponent = nextOpponent.opponent; 
-		GameManager.Instance.opponent = opponent;
-
-		nextOpponent.model.gameObject.transform.SetParent(opponentModelParent, true);
-
-		opponent.uiArena = opponentUiArena;
-		opponent.uiStats = opponentUiStat;
-		opponent.powerupList = opponentPowerupList;
-	}
 
 
     private OpponentManager GetNextRandomOpponent()
     {
+        int currentOpponentLevel = PlayerPrefs.GetInt("OpponentLevel", 1);
+		Debug.Log($"Trying to spawn opponent for level {currentOpponentLevel}");
+
         var possibleOpponents = opponents.FindAll(o => o.opponentLevel == currentOpponentLevel);
         int randomIndex = Random.Range(0, possibleOpponents.Count);
 

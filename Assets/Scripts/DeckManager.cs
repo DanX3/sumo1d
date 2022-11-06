@@ -99,7 +99,7 @@ public class DeckManager : MonoBehaviour
         ShuffleDeck();
     }
 
-    public Card? GetRandomCardInHand()
+    public Card GetRandomCardInHand()
     {
         if (_hand.Count == 0)
             return null;
