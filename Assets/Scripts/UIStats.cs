@@ -11,18 +11,18 @@ public class UIStats : MonoBehaviour
     [SerializeField] ProgressBar reflexesBar;
     [SerializeField] ProgressBar criticalBar;
 
-    Dictionary<Stat, ProgressBar> bars;
+    Dictionary<PlayerAttribute, ProgressBar> bars;
 
     // public void Init(int power, int spirit, int weight, int reflexes, int critical)
     public void Init(PlayerStats stats)
     {
-        bars = new Dictionary<Stat, ProgressBar>()
+        bars = new Dictionary<PlayerAttribute, ProgressBar>()
         {
-            {Stat.Power, powerBar},
-            {Stat.Spirit, spiritBar},
-            {Stat.Weight, weightBar},
-            {Stat.Reflexes, reflexesBar},
-            {Stat.Critical, criticalBar},
+            {PlayerAttribute.Power, powerBar},
+            {PlayerAttribute.Spirit, spiritBar},
+            {PlayerAttribute.Weight, weightBar},
+            {PlayerAttribute.Reflex, reflexesBar},
+            {PlayerAttribute.Critical, criticalBar},
         };
 
         powerBar.Init(stats.baseStats.power);
@@ -34,7 +34,7 @@ public class UIStats : MonoBehaviour
         stats.onRefreshStat += SetStat;
     }
 
-    public void SetStat(Stat stat, int value)
+    public void SetStat(PlayerAttribute stat, int value)
     {
         bars[stat].SetValue(value);
     }

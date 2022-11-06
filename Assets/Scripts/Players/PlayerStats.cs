@@ -13,15 +13,15 @@ public class PlayerStats
 
     public int maxHp = 50;
 
-    public delegate void RefreshStatEvent(Stat stat, int value);
+    public delegate void RefreshStatEvent(PlayerAttribute stat, int value);
     public RefreshStatEvent onRefreshStat;
     public delegate void PowerupBonusEvent(PowerupBonus bonus, float delta);
     public PowerupBonusEvent OnPowerupBonus;
     
 
-    public PlayerStats(int power, int spirit, int weight, int reflex, int critical)
+    public PlayerStats(PlayerAttributes attributes)
     {
-        baseStats = new Stats(power, spirit, weight, reflex, critical);
+        baseStats = new Stats(attributes.power, attributes.spirit, attributes.weight, attributes.reflex, attributes.critical);
         bonus = new Stats(0, 0, 0, 0, 0, 0, 1f, 0f, 1f, 0, 0);
         hp = maxHp; 
         RefreshUI();
@@ -52,11 +52,11 @@ public class PlayerStats
 
     public void RefreshUI()
     {
-        onRefreshStat?.Invoke(Stat.Power, baseStats.power + bonus.power);
-        onRefreshStat?.Invoke(Stat.Spirit, baseStats.spirit + bonus.spirit);
-        onRefreshStat?.Invoke(Stat.Weight, baseStats.weight + bonus.weight);
-        onRefreshStat?.Invoke(Stat.Reflexes, baseStats.reflex + bonus.reflex);
-        onRefreshStat?.Invoke(Stat.Critical, baseStats.critical + bonus.critical);
+        onRefreshStat?.Invoke(PlayerAttribute.Power, baseStats.power + bonus.power);
+        onRefreshStat?.Invoke(PlayerAttribute.Spirit, baseStats.spirit + bonus.spirit);
+        onRefreshStat?.Invoke(PlayerAttribute.Weight, baseStats.weight + bonus.weight);
+        onRefreshStat?.Invoke(PlayerAttribute.Reflex, baseStats.reflex + bonus.reflex);
+        onRefreshStat?.Invoke(PlayerAttribute.Critical, baseStats.critical + bonus.critical);
     }
 
     public int power { get => baseStats.power + bonus.power; }

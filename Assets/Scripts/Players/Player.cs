@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
     public int id;
     public Publisher publisher;
     public PlayerStats stats;
+    public PlayerAttributes startingAttributes;
 
     public DeckManager deckManager;
     public PlayedCardsHistory playedCardsHistory = new PlayedCardsHistory();
@@ -28,7 +29,7 @@ public class Player : MonoBehaviour
 
     public void Init()
     {
-        stats = new PlayerStats(3, 3, 3, 3, 3);
+        stats = new PlayerStats(startingAttributes);
         uiStats.Init(stats);
         stats.RefreshUI();
         deckManager?.Init();
