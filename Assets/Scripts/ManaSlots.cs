@@ -41,6 +41,12 @@ public class ManaSlots : MonoBehaviour
         manaImages[manaUsed++].color = usedColor;
     }
 
+    public void FreeMana(int count)
+    {
+        for (int i = 0; i < count; i++)
+            FreeMana();
+    }
+
     public void FreeMana()
     {
         if (manaUsed <= 0)

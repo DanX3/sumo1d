@@ -10,6 +10,7 @@ public class CardPowerup : Card
     public PowerupWeakness weakness;
     public int weaknessCount = 1;
     int weaknessLeft;
+    public Player.VoidEvent OnRemoved;
 
 
     new void Start()
@@ -44,11 +45,36 @@ public class CardPowerup : Card
             case PowerupWeakness.None:
                 break;
             case PowerupWeakness.OnDamageReceived:
-                target.OnDamageDealt += (_, _) => TickWeakness();
+                target.OnDamageReceived += WeaknessTickDamage;
+                break;
+            case PowerupWeakness.OnDamageDealt:
+                target.OnDamageDealt += WeaknessTickDamage;
+                break;
+            case PowerupWeakness.OnCardsPlayed:
+                target.OnCardPlayed += WeaknessTickCard;
+                break;
+            case PowerupWeakness.OnAttacksPlayed:
+                target.OnCardPlayed += (card) => { if (card.GetCardType() == CardType.Attack) TickWeakness(); };
+                break;
+            case PowerupWeakness.OnPowerupPlayed:
+                target.OnCardPlayed += (card) => { if (card.GetCardType() == CardType.Powerup) TickWeakness(); };
+                break;
+            case PowerupWeakness.OnInstantPlayed:
+                target.OnCardPlayed += (card) => { if (card.GetCardType() == CardType.Instant) TickWeakness(); };
                 break;
         }
 
         user.playedCardsHistory.Add(this);
+    }
+
+    void WeaknessTickDamage(int damage, bool isCritical)
+    {
+        TickWeakness(damage);
+    }
+
+    void WeaknessTickCard(Card card)
+    {
+        TickWeakness();
     }
 
     private void Remove()
@@ -57,6 +83,33 @@ public class CardPowerup : Card
 
         target.OnTurnEnd -= OnTurnPassed;
         target.stats.powerups.Remove(this);
+#if true
+        switch (weakness)
+        {
+            case PowerupWeakness.None:
+                break;
+            case PowerupWeakness.OnDamageReceived:
+                target.OnDamageReceived -= WeaknessTickDamage;
+                Debug.LogWarning("Removed tick on user damage received");
+                break;
+            case PowerupWeakness.OnDamageDealt:
+                target.OnDamageDealt -= WeaknessTickDamage;
+                break;
+            case PowerupWeakness.OnCardsPlayed:
+                target.OnCardPlayed -= WeaknessTickCard;
+                break;
+            // case PowerupWeakness.OnAttacksPlayed:
+            //     target.OnCardPlayed += (card) => { if (card.GetCardType() == CardType.Attack) TickWeakness(); };
+            //     break;
+            // case PowerupWeakness.OnPowerupPlayed:
+            //     target.OnCardPlayed += (card) => { if (card.GetCardType() == CardType.Powerup) TickWeakness(); };
+            //     break;
+            // case PowerupWeakness.OnInstantPlayed:
+            //     target.OnCardPlayed += (card) => { if (card.GetCardType() == CardType.Instant) TickWeakness(); };
+            //     break;
+        }
+#endif
+        OnRemoved?.Invoke();
         Discard();
     }
 
@@ -67,9 +120,15 @@ public class CardPowerup : Card
             Remove();
     }
 
-    private void TickWeakness()
+    private void TickWeakness(int count = 1)
     {
-        if (--weaknessLeft <= 0)
-            Remove();
+        for (int i = 0; i < count; i++)
+        {
+            if (--weaknessLeft <= 0)
+            {
+                Remove();
+                break;
+            }
+        }
     }
 }

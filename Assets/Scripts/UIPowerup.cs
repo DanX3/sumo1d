@@ -12,6 +12,7 @@ public class UIPowerup : MonoBehaviour
     int turnsLeft;
     PowerupTooltip tooltip;
     public string powerupMessage;
+    CardPowerup card;
 
     public float tooltipOffset { get => transform.position.x < 0.5f * Screen.width ? 200f : -50f; }
 
@@ -26,6 +27,18 @@ public class UIPowerup : MonoBehaviour
         powerupMessage = card.description;
         turnsLeftLabel.text = card.durationInTurns + "";
         turnsLeft = card.durationInTurns;
+        this.card = card;
+        card.OnRemoved += DestroyUIPowerup;
+    }
+
+    void OnDestroy()
+    {
+        card.OnRemoved -= DestroyUIPowerup;
+    }
+
+    public void DestroyUIPowerup()
+    {
+        Destroy(gameObject);
     }
 
     public void OnPointerEnter()

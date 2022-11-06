@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        GameManager.Instance.manaSlots.UseMana(card.manaCost);
+        UseMana(card.manaCost);
 
         deckManager?.Discard(card);
         card.Play(this);
@@ -89,5 +89,13 @@ public class Player : MonoBehaviour
     public void EndTurn()
     {
         OnTurnEnd?.Invoke();
+    }
+
+    public void UseMana(int count)
+    {
+        if (IsThePlayer())
+            GameManager.Instance.manaSlots.UseMana(count);
+        else
+            GameManager.Instance.manaSlots.FreeMana(count);
     }
 }

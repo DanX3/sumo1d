@@ -105,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5924519448272945937, guid: d5817f651b73bce449613d2685e9fef5, type: 3}
       propertyPath: description
-      value: +2 Spirit
+      value: +2 Reflexes
       objectReference: {fileID: 0}
     - target: {fileID: 5924519448272945937, guid: d5817f651b73bce449613d2685e9fef5, type: 3}
       propertyPath: durationInTurns
@@ -131,5 +131,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetType: 0
-  targetAttribute: 1
+  targetAttribute: 3
   value: 2

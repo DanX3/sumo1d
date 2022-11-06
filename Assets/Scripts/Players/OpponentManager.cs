@@ -30,7 +30,7 @@ public class OpponentManager : MonoBehaviour
         var possibleActions = actions.FindAll(a => a.totalMana == mana);
         int randomIndex = Random.Range(0, possibleActions.Count);
 
-        Debug.Log($"Doing action #{randomIndex}");
+        Debug.Log($"Doing action #{randomIndex} for mana {mana}");
 
         return possibleActions[randomIndex].cards;
     }
