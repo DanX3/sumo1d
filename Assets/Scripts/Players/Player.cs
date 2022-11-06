@@ -34,23 +34,31 @@ public class Player : MonoBehaviour
         deckManager?.Init();
         OnCardPlayed += powerupList.OnCardPlayed;
         OnTurnStart += powerupList.TurnPassed;
+        stats.OnPowerupBonus += RefreshHP;
         maxHp = hp = StartHP;
         uiArena.Init(this);
     }
 
-    public bool IsThePlayer()
+    void RefreshHP(PowerupBonus stat, float delta)
     {
-        return GameManager.Instance.player.id == id;
+        if (stat != PowerupBonus.Arena)
+            return;
+        
+        hp += Mathf.RoundToInt(delta);
+        Debug.Log(playerString + " hp: " + hp);
     }
+
+    public bool isPlayer { get => GameManager.Instance.player.id == id; }
+    public string playerString { get => isPlayer ? "Player" : "Opponenet"; }
 
     public Player GetOpponent()
     {
-        return IsThePlayer() ? GameManager.Instance.opponent : GameManager.Instance.player;
+        return isPlayer ? GameManager.Instance.opponent : GameManager.Instance.player;
     }
 
     public void PlayCard(Card card)
     {
-        if (GameManager.Instance.manaSlots.manaLeft < card.manaCost)
+        if (!HasEnoughMana(card.manaCost))
         {
             Debug.LogWarning("Not enough mana to play the card");
             return;
@@ -67,16 +75,18 @@ public class Player : MonoBehaviour
     {
         OnDamageDealt?.Invoke(damage, isCritical);
 
-        Debug.Log((IsThePlayer() ? "Player" : "Opponent") + " deals " + damage + (isCritical ? "!" : ""));
+        Debug.Log(playerString + " deals " + damage + (isCritical ? "!" : ""));
 
         GetOpponent().GetDamage(damage, isCritical);
         hp += damage;
+        Debug.Log(playerString + " hp: " + hp);
     }
 
     public void GetDamage(int damage, bool isCritical)
     {
         OnDamageReceived?.Invoke(damage, isCritical);
         hp -= damage;
+        Debug.Log(playerString + " hp: " + hp);
         if (hp <= 0)
             OnDefeat?.Invoke();
     }
@@ -93,9 +103,16 @@ public class Player : MonoBehaviour
 
     public void UseMana(int count)
     {
-        if (IsThePlayer())
+        if (isPlayer)
             GameManager.Instance.manaSlots.UseMana(count);
         else
             GameManager.Instance.manaSlots.FreeMana(count);
+    }
+
+    private bool HasEnoughMana(int manaRequired)
+    {
+        var ms = GameManager.Instance.manaSlots;
+        Debug.Log(ms.manaLeft);
+        return manaRequired <= (isPlayer ? ms.manaLeft : ms.manaUsed);
     }
 }

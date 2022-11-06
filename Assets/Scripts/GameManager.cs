@@ -30,10 +30,23 @@ public class GameManager : Singleton<GameManager>
         opponent.OnTurnStart += OnOpponentStartTurn;
         opponent.OnTurnEnd += OnOpponentEndTurn;
         opponent.OnDefeat += OnPlayerWin;
+        opponent.stats.OnPowerupBonus += CheckPlayersInArena;
         opponent.OnDamageDealt += (damage, criticalHit) => contactPoint.Move(-damage);
 
         turnCounter = 0;
         player.OnTurnStart?.Invoke();
+    }
+
+    void CheckPlayersInArena(PowerupBonus stat, float delta)
+    {
+        if (player.stats.hp <= 0)
+        {
+            OnPlayerLose();
+            return;
+        }
+
+        if (opponent.stats.hp <= 0)
+            OnPlayerWin();
     }
 
     void OnPlayerStartTurn()
@@ -56,7 +69,7 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("Opponent start turn");
         opponent.GetComponent<OpponentManager>().DoTurn();
-        opponent.OnTurnEnd?.Invoke();
+        // opponent.OnTurnEnd?.Invoke();
     }
 
     void OnOpponentEndTurn()

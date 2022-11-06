@@ -42,7 +42,7 @@ public class PlayerStats
             case PowerupBonus.CritAdd: bonus.critAdd += delta; break;
             case PowerupBonus.CritMul: bonus.critMul += delta; break;
             case PowerupBonus.HandCount: bonus.handCount += intDelta; break;
-            case PowerupBonus.Arena: bonus.arena += intDelta; break;
+            case PowerupBonus.Arena: bonus.arena += intDelta; hp += intDelta; break;
         }
 
         OnPowerupBonus?.Invoke(attribute, delta);
@@ -67,8 +67,8 @@ public class PlayerStats
     public int handCount { get => baseStats.handCount + bonus.handCount; }
     public float damageThreshold { get => baseStats.damageThreshold + bonus.damageThreshold; }
 
-    public float powMul { get => 0.375f + 0.125f * (baseStats.power + bonus.power); }
-    public float weiMul { get => 1.625f - 0.125f * (baseStats.weight + bonus.weight); }
+    public float powerMul { get => 0.375f + 0.125f * (baseStats.power + bonus.power); }
+    public float weightMul { get => 1.625f - 0.125f * (baseStats.weight + bonus.weight); }
     public float critChance { get => 0.01f * (5f + 5f * critical); }
     
 }

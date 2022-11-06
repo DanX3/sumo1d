@@ -90,7 +90,6 @@ public class CardPowerup : Card
                 break;
             case PowerupWeakness.OnDamageReceived:
                 target.OnDamageReceived -= WeaknessTickDamage;
-                Debug.LogWarning("Removed tick on user damage received");
                 break;
             case PowerupWeakness.OnDamageDealt:
                 target.OnDamageDealt -= WeaknessTickDamage;
