@@ -65,6 +65,8 @@ public class Player : MonoBehaviour
             return;
         }
 
+        GameManager.Instance.cardPlayedDetail.ShowCardDetail(this, card);
+
         UseMana(card.currentManaCost);
 
         deckManager?.Discard(card);

@@ -14,6 +14,7 @@ public class GameManager : Singleton<GameManager>
     public ManaSlots manaSlots;
     public UIContactPoint contactPoint;
     public int maxOpponentLevel = 10;
+    public CardPlayedDetail cardPlayedDetail;
 
     private const string PLAYER_PREFS_OPPONENT_LEVEL = "OpponentLevel";
 
@@ -71,8 +72,7 @@ public class GameManager : Singleton<GameManager>
     void OnOpponentStartTurn()
     {
         Debug.Log("Opponent start turn");
-        opponent.GetComponent<OpponentManager>().DoTurn();
-        // opponent.OnTurnEnd?.Invoke();
+        StartCoroutine(opponent.GetComponent<OpponentManager>().DoTurn());
     }
 
     void OnOpponentEndTurn()

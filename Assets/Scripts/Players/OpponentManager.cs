@@ -43,19 +43,16 @@ public class OpponentManager : MonoBehaviour
         return possibleActions[randomIndex].cards;
     }
 
-    public void DoTurn()
-    {
-        StartCoroutine(DoTurnRoutine());
-    }
-
-    IEnumerator DoTurnRoutine()
+    public IEnumerator DoTurn()
     {
         var usableMana = GameManager.Instance.manaSlots.manaUsed;
         foreach (Card card in GetRandomAction(usableMana))
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(2f);
             opponent.PlayCard(card);
         }
+        yield return new WaitForSeconds(2f);
+
         opponent.OnTurnEnd?.Invoke();
     }
 }
