@@ -6,15 +6,18 @@ public class GameManager : Singleton<GameManager>
 {
     public Player player;
     public Player opponent;
+    public OpponentSpawner opponentSpawner;
     public Button endTurnButton;
-    public VerticalLayoutGroup playerPowerupList;
-    public VerticalLayoutGroup opponentPowerupList;
     bool isPlayerTurn;
     public int turnCounter = 0;
     public ManaSlots manaSlots;
     public UIContactPoint contactPoint;
 
-    void Start() => Init();
+    void Start()
+    {
+        opponentSpawner.SpawnOpponent();
+        Init();
+    }
 
     public void Init()
     {
@@ -29,12 +32,25 @@ public class GameManager : Singleton<GameManager>
         player.OnDamageDealt += (damage, criticalHit) => contactPoint.Move(damage);
         opponent.OnTurnStart += OnOpponentStartTurn;
         opponent.OnTurnEnd += OnOpponentEndTurn;
-        opponent.OnDefeat += OnPlayerWin;
+        opponent.OnDefeat += OnOpponentDefeat;
         opponent.stats.OnPowerupBonus += CheckPlayersInArena;
         opponent.OnDamageDealt += (damage, criticalHit) => contactPoint.Move(-damage);
 
         turnCounter = 0;
         player.OnTurnStart?.Invoke();
+    }
+
+    public void RemoveCallbacks()
+    {
+        player.OnTurnStart -= OnPlayerStartTurn;
+        player.OnTurnEnd -= OnPlayerEndTurn;
+        player.OnDefeat -= OnPlayerLose;
+        player.OnDamageDealt -= (damage, criticalHit) => contactPoint.Move(damage);
+        opponent.OnTurnStart -= OnOpponentStartTurn;
+        opponent.OnTurnEnd -= OnOpponentEndTurn;
+        opponent.OnDefeat -= OnOpponentDefeat;
+        opponent.stats.OnPowerupBonus -= CheckPlayersInArena;
+        opponent.OnDamageDealt -= (damage, criticalHit) => contactPoint.Move(-damage);
     }
 
     void CheckPlayersInArena(PowerupBonus stat, float delta)
@@ -44,9 +60,6 @@ public class GameManager : Singleton<GameManager>
             OnPlayerLose();
             return;
         }
-
-        if (opponent.stats.hp <= 0)
-            OnPlayerWin();
     }
 
     void OnPlayerStartTurn()
@@ -68,7 +81,7 @@ public class GameManager : Singleton<GameManager>
     void OnOpponentStartTurn()
     {
         Debug.Log("Opponent start turn");
-        opponent.GetComponent<OpponentActionsManager>().DoTurn();
+        opponent.GetComponent<OpponentManager>().DoTurn();
         // opponent.OnTurnEnd?.Invoke();
     }
 
@@ -89,7 +102,12 @@ public class GameManager : Singleton<GameManager>
         player.OnTurnEnd?.Invoke();
     }
 
-    void OnPlayerWin()
+    public void OnOpponentDefeat()
+    {
+        opponentSpawner.SpawnNextOpponent();
+    }
+
+    public void OnPlayerWin()
     {
         Debug.Log("YOU WIN");
         EndGame();

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3666231601571569168}
   - component: {fileID: 3666231601571569175}
   m_Layer: 0
-  m_Name: TestOpponent
+  m_Name: TestOpponent 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,10 +47,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   startingAttributes:
-    power: 3
+    power: 5
     spirit: 3
     weight: 3
-    reflex: 3
+    reflex: 5
     critical: 3
   deckManager: {fileID: 0}
   uiStats: {fileID: 0}
@@ -68,9 +68,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09fec4b58f4ad40a2b62d0c178109f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  opponentName: Test Opponent
-  opponentDescription: this is a test opponent
-  opponentLevel: 1
+  opponentName: Test Opponent 2
+  opponentDescription: this is another test opponent
+  opponentLevel: 2
   actions:
   - totalMana: 0
     cards: []

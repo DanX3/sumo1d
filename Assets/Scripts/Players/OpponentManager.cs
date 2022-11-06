@@ -4,11 +4,15 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Player))]
-public class OpponentActionsManager : MonoBehaviour
+public class OpponentManager : MonoBehaviour
 {
+    public string opponentName;
+    public string opponentDescription;
+    public int opponentLevel;
     public List<OpponentAction> actions;
 
-    private Player opponent;
+    [HideInInspector]
+    public Player opponent;
 
     void Awake()
     {
