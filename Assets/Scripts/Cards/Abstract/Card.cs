@@ -7,9 +7,10 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
 {
     public string cardName;
     public string description;
-    
+
     [Range(0, 8)]
-    public int manaCost;
+    [SerializeField] protected int manaCost;
+    public int currentManaCost { get; protected set; }
     public TMPro.TMP_Text manaLabel;
     public TMPro.TMP_Text nameLabel;
     public TMPro.TMP_Text descLabel;
@@ -19,12 +20,30 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
 
     public abstract CardType GetCardType();
 
+    void Awake()
+    {
+        currentManaCost = manaCost;
+    }
+
     protected void Start()
     {
-        manaLabel.text = "" + manaCost;
+        RefreshUI();
+    }
+
+    protected void RefreshUI()
+    {
+        manaLabel.text = "" + currentManaCost;
         nameLabel.text = cardName;
         descLabel.text = description;
     }
+
+    public void SetManaCost(int newCost)
+    {
+        currentManaCost = newCost;
+        RefreshUI();
+    }
+
+    public int GetManaCost() => manaCost;
 
     public virtual void Play(Player user)
     {
@@ -44,6 +63,11 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
         {
             modifier.Remove(user);
         }
+    }
+
+    public virtual void OnReshuffled()
+    {
+        SetManaCost(manaCost);
     }
 
     public void OnPointerClick(PointerEventData eventData)

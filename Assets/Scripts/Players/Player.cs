@@ -59,13 +59,13 @@ public class Player : MonoBehaviour
 
     public void PlayCard(Card card)
     {
-        if (!HasEnoughMana(card.manaCost))
+        if (!HasEnoughMana(card.currentManaCost))
         {
             Debug.LogWarning("Not enough mana to play the card");
             return;
         }
 
-        UseMana(card.manaCost);
+        UseMana(card.currentManaCost);
 
         deckManager?.Discard(card);
         card.Play(this);
