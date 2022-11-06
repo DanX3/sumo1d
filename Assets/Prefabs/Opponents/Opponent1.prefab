@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3666231601571569171, guid: b54af9909b3224baf9de6fba3b54b85e, type: 3}
       propertyPath: m_Name
-      value: New Opponent (DUPLICATE) 1
+      value: Opponent1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b54af9909b3224baf9de6fba3b54b85e, type: 3}

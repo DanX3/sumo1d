@@ -26,6 +26,6 @@ public class ProgressBar : MonoBehaviour
         text.text = baseStatDiff == 0 ? "" : (baseStatDiff + "");
         if (baseStatDiff > 0)
             text.text = "+" + text.text;
-        progress.fillAmount = Mathf.Clamp(value, 1, 9) / 9f;
+        progress.fillAmount = value / 9f;
     }
 }

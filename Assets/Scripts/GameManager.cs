@@ -30,6 +30,7 @@ public class GameManager : Singleton<GameManager>
         player.OnTurnStart += OnPlayerStartTurn;
         player.OnTurnEnd += OnPlayerEndTurn;
         player.OnDefeat += OnPlayerLose;
+        player.stats.OnPowerupBonus += CheckPlayersInArena;
         player.OnDamageDealt += (damage, criticalHit) => contactPoint.Move(damage);
         opponent.OnTurnStart += OnOpponentStartTurn;
         opponent.OnTurnEnd += OnOpponentEndTurn;

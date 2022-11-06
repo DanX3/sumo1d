@@ -6,6 +6,7 @@ using UnityEngine;
 public class UIArena : MonoBehaviour
 {
     public int startHp = Player.StartHP;
+    public int dir;
 
     public void Init(Player player)
     {
@@ -19,7 +20,7 @@ public class UIArena : MonoBehaviour
         if (bonus != PowerupBonus.Arena)
             return;
 
-        transform.position += Vector3.right * delta;
+        transform.position += delta * dir * Vector3.right;
     }
 
 }

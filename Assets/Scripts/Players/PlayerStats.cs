@@ -59,16 +59,16 @@ public class PlayerStats
         onRefreshStat?.Invoke(PlayerAttribute.Critical, baseStats.critical + bonus.critical);
     }
 
-    public int power { get => baseStats.power + bonus.power; }
-    public int spirit { get => baseStats.spirit + bonus.spirit; }
-    public int weight { get => baseStats.weight + bonus.weight; }
-    public int reflex { get => baseStats.reflex + bonus.reflex; }
-    public int critical { get => baseStats.critical + bonus.critical; }
-    public int handCount { get => baseStats.handCount + bonus.handCount; }
-    public float damageThreshold { get => baseStats.damageThreshold + bonus.damageThreshold; }
+    public int power { get => Mathf.Clamp(baseStats.power + bonus.power, 1, 9); }
+    public int spirit { get => Mathf.Clamp(baseStats.spirit + bonus.spirit, 1, 9); }
+    public int weight { get => Mathf.Clamp(baseStats.weight + bonus.weight, 1, 9); }
+    public int reflex { get => Mathf.Clamp(baseStats.reflex + bonus.reflex, 1, 9); }
+    public int critical { get => Mathf.Clamp(baseStats.critical + bonus.critical, 1, 9); }
+    public int handCount { get => Mathf.Clamp(baseStats.handCount + bonus.handCount, 1, 9); }
+    public float damageThreshold { get => Mathf.Clamp(baseStats.damageThreshold + bonus.damageThreshold, 1, 9); }
 
-    public float powerMul { get => 0.375f + 0.125f * (baseStats.power + bonus.power); }
-    public float weightMul { get => 1.625f - 0.125f * (baseStats.weight + bonus.weight); }
+    public float powerMul { get => 0.375f + 0.125f * power; }
+    public float weightMul { get => 1.625f - 0.125f * weight; }
     public float critChance { get => 0.01f * (5f + 5f * critical); }
     
 }
