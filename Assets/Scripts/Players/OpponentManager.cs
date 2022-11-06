@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -37,9 +38,18 @@ public class OpponentManager : MonoBehaviour
 
     public void DoTurn()
     {
+        StartCoroutine(DoTurnRoutine());
+    }
+
+    IEnumerator DoTurnRoutine()
+    {
         var usableMana = GameManager.Instance.manaSlots.manaUsed;
         foreach (Card card in GetRandomAction(usableMana))
+        {
+            yield return new WaitForSeconds(1.5f);
             opponent.PlayCard(card);
+        }
+        opponent.OnTurnEnd?.Invoke();
     }
 }
 

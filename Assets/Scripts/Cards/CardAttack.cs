@@ -31,6 +31,10 @@ public class CardAttack : Card
 
         int damage = CalculateCardDamage(user);
 
+        // stats influence
+        damage = Mathf.FloorToInt((damage * user.stats.powerMul / user.GetOpponent().stats.weightMul) +
+            user.stats.spirit - user.GetOpponent().stats.reflex);
+
         // critical hit
         float critChance = CalculateCardCritical(user.stats.critChance);
         bool isCritical = Random.Range(0f, 1f) < critChance;
