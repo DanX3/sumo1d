@@ -154,6 +154,7 @@ MonoBehaviour:
   cardName: Warmup
   description: Increase Power by 1
   manaCost: 3
+  background: {fileID: 8447296179484809260}
   manaLabel: {fileID: 4373306355902055031}
   nameLabel: {fileID: 933718073418429623}
   descLabel: {fileID: 1128378032718490214}
@@ -166,5 +167,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8447296179484809260 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3870168857555609490, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
+  m_PrefabInstance: {fileID: 4652017259170332606}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

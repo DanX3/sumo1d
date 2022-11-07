@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public abstract class Card : MonoBehaviour, IPointerClickHandler
 {
@@ -10,6 +11,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
 
     [Range(0, 8)]
     [SerializeField] protected int manaCost;
+    public Image background;
     public int currentManaCost { get; protected set; }
     public TMPro.TMP_Text manaLabel;
     public TMPro.TMP_Text nameLabel;
@@ -72,6 +74,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        GameManager.Instance.player.PlayCard(this);
+        if (gameObject.GetComponent<CardAdded>() == null)
+            GameManager.Instance.player.PlayCard(this);
     }
 }

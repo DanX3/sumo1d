@@ -15,6 +15,7 @@ public class GameManager : Singleton<GameManager>
     public UIContactPoint contactPoint;
     public int maxOpponentLevel = 10;
     public CardPlayedDetail cardPlayedDetail;
+    public Rewards rewards;
 
     private const string PLAYER_PREFS_OPPONENT_LEVEL = "OpponentLevel";
 
@@ -42,6 +43,7 @@ public class GameManager : Singleton<GameManager>
 
         turnCounter = 0;
         player.OnTurnStart?.Invoke();
+        rewards.Init(player);
     }
 
     void CheckPlayersInArena(PowerupBonus stat, float delta)
