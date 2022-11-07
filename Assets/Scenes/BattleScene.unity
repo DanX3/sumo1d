@@ -4818,8 +4818,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1962677343}
-  - component: {fileID: 1962677345}
   - component: {fileID: 1962677344}
+  - component: {fileID: 1962677345}
   m_Layer: 5
   m_Name: Hand
   m_TagString: Untagged
@@ -4844,8 +4844,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 115.86206}
-  m_SizeDelta: {x: -700, y: 231.7241}
+  m_AnchoredPosition: {x: 0, y: 232.91998}
+  m_SizeDelta: {x: -600, y: 231.7241}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1962677344
 MonoBehaviour:
@@ -4869,7 +4869,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1962677342}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -4877,15 +4877,13 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 30
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  m_ChildAlignment: 1
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 200, y: 288.8889}
+  m_Spacing: {x: 20, y: -164.8}
+  m_Constraint: 1
+  m_ConstraintCount: 6
 --- !u!1001 &2102548069
 PrefabInstance:
   m_ObjectHideFlags: 0
