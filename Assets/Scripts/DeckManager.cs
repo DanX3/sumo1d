@@ -7,10 +7,16 @@ using System;
 public class DeckManager : MonoBehaviour
 {
     public List<Card> deckList = new List<Card>();
+    [SerializeField] TMPro.TMP_Text cardsCounter;
+
 
     private Stack<Card> _deck = new Stack<Card>();
     private List<Card> _hand = new List<Card>();
     private Stack<Card> _discardPile = new Stack<Card>();
+
+    private const float drawDelay = 0.5f;
+    private const float reshuffleDelay = 1f;
+
 
     public Action<Card> OnDrawCard;
     public Action<Card> OnDiscardCard;
@@ -48,23 +54,35 @@ public class DeckManager : MonoBehaviour
         _discardPile.Clear();
     }
 
-    public void Draw(int count = 1)
+    IEnumerator DrawCoroutine(int count = 1)
     {
         for (int i = 0; i < count; i++)
         {
             if (_deck.Count == 0)
+            {
                 ReshuffleDiscards();
+                RefreshUI();
+                yield return new WaitForSeconds(reshuffleDelay);
+            }
 
             // player has all the cards in its hand
             // interrupt drawing
             if (_deck.Count == 0)
-                break;
+                yield return null;
 
             var card = _deck.Pop();
             _hand.Add(card);
 
             OnDrawCard?.Invoke(card);
+
+            RefreshUI();
+            yield return new WaitForSeconds(drawDelay);
         }
+    }
+
+    public void Draw(int count = 1)
+    {
+        StartCoroutine(DrawCoroutine(count));
     }
 
     public void Discard(Card card)
@@ -85,6 +103,7 @@ public class DeckManager : MonoBehaviour
     {
         var random = new System.Random();
         _deck = new Stack<Card>(_deck.OrderBy(k => random.Next()));
+        RefreshUI();
     }
 
     public void ReshuffleDiscards()
@@ -103,8 +122,13 @@ public class DeckManager : MonoBehaviour
     {
         if (_hand.Count == 0)
             return null;
-        
+
         return _hand[new System.Random().Next() % _hand.Count];
+    }
+
+    private void RefreshUI()
+    {
+        cardsCounter.text = _deck.Count().ToString();
     }
 }
 

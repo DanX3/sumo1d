@@ -72,7 +72,7 @@ public class GameManager : Singleton<GameManager>
     void OnOpponentStartTurn()
     {
         Debug.Log("Opponent start turn");
-        StartCoroutine(opponent.GetComponent<OpponentManager>().DoTurn());
+        opponent.GetComponent<OpponentManager>().DoTurn();
     }
 
     void OnOpponentEndTurn()

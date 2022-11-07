@@ -43,7 +43,12 @@ public class OpponentManager : MonoBehaviour
         return possibleActions[randomIndex].cards;
     }
 
-    public IEnumerator DoTurn()
+    public void DoTurn()
+    {
+        StartCoroutine(DoTurnCoroutine());
+    }
+    
+    private IEnumerator DoTurnCoroutine()
     {
         var usableMana = GameManager.Instance.manaSlots.manaUsed;
         foreach (Card card in GetRandomAction(usableMana))
