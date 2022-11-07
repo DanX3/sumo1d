@@ -15,7 +15,7 @@ public class DeckManager : MonoBehaviour
     private Stack<Card> _discardPile = new Stack<Card>();
 
     private const float drawDelay = 0.5f;
-    private const float reshuffleDelay = 1f;
+    private const float reshuffleDelay = 0.2f;
 
 
     public Action<Card> OnDrawCard;
@@ -59,11 +59,7 @@ public class DeckManager : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             if (_deck.Count == 0)
-            {
-                ReshuffleDiscards();
-                RefreshUI();
-                yield return new WaitForSeconds(reshuffleDelay);
-            }
+                yield return ReshuffleDiscards();
 
             // player has all the cards in its hand
             // interrupt drawing
@@ -106,13 +102,16 @@ public class DeckManager : MonoBehaviour
         RefreshUI();
     }
 
-    public void ReshuffleDiscards()
+    public IEnumerator ReshuffleDiscards()
     {
         while (_discardPile.Count > 0)
         {
             var card = _discardPile.Pop();
             card.OnReshuffled();
             _deck.Push(card);
+
+            yield return new WaitForSeconds(reshuffleDelay);
+            RefreshUI();
         }
 
         ShuffleDeck();
