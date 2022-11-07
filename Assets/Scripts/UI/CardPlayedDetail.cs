@@ -19,6 +19,14 @@ public class CardPlayedDetail : MonoBehaviour
         else
             showingCard = GameObject.Instantiate(card, opponentDetailCardParent);
 
+        // manually set card width and height because player cards are in a grid layout and they have width and height set to 0)
+        RectTransform originalTransform = card.GetComponent<RectTransform>();
+        RectTransform showingCardTransform = showingCard.GetComponent<RectTransform>();
+
+        showingCardTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalTransform.rect.width);
+        showingCardTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, originalTransform.rect.height);
+
+
         StartCoroutine(RemoveShowingCard());
     }
 
