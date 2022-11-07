@@ -25,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4414467037798097948, guid: 114ce5220f4218544b90e02e56e7ae08, type: 3}
       propertyPath: m_Name
-      value: __Sample__
+      value: __Attack__
       objectReference: {fileID: 0}
     - target: {fileID: 4414467037798097949, guid: 114ce5220f4218544b90e02e56e7ae08, type: 3}
       propertyPath: m_Pivot.x
@@ -57,11 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4414467037798097949, guid: 114ce5220f4218544b90e02e56e7ae08, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 137.0076
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4414467037798097949, guid: 114ce5220f4218544b90e02e56e7ae08, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 230.615
+      value: 288.8889
       objectReference: {fileID: 0}
     - target: {fileID: 4414467037798097949, guid: 114ce5220f4218544b90e02e56e7ae08, type: 3}
       propertyPath: m_LocalPosition.x

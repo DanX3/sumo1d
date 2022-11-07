@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6149010345201840890, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
       propertyPath: m_Name
-      value: BaseCardInstant
+      value: __Instant__
       objectReference: {fileID: 0}
     - target: {fileID: 6149010345201840891, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
       propertyPath: m_Pivot.x
@@ -53,11 +53,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6149010345201840891, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 137.0076
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6149010345201840891, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 230.615
+      value: 288.8889
       objectReference: {fileID: 0}
     - target: {fileID: 6149010345201840891, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
       propertyPath: m_LocalPosition.x
@@ -77,15 +77,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6149010345201840891, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6149010345201840891, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6149010345201840891, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6149010345201840891, guid: c91e0500e9089ad4188a480e9a0cf959, type: 3}
       propertyPath: m_AnchoredPosition.x
