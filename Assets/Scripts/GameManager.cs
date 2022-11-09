@@ -29,10 +29,10 @@ public class GameManager : Singleton<GameManager>
         Application.targetFrameRate = 60;
 
         // must be executed before player Init
-        LoadGame();
+        var playerAttributes = LoadGame();
 
-        player.Init();
-        opponent.Init();
+        player.Init(playerAttributes);
+        opponent.Init(null);
 
         // callback setup
         player.OnTurnStart += OnPlayerStartTurn;
@@ -124,7 +124,16 @@ public class GameManager : Singleton<GameManager>
     void OnPlayerLose()
     {
         Debug.Log("GAME OVER");
+        ResetProgress();
         EndGame();
+    }
+
+    void ResetProgress()
+    {
+        PlayerPrefs.SetString("cards", JsonUtility.ToJson(new StartingCards(player.startingCards)));
+        PlayerPrefs.SetString("stats", JsonUtility.ToJson(player.startingAttributes));
+        PlayerPrefs.Save();
+
     }
 
     void EndGame()
@@ -140,7 +149,7 @@ public class GameManager : Singleton<GameManager>
     }
 #endif
 
-    void LoadGame()
+    PlayerAttributes LoadGame()
     {
         Debug.Log("Loading game");
 
@@ -163,13 +172,9 @@ public class GameManager : Singleton<GameManager>
         Debug.Log(cards.cardsName.Length);
         player.deckManager.deckList.Clear();
         foreach (var cardName in cards.cardsName)
-        {
             player.deckManager.deckList.Add(rewards.GetCardByName(cardName));
-            Debug.Log("Added card " + cardName);
-        }
         
         // stat init
-        var stats = JsonUtility.FromJson<PlayerAttributes>(PlayerPrefs.GetString("stats"));
-        player.SetBaseStats(stats);
+        return JsonUtility.FromJson<PlayerAttributes>(PlayerPrefs.GetString("stats"));
     }
 }
