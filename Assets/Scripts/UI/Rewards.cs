@@ -12,13 +12,28 @@ public class Rewards : MonoBehaviour
 
     public List<Card> cards;
     Player player;
-    
+
+    public IncreaseAttributeRow power;
+    public IncreaseAttributeRow spirit;
+    public IncreaseAttributeRow weight;
+    public IncreaseAttributeRow reflexes;
+    public IncreaseAttributeRow critical;
 
     public void Init(Player player)
     {
         this.player = player;
+        
+        power.SetAttribute(player);
+        spirit.SetAttribute(player);
+        weight.SetAttribute(player);
+        reflexes.SetAttribute(player);
+        critical.SetAttribute(player);
+
         foreach (var row in FindObjectsOfType<IncreaseAttributeRow>())
+        {
+            Debug.LogWarning(row.name);
             row.SetAttribute(player);
+        }
 
         for (int i = 0; i < 3; i++)
         {
@@ -71,7 +86,7 @@ public class Rewards : MonoBehaviour
         foreach (var card in player.deckManager.deckList)
             cardsName.Add(card.cardName);
         var stats = player.GetSavedStats();
-        switch(attributeToIncrease)
+        switch (attributeToIncrease)
         {
             case PlayerAttribute.Power: stats.power++; break;
             case PlayerAttribute.Spirit: stats.spirit++; break;
@@ -90,7 +105,7 @@ public class Rewards : MonoBehaviour
         foreach (var card in cards)
             if (card.cardName == name)
                 return card;
-        
+
         Debug.LogWarning("No card found with name " + name);
         return null;
     }

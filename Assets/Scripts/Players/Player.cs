@@ -70,9 +70,9 @@ public class Player : MonoBehaviour
 
     int hp, maxHp;
 
-    public void Init()
+    public void Init(PlayerAttributes attributes)
     {
-        stats = new PlayerStats(startingAttributes);
+        stats = new PlayerStats(attributes != null ? attributes : startingAttributes);
         uiStats.Init(stats);
         stats.RefreshUI();
         deckManager?.Init();

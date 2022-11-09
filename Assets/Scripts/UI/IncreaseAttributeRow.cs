@@ -7,22 +7,11 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class IncreaseAttributeRow : MonoBehaviour, IDeselectHandler
 {
-
     public bool selected { get; private set; }
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     public void OnDeselect(BaseEventData eventData)
     {
         Debug.Log(name + " deselected");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void Choose()
