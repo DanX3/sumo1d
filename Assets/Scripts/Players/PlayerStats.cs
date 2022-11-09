@@ -35,7 +35,7 @@ public class PlayerStats
             case PowerupBonus.Power: bonus.power += intDelta; break;
             case PowerupBonus.Spirit: bonus.spirit += intDelta; break;
             case PowerupBonus.Weight: bonus.weight += intDelta; break;
-            case PowerupBonus.Reflex: bonus.reflex += intDelta; break;
+            case PowerupBonus.Reflex: bonus.reflexes += intDelta; break;
             case PowerupBonus.Critical: bonus.critical += intDelta; break;
             case PowerupBonus.DamageAdd: bonus.damageAdd += intDelta; break;
             case PowerupBonus.DamageMul: bonus.damageMul += delta; break;
@@ -55,14 +55,14 @@ public class PlayerStats
         onRefreshStat?.Invoke(PlayerAttribute.Power, baseStats.power + bonus.power);
         onRefreshStat?.Invoke(PlayerAttribute.Spirit, baseStats.spirit + bonus.spirit);
         onRefreshStat?.Invoke(PlayerAttribute.Weight, baseStats.weight + bonus.weight);
-        onRefreshStat?.Invoke(PlayerAttribute.Reflex, baseStats.reflex + bonus.reflex);
+        onRefreshStat?.Invoke(PlayerAttribute.Reflex, baseStats.reflexes + bonus.reflexes);
         onRefreshStat?.Invoke(PlayerAttribute.Critical, baseStats.critical + bonus.critical);
     }
 
     public int power { get => Mathf.Clamp(baseStats.power + bonus.power, 1, 9); }
     public int spirit { get => Mathf.Clamp(baseStats.spirit + bonus.spirit, 1, 9); }
     public int weight { get => Mathf.Clamp(baseStats.weight + bonus.weight, 1, 9); }
-    public int reflex { get => Mathf.Clamp(baseStats.reflex + bonus.reflex, 1, 9); }
+    public int reflex { get => Mathf.Clamp(baseStats.reflexes + bonus.reflexes, 1, 9); }
     public int critical { get => Mathf.Clamp(baseStats.critical + bonus.critical, 1, 9); }
     public int handCount { get => Mathf.Clamp(baseStats.handCount + bonus.handCount, 1, 9); }
     public float damageThreshold { get => Mathf.Clamp(baseStats.damageThreshold + bonus.damageThreshold, 1, 9); }

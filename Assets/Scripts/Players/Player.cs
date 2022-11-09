@@ -1,4 +1,35 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+
+public class SavedStats
+{
+    public int power;
+    public int spirit;
+    public int weight;
+    public int reflexes;
+    public int critical;
+
+    public SavedStats(int power, int spirit, int weight, int reflexes, int critical)
+    {
+        this.power = power;
+        this.spirit = spirit;
+        this.weight = weight;
+        this.reflexes = reflexes;
+        this.critical = critical;
+    }
+}
+
+[Serializable]
+public class StartingCards
+{
+    public string[] cardsName;
+
+    public StartingCards(List<string> cards)
+    {
+        cardsName = cards.ToArray();
+    }
+}
 
 public class Player : MonoBehaviour
 {
@@ -6,6 +37,18 @@ public class Player : MonoBehaviour
     public Publisher publisher;
     public PlayerStats stats;
     public PlayerAttributes startingAttributes;
+    public List<string> startingCards = new List<string>()
+    {
+        "Ki Blast",
+        "Ki Blast",
+        "Push",
+        "Glass Cannon",
+        "Counter attack",
+        "ALl In",
+        "Safe Terrain",
+        "Gravity",
+        "Mind Barrier",
+    };
 
     public DeckManager deckManager;
     public PlayedCardsHistory playedCardsHistory = new PlayedCardsHistory();
@@ -44,7 +87,7 @@ public class Player : MonoBehaviour
     {
         if (stat != PowerupBonus.Arena)
             return;
-        
+
         hp += Mathf.RoundToInt(delta);
         Debug.Log(playerString + " hp: " + hp);
     }
@@ -118,4 +161,18 @@ public class Player : MonoBehaviour
         Debug.Log(ms.manaLeft);
         return manaRequired <= (isPlayer ? ms.manaLeft : ms.manaUsed);
     }
+
+    public PlayerAttributes GetSavedStats() => new PlayerAttributes(
+        stats.baseStats.power,
+        stats.baseStats.spirit,
+        stats.baseStats.weight,
+        stats.baseStats.reflexes,
+        stats.baseStats.critical
+    );
+
+    public void SetBaseStats(PlayerAttributes savedStats)
+    {
+        stats = new PlayerStats(savedStats);
+    }
+
 }

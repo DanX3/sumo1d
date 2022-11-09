@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -19,13 +20,17 @@ public class GameManager : Singleton<GameManager>
 
     private const string PLAYER_PREFS_OPPONENT_LEVEL = "OpponentLevel";
 
-    void Start() => Init();
+    void Awake() => Init();
 
     public void Init()
     {
         opponentSpawner.SpawnOpponent();
 
         Application.targetFrameRate = 60;
+
+        // must be executed before player Init
+        LoadGame();
+
         player.Init();
         opponent.Init();
 
@@ -43,7 +48,6 @@ public class GameManager : Singleton<GameManager>
 
         turnCounter = 0;
         player.OnTurnStart?.Invoke();
-        rewards.Init(player);
     }
 
     void CheckPlayersInArena(PowerupBonus stat, float delta)
@@ -105,7 +109,10 @@ public class GameManager : Singleton<GameManager>
         }
 
         PlayerPrefs.SetInt(PLAYER_PREFS_OPPONENT_LEVEL, currentOpponentLevel);
-        SceneManager.LoadScene("BattleScene");
+
+        rewards.Init(player);
+        rewards.gameObject.SetActive(true);
+        // SceneManager.LoadScene("BattleScene");
     }
 
     public void OnPlayerWin()
@@ -132,4 +139,37 @@ public class GameManager : Singleton<GameManager>
         PlayerPrefs.SetInt(PLAYER_PREFS_OPPONENT_LEVEL, 1);
     }
 #endif
+
+    void LoadGame()
+    {
+        Debug.Log("Loading game");
+
+        // first time init
+        if (!PlayerPrefs.HasKey("stats"))
+        {
+            PlayerPrefs.SetString("stats", JsonUtility.ToJson(player.startingAttributes));
+            PlayerPrefs.Save();
+        }
+
+        if (!PlayerPrefs.HasKey("cards"))
+        {
+            Debug.Log(JsonUtility.ToJson(new StartingCards(player.startingCards)));
+            PlayerPrefs.SetString("cards", JsonUtility.ToJson(new StartingCards(player.startingCards)));
+            PlayerPrefs.Save();
+        }
+        
+        // cards init
+        var cards = JsonUtility.FromJson<StartingCards>(PlayerPrefs.GetString("cards"));
+        Debug.Log(cards.cardsName.Length);
+        player.deckManager.deckList.Clear();
+        foreach (var cardName in cards.cardsName)
+        {
+            player.deckManager.deckList.Add(rewards.GetCardByName(cardName));
+            Debug.Log("Added card " + cardName);
+        }
+        
+        // stat init
+        var stats = JsonUtility.FromJson<PlayerAttributes>(PlayerPrefs.GetString("stats"));
+        player.SetBaseStats(stats);
+    }
 }

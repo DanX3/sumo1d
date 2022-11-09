@@ -3,7 +3,7 @@ public class Stats
     public int power;
     public int spirit;
     public int weight;
-    public int reflex;
+    public int reflexes;
     public int critical;
     public int damageAdd;
     public float damageMul;
@@ -20,7 +20,7 @@ public class Stats
         this.power = power;
         this.spirit = spirit;
         this.weight = weight;
-        this.reflex = reflex;
+        this.reflexes = reflex;
         this.critical = critical;
         this.damageAdd = damageAdd;
         this.damageMul = damageMul;

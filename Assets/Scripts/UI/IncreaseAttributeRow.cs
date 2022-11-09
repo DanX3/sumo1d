@@ -59,9 +59,11 @@ public class IncreaseAttributeRow : MonoBehaviour, IDeselectHandler
             case PlayerAttribute.Power: attributeValue = player.stats.baseStats.power; break;
             case PlayerAttribute.Spirit: attributeValue = player.stats.baseStats.spirit; break;
             case PlayerAttribute.Weight: attributeValue = player.stats.baseStats.weight; break;
-            case PlayerAttribute.Reflex: attributeValue = player.stats.baseStats.reflex; break;
+            case PlayerAttribute.Reflex: attributeValue = player.stats.baseStats.reflexes; break;
             case PlayerAttribute.Critical: attributeValue = player.stats.baseStats.critical; break;
         }
+
+        Debug.Log(name + " set attributeValue " + attributeValue);
 
         attributeLabel.text = attributeValue + "";
     }

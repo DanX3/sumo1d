@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class CardAdded : MonoBehaviour, IPointerClickHandler
 {
 
+
     void Start()
     {
         Select(false);
@@ -15,6 +16,8 @@ public class CardAdded : MonoBehaviour, IPointerClickHandler
     {
         if (select)
         {
+            FindObjectOfType<Rewards>().ChoseCard(GetComponent<Card>());
+            Debug.Log("Selected " + name);
             foreach (var card in FindObjectsOfType<CardAdded>())
                 card.Select(false);
         }
@@ -22,6 +25,7 @@ public class CardAdded : MonoBehaviour, IPointerClickHandler
         var color = GetComponent<Card>().background.color;
         color.a = select ? 1f : 0.5f;
         GetComponent<Card>().background.color = color;
+
 
     }
 

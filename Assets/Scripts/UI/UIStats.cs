@@ -28,7 +28,7 @@ public class UIStats : MonoBehaviour
         powerBar.Init(stats.baseStats.power);
         spiritBar.Init(stats.baseStats.spirit);
         weightBar.Init(stats.baseStats.weight);
-        reflexesBar.Init(stats.baseStats.reflex);
+        reflexesBar.Init(stats.baseStats.reflexes);
         criticalBar.Init(stats.baseStats.critical);
 
         stats.onRefreshStat += SetStat;
