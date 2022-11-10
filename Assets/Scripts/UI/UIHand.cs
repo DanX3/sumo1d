@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UIHand : MonoBehaviour
 {
     public Player player;
+
 
     private void Awake()
     {

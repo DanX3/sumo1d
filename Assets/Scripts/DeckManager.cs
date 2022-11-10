@@ -130,10 +130,3 @@ public class DeckManager : MonoBehaviour
         cardsCounter.text = _deck.Count().ToString();
     }
 }
-
-[System.Serializable]
-public class DeckRow
-{
-    public int count = 1;
-    public Card card;
-}

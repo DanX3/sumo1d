@@ -1,33 +1,24 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UIPowerup : MonoBehaviour
 {
-    [SerializeField] PowerupTooltip tooltipPrefab;
     [SerializeField] Transform parent;
     [SerializeField] TMPro.TMP_Text turnsLeftLabel;
+    [SerializeField] GameObject tooltip;
+    [SerializeField] TMPro.TMP_Text tooltipText;
 
     int turnsLeft;
-    PowerupTooltip tooltip;
-    public string powerupMessage;
     CardPowerup card;
-
-    public float tooltipOffset { get => transform.position.x < 0.5f * Screen.width ? 200f : -50f; }
-
-    void Start()
-    {
-        if (transform.position.x > 0.5f * Screen.width)
-            parent.transform.localScale = new Vector3(-1f, 1f, 1f);
-    }
+    float tooltipDurationInSeconds = 0.5f;
+    IEnumerator hideTooltipCoroutine;
 
     public void Init(CardPowerup card)
     {
-        powerupMessage = card.description;
-        turnsLeftLabel.text = card.durationInTurns + "";
-        turnsLeft = card.durationInTurns;
         this.card = card;
+        tooltipText.text = card.description;
+        UpdateTurnsLeft();
+
         card.OnRemoved += DestroyUIPowerup;
     }
 
@@ -43,23 +34,34 @@ public class UIPowerup : MonoBehaviour
 
     public void OnPointerEnter()
     {
-        tooltip = Instantiate(tooltipPrefab, transform.parent);
-        tooltip.Init(powerupMessage, tooltipOffset);
-        tooltip.transform.position = Input.mousePosition;
+        if (hideTooltipCoroutine != null)
+            StopCoroutine(hideTooltipCoroutine);
+        tooltip.gameObject.SetActive(true);
     }
 
     public void OnPointerExit()
     {
-        if (tooltip == null)
-            return;
+        hideTooltipCoroutine = HideTooltip();
+        StartCoroutine(hideTooltipCoroutine);
+    }
 
-        Destroy(tooltip.gameObject);
+    private IEnumerator HideTooltip()
+    {
+        yield return new WaitForSeconds(tooltipDurationInSeconds);
+        tooltip.gameObject.SetActive(false);
+    }
+
+    private void UpdateTurnsLeft()
+    {
+        turnsLeft = card.durationInTurns;
+        turnsLeftLabel.text = turnsLeft.ToString();
+        if (turnsLeft <= 0)
+            Destroy(gameObject);
     }
 
     public void DescreaseTurnsLeft()
     {
-        turnsLeftLabel.text = --turnsLeft + "";
-        if (turnsLeft <= 0)
-            Destroy(gameObject);
+        turnsLeft--;
+        UpdateTurnsLeft();
     }
 }
