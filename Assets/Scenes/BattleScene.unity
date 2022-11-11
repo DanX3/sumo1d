@@ -503,11 +503,14 @@ MonoBehaviour:
   opponentUiArena: {fileID: 1343711731}
   opponentPowerupList: {fileID: 157656747}
   opponents:
-  - {fileID: 3173151845011570524, guid: 517becef59ce93a4789abaf2cbfb5cd2, type: 3}
   - {fileID: 3173151845011570524, guid: 64da9a4a178729b4b99fef0c3720c275, type: 3}
   - {fileID: 3173151845011570524, guid: 771c5ed57df21974ab07696e185ea171, type: 3}
   - {fileID: 3173151845011570524, guid: 0340ecee8b9e54b4a8cdb8aad1aa1ea8, type: 3}
+  - {fileID: 3173151845011570524, guid: 1e9f4242d751c4004af5de234633e617, type: 3}
+  - {fileID: 3173151845011570524, guid: fb9c396f230f34671bc9c00490650738, type: 3}
   - {fileID: 3173151845011570524, guid: 1d2887d5e57404747b79851ad9d8763d, type: 3}
+  - {fileID: 3173151845011570524, guid: 517becef59ce93a4789abaf2cbfb5cd2, type: 3}
+  - {fileID: 3173151845011570524, guid: 922dab83533bf447f95f07a3dec2297a, type: 3}
   opponentModelParent: {fileID: 1142170359114640808}
 --- !u!1001 &157656746
 PrefabInstance:
@@ -6220,7 +6223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478239958}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4, y: -1, z: 0}
+  m_LocalPosition: {x: -2, y: -1, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7973,7 +7976,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142170359114640809}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: -1, z: 0}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
