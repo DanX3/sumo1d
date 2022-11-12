@@ -6,8 +6,15 @@ public class LookAt : MonoBehaviour
 {
     public Transform target;
 
+    void Start()
+    {
+        var newTarget = target.GetComponentInChildren<SpotlightTarget>();
+        if (newTarget != null)
+            target = newTarget.transform;
+    }
+
     void Update()
     {
-        transform.LookAt(target);        
+        transform.LookAt(target.position);
     }
 }
