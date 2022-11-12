@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class UIArena : MonoBehaviour
 {
@@ -13,11 +14,14 @@ public class UIArena : MonoBehaviour
     void OnPowerupBonus(PowerupBonus bonus, float delta)
     {
         Debug.Log($"Powerup: {bonus} + {delta}");
-        
+
         if (bonus != PowerupBonus.Arena)
             return;
 
-        transform.position += delta * dir * Vector3.right;
+
+        transform.DOMoveX(transform.position.x + delta * dir, 1f)
+            .SetEase(Ease.OutCubic)
+            .Play();
     }
 
 }
