@@ -163,7 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Energy Burst
   description: Draw until you have 5 cards in your hand
-  manaCost: 1
+  manaCost: 0
   background: {fileID: 8447296179484809260}
   manaLabel: {fileID: 4373306355902055031}
   nameLabel: {fileID: 933718073418429623}

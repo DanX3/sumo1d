@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Reset
   description: Place the players at the center of the arena
-  manaCost: 5
+  manaCost: 3
   background: {fileID: 8447296179484809260}
   manaLabel: {fileID: 4373306355902055031}
   nameLabel: {fileID: 933718073418429623}

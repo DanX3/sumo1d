@@ -153,7 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Warmup
   description: Increase Power by 1
-  manaCost: 3
+  manaCost: 2
   background: {fileID: 8447296179484809260}
   manaLabel: {fileID: 4373306355902055031}
   nameLabel: {fileID: 933718073418429623}

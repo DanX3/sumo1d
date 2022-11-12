@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3666231601571569168, guid: b54af9909b3224baf9de6fba3b54b85e, type: 3}
       propertyPath: startingAttributes.power
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3666231601571569168, guid: b54af9909b3224baf9de6fba3b54b85e, type: 3}
       propertyPath: startingAttributes.reflex
@@ -37,11 +37,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3666231601571569168, guid: b54af9909b3224baf9de6fba3b54b85e, type: 3}
       propertyPath: startingAttributes.spirit
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3666231601571569168, guid: b54af9909b3224baf9de6fba3b54b85e, type: 3}
       propertyPath: startingAttributes.weight
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3666231601571569168, guid: b54af9909b3224baf9de6fba3b54b85e, type: 3}
       propertyPath: startingAttributes.critical

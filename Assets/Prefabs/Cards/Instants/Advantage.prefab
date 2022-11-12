@@ -138,7 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Advantage
   description: Increases the arena on your side by 5
-  manaCost: 3
+  manaCost: 1
   background: {fileID: 8447296179484809260}
   manaLabel: {fileID: 4373306355902055031}
   nameLabel: {fileID: 933718073418429623}

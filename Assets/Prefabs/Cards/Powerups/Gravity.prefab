@@ -113,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5924519448272945937, guid: d5817f651b73bce449613d2685e9fef5, type: 3}
       propertyPath: durationInTurns
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5817f651b73bce449613d2685e9fef5, type: 3}

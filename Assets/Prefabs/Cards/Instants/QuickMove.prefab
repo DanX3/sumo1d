@@ -138,7 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Quick Move
   description: A random card in your hand costs 0 this turn
-  manaCost: 2
+  manaCost: 1
   background: {fileID: 8447296179484809260}
   manaLabel: {fileID: 4373306355902055031}
   nameLabel: {fileID: 933718073418429623}
