@@ -11,6 +11,11 @@ public class Spectator : MonoBehaviour
         ChangeAction();
     }
 
+    void OnDestroy()
+    {
+        DOTween.KillAll();
+    }
+
     void Jump()
     {
         var power = Random.Range(1, 3);
