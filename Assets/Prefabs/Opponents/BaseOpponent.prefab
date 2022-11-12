@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3666231601571569169}
   - component: {fileID: 3666231601571569168}
   - component: {fileID: 3666231601571569175}
-  - component: {fileID: 8888191896127316806}
   m_Layer: 0
   m_Name: BaseOpponent
   m_TagString: Untagged
@@ -68,6 +67,8 @@ MonoBehaviour:
   uiStats: {fileID: 0}
   uiArena: {fileID: 0}
   powerupList: {fileID: 0}
+  damageLabelPrefab: {fileID: 3747853919541202551, guid: 0fdcd35343965dc4ab29abc869ca6876, type: 3}
+  animator: {fileID: 3232842403973314180}
 --- !u!114 &3666231601571569175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,20 +99,6 @@ MonoBehaviour:
   - totalMana: 5
     cards: []
   opponent: {fileID: 0}
---- !u!114 &8888191896127316806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3666231601571569171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c26c2126de93124a900b7e95fa48b38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 4574897448072647035}
-  player: {fileID: 3666231601571569168}
 --- !u!1 &4199592340044601171
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,6 +108,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 552777107430608998}
+  - component: {fileID: 3232842403973314180}
   - component: {fileID: 4574897448072647035}
   m_Layer: 0
   m_Name: Model
@@ -137,7 +125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4199592340044601171}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -145,6 +133,20 @@ Transform:
   m_Father: {fileID: 3666231601571569169}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3232842403973314180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4199592340044601171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c26c2126de93124a900b7e95fa48b38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4574897448072647035}
+  player: {fileID: 3666231601571569168}
 --- !u!95 &4574897448072647035
 Animator:
   serializedVersion: 4
@@ -252,7 +254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f03f2a4fe3df34f47b80a6c233204ba5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.060003
+      value: 9.060005
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f03f2a4fe3df34f47b80a6c233204ba5, type: 3}
       propertyPath: m_LocalRotation.w

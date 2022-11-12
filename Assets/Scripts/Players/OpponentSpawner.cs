@@ -13,11 +13,9 @@ public class OpponentSpawner : MonoBehaviour
 
     public void SpawnOpponent()
     {
-        OpponentManager nextOpponent = GameObject.Instantiate(GetNextRandomOpponent());
+        OpponentManager nextOpponent = GameObject.Instantiate(GetNextRandomOpponent(), opponentModelParent);
         Player opponent = nextOpponent.opponent;
         GameManager.Instance.opponent = opponent;
-
-        nextOpponent.model.gameObject.transform.SetParent(opponentModelParent, true);
 
         opponent.uiArena = opponentUiArena;
         opponent.uiStats = opponentUiStat;
