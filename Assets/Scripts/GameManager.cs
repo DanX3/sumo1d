@@ -38,6 +38,7 @@ public class GameManager : Singleton<GameManager>
         player.OnTurnStart += OnPlayerStartTurn;
         player.OnTurnEnd += OnPlayerEndTurn;
         player.OnDefeat += OnPlayerLose;
+        player.OnCardPlayed += OnPlayerCardPlayed;
         player.stats.OnPowerupBonus += CheckPlayersInArena;
         player.OnDamageDealt += (damage, criticalHit) => contactPoint.Move(damage);
         opponent.OnTurnStart += OnOpponentStartTurn;
@@ -64,7 +65,14 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("Player start turn");
         endTurnButton.interactable = true;
         player.deckManager.Draw(player.stats.handCount);
+        endTurnButton.interactable = false;
         manaSlots.Reset();
+    }
+
+    void OnPlayerCardPlayed(Card card)
+    {
+        if (card.GetManaCost() > 0)
+            endTurnButton.interactable = true;
     }
 
     void OnPlayerEndTurn()
@@ -166,14 +174,14 @@ public class GameManager : Singleton<GameManager>
             PlayerPrefs.SetString("cards", JsonUtility.ToJson(new StartingCards(player.startingCards)));
             PlayerPrefs.Save();
         }
-        
+
         // cards init
         var cards = JsonUtility.FromJson<StartingCards>(PlayerPrefs.GetString("cards"));
         Debug.Log(cards.cardsName.Length);
         player.deckManager.deckList.Clear();
         foreach (var cardName in cards.cardsName)
             player.deckManager.deckList.Add(rewards.GetCardByName(cardName));
-        
+
         // stat init
         return JsonUtility.FromJson<PlayerAttributes>(PlayerPrefs.GetString("stats"));
     }
