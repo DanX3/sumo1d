@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SavedStats
@@ -55,6 +57,7 @@ public class Player : MonoBehaviour
     public UIStats uiStats;
     public UIArena uiArena;
     public PowerupList powerupList;
+    public TMP_Text damageLabel;
 
     public delegate void VoidEvent();
     public delegate void DamageEvent(int damage, bool isCritical);
@@ -132,9 +135,29 @@ public class Player : MonoBehaviour
     {
         OnDamageReceived?.Invoke(damage, isCritical);
         hp -= damage;
+
+        StartCoroutine(ShowDamageReceived(damage, isCritical));
+
         Debug.Log(playerString + " hp: " + hp);
+        
         if (hp <= 0)
             OnDefeat?.Invoke();
+    }
+
+    IEnumerator ShowDamageReceived(int damage, bool isCritical)
+    {
+        damageLabel.gameObject.SetActive(true);
+
+        if (isCritical)
+            damageLabel.color = Color.yellow;
+        else
+            damageLabel.color = Color.red;
+
+        damageLabel.text = damage.ToString();
+
+        yield return new WaitForSeconds(2);
+
+        damageLabel.gameObject.SetActive(false);
     }
 
     public void StartTurn()
