@@ -583,6 +583,8 @@ MonoBehaviour:
   - {fileID: 3173151845011570524, guid: 517becef59ce93a4789abaf2cbfb5cd2, type: 3}
   - {fileID: 3173151845011570524, guid: 922dab83533bf447f95f07a3dec2297a, type: 3}
   opponentModelParent: {fileID: 1142170359114640808}
+  startingPoint: {fileID: 418130779}
+  enterSpeed: 0.1
 --- !u!1 &143027391
 GameObject:
   m_ObjectHideFlags: 3
@@ -630,7 +632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: -0.62, y: 7.24, z: -13.87}
+  m_FollowOffset: {x: -0.62, y: 6.32, z: -13.87}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1220,12 +1222,12 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 1
+  m_Priority: 0
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 415864}
   m_Lens:
-    FieldOfView: 37.9
+    FieldOfView: 40
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -1732,7 +1734,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306943147}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.1424613, y: -22.781954, z: 28.203945}
+  m_LocalPosition: {x: -7.1424613, y: -23.701954, z: 28.203945}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1756,12 +1758,12 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 1
+  m_Priority: 0
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 1058660618}
   m_Lens:
-    FieldOfView: 37.9
+    FieldOfView: 40
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -2437,6 +2439,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3173151845011570522, guid: b73df8a68b3d92542a476b5d519104f4, type: 3}
   m_PrefabInstance: {fileID: 55843188}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &418130778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 418130779}
+  m_Layer: 0
+  m_Name: Opponent Spawing Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &418130779
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418130778}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 60, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 962295314}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &421373718
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4747,6 +4780,7 @@ Transform:
   - {fileID: 1066425313}
   - {fileID: 294066886}
   - {fileID: 973960099}
+  - {fileID: 418130779}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4783,12 +4817,12 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 1
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 37.9
+    FieldOfView: 40
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -8638,6 +8672,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1801960004}
+  - component: {fileID: 1801960005}
   m_Layer: 0
   m_Name: Cameras
   m_TagString: Untagged
@@ -8665,6 +8700,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1801960005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801960003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62f052dfb5e621e4baca3053006d8f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCamera: {fileID: 969897885}
+  opponentFollowCamera: {fileID: 1975654465}
+  playerFollowCamera: {fileID: 228513495}
+  contactPointCamera: {fileID: 306943149}
 --- !u!1 &1834830546
 GameObject:
   m_ObjectHideFlags: 0
@@ -8757,7 +8808,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 37.9
+  field of view: 40
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -9323,12 +9374,12 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 1
+  m_Priority: 0
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 1142170359114640808}
   m_Lens:
-    FieldOfView: 37.9
+    FieldOfView: 40
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000

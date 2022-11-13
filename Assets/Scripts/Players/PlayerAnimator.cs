@@ -11,6 +11,5 @@ public class PlayerAnimator : MonoBehaviour
     {
         player.OnDamageDealt += (_, _) => animator.SetTrigger("Hit");
         player.OnDamageReceived += (_, _) => animator.SetTrigger("Hurt");
-
     }
 }
