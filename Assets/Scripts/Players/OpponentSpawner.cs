@@ -53,9 +53,8 @@ public class OpponentSpawner : MonoBehaviour
         yield return new WaitForSeconds(1);
         nextOpponent.ShowLabels(false);
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         GameManager.Instance.StartGame();
-
         yield return null;
     }
 }

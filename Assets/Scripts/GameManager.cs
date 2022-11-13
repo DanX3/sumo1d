@@ -16,6 +16,7 @@ public class GameManager : Singleton<GameManager>
     public UIContactPoint contactPoint;
     public int maxOpponentLevel = 10;
     public CardPlayedDetail cardPlayedDetail;
+    public CardDetail cardDetail;
     public Rewards rewards;
     public Canvas mainCanvas;
     public Canvas mainCanvas3D;

@@ -5,8 +5,6 @@ using UnityEngine.EventSystems;
 
 public class CardAdded : MonoBehaviour, IPointerClickHandler
 {
-
-
     void Start()
     {
         Select(false);

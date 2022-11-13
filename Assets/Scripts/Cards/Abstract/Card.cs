@@ -72,9 +72,17 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
         SetManaCost(manaCost);
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData pointerEventData)
     {
-        if (gameObject.GetComponent<CardAdded>() == null)
+        if (GetComponentInParent<UIHand>() == null) 
+            return;
+
+        if (pointerEventData.button == PointerEventData.InputButton.Left)
+        {
+            GameManager.Instance.cardDetail.ShowCard(null);
             GameManager.Instance.player.PlayCard(this);
+        }
+        else if (pointerEventData.button == PointerEventData.InputButton.Right)
+            GameManager.Instance.cardDetail.ShowCard(this);
     }
 }
