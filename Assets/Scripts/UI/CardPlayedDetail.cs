@@ -8,11 +8,11 @@ public class CardPlayedDetail : MonoBehaviour
     public float duration;
 
     private Card showingCard;
+    private Coroutine removeShowingCard;
 
     public void ShowCardDetail(Player player, Card card)
     {
-        if (showingCard != null)
-            GameManager.Destroy(showingCard.gameObject);
+        HideCardDetail();
 
         if (player.isPlayer)
             showingCard = GameObject.Instantiate(card, playerDetailCardParent);
@@ -30,7 +30,16 @@ public class CardPlayedDetail : MonoBehaviour
         showingCardTransform.anchorMax = new Vector2(0.5f, 0.5f);
         showingCardTransform.pivot = new Vector2(0.5f, 0.5f);
 
-        StartCoroutine(RemoveShowingCard());
+        removeShowingCard = StartCoroutine(RemoveShowingCard());
+    }
+
+    public void HideCardDetail()
+    {
+        if (showingCard != null)
+        {
+            StopCoroutine(removeShowingCard);
+            GameManager.Destroy(showingCard.gameObject);
+        }
     }
 
     IEnumerator RemoveShowingCard()

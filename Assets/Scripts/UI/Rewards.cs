@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +8,7 @@ public class Rewards : MonoBehaviour
     PlayerAttribute attributeToIncrease;
     bool setAttribute = false;
     public Transform cardAddParent;
+    public Button OkButton;
 
     public List<Card> cards;
     Player player;
@@ -18,6 +18,8 @@ public class Rewards : MonoBehaviour
     public IncreaseAttributeRow weight;
     public IncreaseAttributeRow reflexes;
     public IncreaseAttributeRow critical;
+
+    Card cardAdded = null;
 
     public void Init(Player player)
     {
@@ -56,10 +58,6 @@ public class Rewards : MonoBehaviour
         RefreshButton();
     }
 
-
-
-    Card cardAdded = null;
-
     private void RefreshButton()
     {
         OkButton.interactable = setAttribute && (cardAdded != null);
@@ -77,8 +75,6 @@ public class Rewards : MonoBehaviour
         cardAdded = card;
         RefreshButton();
     }
-
-    public Button OkButton;
 
     public void Accept()
     {

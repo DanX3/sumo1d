@@ -128,6 +128,7 @@ public class GameManager : Singleton<GameManager>
 
         PlayerPrefs.SetInt(PLAYER_PREFS_OPPONENT_LEVEL, currentOpponentLevel);
 
+        cardPlayedDetail.HideCardDetail();
         rewards.Init(player);
         rewards.gameObject.SetActive(true);
         // SceneManager.LoadScene("BattleScene");
