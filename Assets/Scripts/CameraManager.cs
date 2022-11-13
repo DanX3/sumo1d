@@ -1,4 +1,6 @@
 using Cinemachine;
+using UnityEditor;
+using UnityEngine;
 
 public class CameraManager : Singleton<CameraManager>
 {
@@ -33,6 +35,11 @@ public class CameraManager : Singleton<CameraManager>
         ResetPriorities();
 
         camera.Priority = 1;
+    }
+
+    public void SetOpponentToFollow(GameObject obj)
+    {
+        opponentFollowCamera.Follow = obj.transform;
     }
 
     private void ResetPriorities()

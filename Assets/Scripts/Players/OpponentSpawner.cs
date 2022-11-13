@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class OpponentSpawner : MonoBehaviour
 {
@@ -9,18 +10,20 @@ public class OpponentSpawner : MonoBehaviour
     public PowerupList opponentPowerupList;
     public List<OpponentManager> opponents;
     public Transform opponentModelParent;
-    public Transform startingPoint;
-    public float enterSpeed = 0.5f;
+    public Transform spawingStartingPoint;
+    public float enteringSpeed = 10f;
 
     private OpponentManager nextOpponent;
 
     public void SpawnOpponent()
     {
         nextOpponent = GameObject.Instantiate(GetNextRandomOpponent(), opponentModelParent);
-        //nextOpponent = GameObject.Instantiate(GetNextRandomOpponent(), opponentModelParent);
-        //nextOpponent.transform.position = startingPoint.position;
+        nextOpponent.transform.position = spawingStartingPoint.position;
 
-        //CameraManager.Instance.SetOpponentFollowCamera();
+        CameraManager.Instance.SetOpponentToFollow(nextOpponent.gameObject);
+        var movingComponent = nextOpponent.gameObject.AddComponent<MoveToLocalPosition>();
+        CameraManager.Instance.SetOpponentFollowCamera();
+        movingComponent.Init(Vector3.zero, enteringSpeed, () => StartCoroutine(OnOpponentFinishEnter()));
 
         Player opponent = nextOpponent.opponent;
         GameManager.Instance.opponent = opponent;
@@ -42,11 +45,17 @@ public class OpponentSpawner : MonoBehaviour
             .First();
     }
 
-    //private void Update() // TODO farlo diventare una coroutine
-    //{
-    //    if (nextOpponent.transform.localPosition.x >= 0)
-    //        nextOpponent.transform.Translate(-nextOpponent.transform.right * enterSpeed);
-    //    else
-    //        CameraManager.Instance.SetDefaultCamera();
-    //}
+    private IEnumerator OnOpponentFinishEnter()
+    {
+        yield return new WaitForSeconds(1);
+        CameraManager.Instance.SetDefaultCamera();
+
+        yield return new WaitForSeconds(1);
+        nextOpponent.ShowLabels(false);
+
+        yield return new WaitForSeconds(2);
+        GameManager.Instance.StartGame();
+
+        yield return null;
+    }
 }

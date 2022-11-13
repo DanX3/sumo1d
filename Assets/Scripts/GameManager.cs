@@ -46,7 +46,10 @@ public class GameManager : Singleton<GameManager>
         opponent.OnDefeat += OnOpponentDefeat;
         opponent.stats.OnPowerupBonus += CheckPlayersInArena;
         opponent.OnDamageDealt += (damage, criticalHit) => contactPoint.Move(-damage);
+    }
 
+    public void StartGame()
+    {
         turnCounter = 0;
         player.OnTurnStart?.Invoke();
     }

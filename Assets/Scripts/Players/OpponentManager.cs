@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(Player))]
@@ -10,6 +11,11 @@ public class OpponentManager : MonoBehaviour
     public string opponentDescription;
     public int opponentLevel;
     public GameObject model;
+
+    public TMP_Text nameText;
+    public TMP_Text descriptionText;
+    public TMP_Text levelText;
+
     public List<OpponentAction> actions;
 
     [HideInInspector]
@@ -18,6 +24,11 @@ public class OpponentManager : MonoBehaviour
     void Awake()
     {
         opponent = GetComponent<Player>();
+
+        nameText.text = opponentName;
+        descriptionText.text = opponentDescription;
+        levelText.text = opponentLevel.ToString();
+
         ValidateActions();
     }
 
@@ -59,6 +70,13 @@ public class OpponentManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         opponent.OnTurnEnd?.Invoke();
+    }
+
+    public void ShowLabels(bool show)
+    {
+        nameText.gameObject.SetActive(show);
+        descriptionText.gameObject.SetActive(show);
+        levelText.gameObject.SetActive(show);
     }
 }
 
