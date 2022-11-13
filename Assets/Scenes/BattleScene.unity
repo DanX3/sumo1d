@@ -8777,6 +8777,13 @@ MonoBehaviour:
   opponentFollowCamera: {fileID: 1975654465}
   playerFollowCamera: {fileID: 228513495}
   contactPointCamera: {fileID: 306943149}
+  randomChangingCameras:
+  - {fileID: 228513495}
+  - {fileID: 1975654465}
+  - {fileID: 306943149}
+  changeCameraEvery: 10
+  changingDuration: 5
+  startsAfter: 20
 --- !u!1 &1834830546
 GameObject:
   m_ObjectHideFlags: 0

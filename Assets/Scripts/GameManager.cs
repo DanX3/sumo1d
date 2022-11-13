@@ -131,7 +131,6 @@ public class GameManager : Singleton<GameManager>
         cardPlayedDetail.HideCardDetail();
         rewards.Init(player);
         rewards.gameObject.SetActive(true);
-        // SceneManager.LoadScene("BattleScene");
     }
 
     public void OnPlayerWin()
