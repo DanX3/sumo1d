@@ -27,7 +27,7 @@ public class OpponentManager : MonoBehaviour
 
         nameText.text = opponentName;
         descriptionText.text = opponentDescription;
-        levelText.text = opponentLevel.ToString();
+        levelText.text = "LEV " + opponentLevel;
 
         ValidateActions();
     }

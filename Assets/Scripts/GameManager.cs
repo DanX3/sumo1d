@@ -27,7 +27,6 @@ public class GameManager : Singleton<GameManager>
     public void Init()
     {
         mainCanvas.gameObject.SetActive(false);
-        mainCanvas3D.gameObject.SetActive(false);
 
         opponentSpawner.SpawnOpponent();
 
@@ -56,7 +55,6 @@ public class GameManager : Singleton<GameManager>
     public void StartGame()
     {
         mainCanvas.gameObject.SetActive(true);
-        mainCanvas3D.gameObject.SetActive(true);
 
         turnCounter = 0;
         player.OnTurnStart?.Invoke();
