@@ -43,6 +43,8 @@ public class CameraManager : Singleton<CameraManager>
 
     private void ChangeCamera(CinemachineVirtualCamera camera)
     {
+        Debug.Log($"Change camera to {camera.name}");
+
         ResetPriorities();
 
         camera.Priority = 1;
