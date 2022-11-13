@@ -17,6 +17,8 @@ public class GameManager : Singleton<GameManager>
     public int maxOpponentLevel = 10;
     public CardPlayedDetail cardPlayedDetail;
     public Rewards rewards;
+    public Canvas mainCanvas;
+    public Canvas mainCanvas3D;
 
     private const string PLAYER_PREFS_OPPONENT_LEVEL = "OpponentLevel";
 
@@ -24,6 +26,9 @@ public class GameManager : Singleton<GameManager>
 
     public void Init()
     {
+        mainCanvas.gameObject.SetActive(false);
+        mainCanvas3D.gameObject.SetActive(false);
+
         opponentSpawner.SpawnOpponent();
 
         Application.targetFrameRate = 60;
@@ -50,6 +55,9 @@ public class GameManager : Singleton<GameManager>
 
     public void StartGame()
     {
+        mainCanvas.gameObject.SetActive(true);
+        mainCanvas3D.gameObject.SetActive(true);
+
         turnCounter = 0;
         player.OnTurnStart?.Invoke();
     }

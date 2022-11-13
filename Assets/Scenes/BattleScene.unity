@@ -543,6 +543,8 @@ MonoBehaviour:
   maxOpponentLevel: 10
   cardPlayedDetail: {fileID: 214751490}
   rewards: {fileID: 847830859}
+  mainCanvas: {fileID: 1598552131}
+  mainCanvas3D: {fileID: 1546626040}
 --- !u!4 &124532594
 Transform:
   m_ObjectHideFlags: 0
@@ -556,7 +558,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &124532595
 MonoBehaviour:
@@ -982,7 +984,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 198375046}
   m_OnClick:
     m_PersistentCalls:
@@ -1189,19 +1191,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 214751489}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 36.8}
-  m_LocalScale: {x: 0.075681, y: 0.075681, z: 0.075681}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 944932337}
   - {fileID: 547193149}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1546626041}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 4.3}
+  m_AnchoredPosition: {x: 959.99994, y: 539.99994}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &228513493
@@ -4813,7 +4815,7 @@ Transform:
   - {fileID: 973960099}
   - {fileID: 418130779}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &969897884
 GameObject:
@@ -7697,7 +7699,7 @@ GameObject:
   - component: {fileID: 1546626039}
   - component: {fileID: 1546626038}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Main Canvas 3D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7783,8 +7785,9 @@ RectTransform:
   - {fileID: 88992443}
   - {fileID: 792266158}
   - {fileID: 1834830547}
+  - {fileID: 214751494}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7809,7 +7812,7 @@ GameObject:
   - component: {fileID: 1598552130}
   - component: {fileID: 1598552129}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Main Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7831,7 +7834,7 @@ RectTransform:
   - {fileID: 198375042}
   - {fileID: 847830856}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7946,7 +7949,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1606716805
 PrefabInstance:
@@ -8729,7 +8732,7 @@ Transform:
   - {fileID: 1975654464}
   - {fileID: 306943148}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1801960005
 MonoBehaviour:
