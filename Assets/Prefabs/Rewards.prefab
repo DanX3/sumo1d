@@ -2213,6 +2213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardAddParent: {fileID: 1704881882}
+  OkButton: {fileID: 5921510318831930042}
   cards:
   - {fileID: 8501000804230201349, guid: 5e0b183cba8ff224588383564b99d1d9, type: 3}
   - {fileID: 8501000804230201349, guid: 825d5cb7a76d5a54d888bad71d8ac0bc, type: 3}
@@ -2242,12 +2243,16 @@ MonoBehaviour:
   - {fileID: 726761016850618338, guid: bd99a05dd4c63f24ea8444c9a149f1d9, type: 3}
   - {fileID: 726761016850618338, guid: 97db0ef0b33213740bfde4ec977530f5, type: 3}
   - {fileID: 726761016850618338, guid: 1412041249b8abe4e971089dc2430000, type: 3}
+  - {fileID: 8501000804230201349, guid: bf8d8bc62fabb2e48a1670d2c28eb05b, type: 3}
+  - {fileID: 8501000804230201349, guid: 458fc8557c640794ea37a37e4ee3dabc, type: 3}
+  - {fileID: 8501000804230201349, guid: 8067666c35dfc794f93e90de80f43964, type: 3}
+  - {fileID: 8501000804230201349, guid: 785462c3f4ddc8648b5c967771ae9145, type: 3}
+  - {fileID: 726761016850618338, guid: fc42672d265cd4746a539c867b209efe, type: 3}
   power: {fileID: 7790001769707172939}
   spirit: {fileID: 4132702721886584765}
   weight: {fileID: 4599038511242700225}
   reflexes: {fileID: 3730589587723994969}
   critical: {fileID: 5612403836430262124}
-  OkButton: {fileID: 5921510318831930042}
 --- !u!1 &6303131632931046868
 GameObject:
   m_ObjectHideFlags: 0
