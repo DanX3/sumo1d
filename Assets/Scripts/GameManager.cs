@@ -137,9 +137,15 @@ public class GameManager : Singleton<GameManager>
 
     IEnumerator ShowRewards()
     {
+        mainCanvas.gameObject.SetActive(false);
+        mainCanvas3D.gameObject.SetActive(false);
+        
+        CameraManager.Instance.SetPlayerFollowCamera();
         confetti.SetActive(true);
         yield return new WaitForSeconds(7f);
         rewards.Init(player);
+
+        mainCanvas.gameObject.SetActive(true);
         rewards.gameObject.SetActive(true);
     }
 
