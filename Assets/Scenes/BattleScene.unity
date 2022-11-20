@@ -170,6 +170,7 @@ MonoBehaviour:
   - Safe Terrain
   - Gravity
   - Mind Barrier
+  - Revenge
   deckManager: {fileID: 415863}
   uiStats: {fileID: 496228819}
   uiArena: {fileID: 478782024}
@@ -9114,9 +9115,6 @@ MonoBehaviour:
   randomChangingCameras:
   - {fileID: 228513495}
   - {fileID: 1975654465}
-  - {fileID: 306943149}
-  - {fileID: 373232320}
-  - {fileID: 959290616}
   changeCameraEvery: 10
   changingDuration: 5
   startsAfter: 20
@@ -10178,12 +10176,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1229027294796507342, guid: 4cf0f21f125d63241b898d606a1cb933, type: 3}
       propertyPath: cards.Array.size
-      value: 29
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 1229027294796507342, guid: 4cf0f21f125d63241b898d606a1cb933, type: 3}
-      propertyPath: cards.Array.data[28]
+      propertyPath: cards.Array.data[33]
       value: 
-      objectReference: {fileID: 8501000804230201349, guid: bf8d8bc62fabb2e48a1670d2c28eb05b, type: 3}
+      objectReference: {fileID: 8501000804230201349, guid: 0dbb001cf6cb9c347a2229ed350b4fc0, type: 3}
     - target: {fileID: 1599363483426198145, guid: 4cf0f21f125d63241b898d606a1cb933, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 144.40002
