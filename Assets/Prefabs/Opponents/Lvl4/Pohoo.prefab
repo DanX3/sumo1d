@@ -88,6 +88,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3666231601571569175, guid: b54af9909b3224baf9de6fba3b54b85e, type: 3}
+      propertyPath: opponentDescription
+      value: Lonely panda samurai, bearer of the legendary Bamboo Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666231601571569175, guid: b54af9909b3224baf9de6fba3b54b85e, type: 3}
       propertyPath: actions.Array.data[0].totalMana
       value: 1
       objectReference: {fileID: 0}
