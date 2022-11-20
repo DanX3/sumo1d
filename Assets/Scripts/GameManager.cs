@@ -28,6 +28,8 @@ public class GameManager : Singleton<GameManager>
 
     public void Init()
     {
+        PlayerPrefs.DeleteKey("WIN");
+
         mainCanvas.gameObject.SetActive(false);
 
         opponentSpawner.SpawnOpponent();
@@ -141,24 +143,25 @@ public class GameManager : Singleton<GameManager>
         mainCanvas3D.gameObject.SetActive(false);
         
         CameraManager.Instance.SetPlayerFollowCamera();
+
+        yield return new WaitForSeconds(2f);
         confetti.SetActive(true);
+
         yield return new WaitForSeconds(7f);
         rewards.Init(player);
-
         mainCanvas.gameObject.SetActive(true);
         rewards.gameObject.SetActive(true);
     }
 
     public void OnPlayerWin()
     {
-        Debug.Log("YOU WIN");
+        PlayerPrefs.SetString("win", "true");
         EndGame();
     }
 
     void OnPlayerLose()
     {
-        Debug.Log("GAME OVER");
-        ResetProgress();
+        PlayerPrefs.SetString("win", "false");
         StartCoroutine(LoseCoroutine());
     }
 
@@ -172,13 +175,13 @@ public class GameManager : Singleton<GameManager>
     {
         PlayerPrefs.SetString("cards", JsonUtility.ToJson(new StartingCards(player.startingCards)));
         PlayerPrefs.SetString("stats", JsonUtility.ToJson(player.startingAttributes));
+        PlayerPrefs.SetInt(PLAYER_PREFS_OPPONENT_LEVEL, 1);
         PlayerPrefs.Save();
-
     }
 
     void EndGame()
     {
-        PlayerPrefs.SetInt(PLAYER_PREFS_OPPONENT_LEVEL, 1);
+        ResetProgress();
         SceneManager.LoadScene("HomeScene");
     }
 

@@ -636,7 +636,7 @@ MonoBehaviour:
   turnCounter: 0
   manaSlots: {fileID: 792266160}
   contactPoint: {fileID: 1058660619}
-  maxOpponentLevel: 10
+  maxOpponentLevel: 5
   cardPlayedDetail: {fileID: 214751490}
   cardDetail: {fileID: 933305026}
   rewards: {fileID: 847830859}
@@ -677,7 +677,6 @@ MonoBehaviour:
   - {fileID: 3173151845011570524, guid: 64da9a4a178729b4b99fef0c3720c275, type: 3}
   - {fileID: 3173151845011570524, guid: 771c5ed57df21974ab07696e185ea171, type: 3}
   - {fileID: 3173151845011570524, guid: 0340ecee8b9e54b4a8cdb8aad1aa1ea8, type: 3}
-  - {fileID: 3173151845011570524, guid: 1e9f4242d751c4004af5de234633e617, type: 3}
   - {fileID: 3173151845011570524, guid: fb9c396f230f34671bc9c00490650738, type: 3}
   - {fileID: 3173151845011570524, guid: 1d2887d5e57404747b79851ad9d8763d, type: 3}
   - {fileID: 3173151845011570524, guid: 517becef59ce93a4789abaf2cbfb5cd2, type: 3}
@@ -1011,7 +1010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &187619306
 Transform:
   m_ObjectHideFlags: 0
@@ -1049,7 +1048,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187619305}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1721,7 +1720,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &263874053
 Transform:
   m_ObjectHideFlags: 0
@@ -1759,7 +1758,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 263874052}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1842,8 +1841,8 @@ Transform:
   - {fileID: 399782421}
   - {fileID: 1798708283}
   - {fileID: 187619306}
-  m_Father: {fileID: 962295314}
-  m_RootOrder: 13
+  m_Father: {fileID: 1058660618}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &290169638
 PrefabInstance:
@@ -2793,7 +2792,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &399782421
 Transform:
   m_ObjectHideFlags: 0
@@ -2831,7 +2830,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 399782420}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3745,7 +3744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &522760069
 Transform:
   m_ObjectHideFlags: 0
@@ -3783,7 +3782,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522760068}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -4418,7 +4417,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &693791786
 Transform:
   m_ObjectHideFlags: 0
@@ -4456,7 +4455,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693791785}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5616,7 +5615,6 @@ Transform:
   - {fileID: 294066886}
   - {fileID: 973960099}
   - {fileID: 418130779}
-  - {fileID: 285104020}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6067,6 +6065,7 @@ Transform:
   m_Children:
   - {fileID: 415864}
   - {fileID: 1142170359114640808}
+  - {fileID: 285104020}
   m_Father: {fileID: 962295314}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6796,8 +6795,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 4
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4c3e81e4b457c924a840f344cca38f55, type: 2}
+  m_sharedMaterial: {fileID: 238179000196577728, guid: 4c3e81e4b457c924a840f344cca38f55, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6886,7 +6885,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 238179000196577728, guid: 4c3e81e4b457c924a840f344cca38f55, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9614,7 +9613,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1798708283
 Transform:
   m_ObjectHideFlags: 0
@@ -9652,7 +9651,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798708282}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -10136,7 +10135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1926654342
 Transform:
   m_ObjectHideFlags: 0
@@ -10174,7 +10173,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926654341}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -10983,11 +10982,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6961763703111969602, guid: 4cf0f21f125d63241b898d606a1cb933, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6961763703111969602, guid: 4cf0f21f125d63241b898d606a1cb933, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6961763703111969602, guid: 4cf0f21f125d63241b898d606a1cb933, type: 3}
       propertyPath: m_LocalPosition.x
