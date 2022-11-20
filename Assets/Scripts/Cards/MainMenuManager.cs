@@ -26,13 +26,11 @@ public class MainMenuManager : MonoBehaviour
         {
             winText.gameObject.SetActive(true);
             loseText.gameObject.SetActive(false);
-            startGameButtonText.text = "RESTART GAME";
         }
         else if (hasPlayerWin == "false")
         {
             winText.gameObject.SetActive(false);
             loseText.gameObject.SetActive(true);
-            startGameButtonText.text = "RESTART GAME";
         }
     }
 }
