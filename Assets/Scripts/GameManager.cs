@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -116,6 +117,8 @@ public class GameManager : Singleton<GameManager>
         player.OnTurnEnd?.Invoke();
     }
 
+    public GameObject confetti;
+
     public void OnOpponentDefeat()
     {
         int currentOpponentLevel = PlayerPrefs.GetInt(PLAYER_PREFS_OPPONENT_LEVEL, 1) + 1;
@@ -129,6 +132,13 @@ public class GameManager : Singleton<GameManager>
         PlayerPrefs.SetInt(PLAYER_PREFS_OPPONENT_LEVEL, currentOpponentLevel);
 
         cardPlayedDetail.HideCardDetail();
+        StartCoroutine(ShowRewards());
+    }
+
+    IEnumerator ShowRewards()
+    {
+        confetti.SetActive(true);
+        yield return new WaitForSeconds(7f);
         rewards.Init(player);
         rewards.gameObject.SetActive(true);
     }

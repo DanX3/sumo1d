@@ -133,15 +133,14 @@ public class Player : MonoBehaviour
 
     public void GetDamage(int damage, bool isCritical)
     {
-        OnDamageReceived?.Invoke(damage, isCritical);
         hp -= damage;
 
         StartCoroutine(ShowDamageReceived(damage, isCritical));
 
-        Debug.Log(playerString + " hp: " + hp);
-        
         if (hp <= 0)
             OnDefeat?.Invoke();
+        OnDamageReceived?.Invoke(damage, isCritical);
+        Debug.Log(playerString + " hp: " + hp);
     }
 
     IEnumerator ShowDamageReceived(int damage, bool isCritical)

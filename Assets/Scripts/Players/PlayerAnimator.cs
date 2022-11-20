@@ -11,5 +11,7 @@ public class PlayerAnimator : MonoBehaviour
     {
         player.OnDamageDealt += (_, _) => animator.SetTrigger("Hit");
         player.OnDamageReceived += (_, _) => animator.SetTrigger("Hurt");
+        player.GetOpponent().OnDefeat += () => animator.SetTrigger("Win");
+        player.OnDefeat += () => animator.SetTrigger("Lost");
     }
 }
