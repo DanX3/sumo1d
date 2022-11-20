@@ -153,6 +153,12 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("GAME OVER");
         ResetProgress();
+        StartCoroutine(LoseCoroutine());
+    }
+
+    IEnumerator LoseCoroutine()
+    {
+        yield return new WaitForSeconds(9f);
         EndGame();
     }
 
