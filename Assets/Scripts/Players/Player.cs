@@ -135,6 +135,8 @@ public class Player : MonoBehaviour
     {
         hp -= damage;
 
+        SoundManager.Instance.PlayRandomDamageReceivedSound();
+
         StartCoroutine(ShowDamageReceived(damage, isCritical));
 
         if (hp <= 0)

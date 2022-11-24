@@ -17,6 +17,7 @@ public class OpponentSpawner : MonoBehaviour
 
     public void SpawnOpponent()
     {
+        SoundManager.Instance.PlayApplaudingCrowd();
         nextOpponent = GameObject.Instantiate(GetNextRandomOpponent(), opponentModelParent);
         nextOpponent.transform.position = spawingStartingPoint.position;
 
@@ -52,8 +53,9 @@ public class OpponentSpawner : MonoBehaviour
 
         yield return new WaitForSeconds(1);
         nextOpponent.ShowLabels(false);
+        SoundManager.Instance.PlayGong();
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         GameManager.Instance.StartGame();
         yield return null;
     }

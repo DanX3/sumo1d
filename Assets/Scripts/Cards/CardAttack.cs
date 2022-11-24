@@ -28,6 +28,7 @@ public class CardAttack : Card
     {
         base.Play(user);
         attackModifiers = GetComponents<AttackModifier>().ToList();
+        SoundManager.Instance.PlayRandomAttackSound();
 
         int damage = CalculateCardDamage(user);
 
@@ -39,7 +40,10 @@ public class CardAttack : Card
         float critChance = CalculateCardCritical(user.stats.critChance);
         bool isCritical = Random.Range(0f, 1f) < critChance;
         if (isCritical)
+        {
+            SoundManager.Instance.PlayShortApplaudingCrowd();
             damage = Mathf.FloorToInt(damage * CRITICAL_MULTIPLIER);
+        }
 
         // nulls damage if lower than opponent damage threshold
         if (damage < user.GetOpponent().stats.damageThreshold)

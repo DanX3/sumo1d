@@ -124,6 +124,7 @@ public class GameManager : Singleton<GameManager>
     public void OnOpponentDefeat()
     {
         int currentOpponentLevel = PlayerPrefs.GetInt(PLAYER_PREFS_OPPONENT_LEVEL, 1) + 1;
+        SoundManager.Instance.PlayOpponentDefeated();
 
         if (currentOpponentLevel > maxOpponentLevel)
         {
@@ -162,6 +163,7 @@ public class GameManager : Singleton<GameManager>
     void OnPlayerLose()
     {
         PlayerPrefs.SetString("win", "false");
+        SoundManager.Instance.PlayLaughingCrowd();
         StartCoroutine(LoseCoroutine());
     }
 
