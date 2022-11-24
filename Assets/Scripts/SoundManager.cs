@@ -8,7 +8,7 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField] private AudioSource attackSound;
     [SerializeField] private AudioSource damageReceivedSound;
     [SerializeField] private AudioSource oneShotSource;
-    [SerializeField] private AudioSource loopingSource;
+    [SerializeField] private AudioSource crowdVariationsSound;
 
     [Header("Clips")]
     [SerializeField] private AudioClip gong;
@@ -23,16 +23,18 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField] private List<AudioClip> damageReceivedSounds = new List<AudioClip>();
 
 
-    private void PlayOneShotSound(AudioClip clip)
+    private void PlayOneShotSound(AudioClip clip, float volume = 1f)
     {
         oneShotSource.clip = clip;
+        oneShotSource.volume = volume;
         oneShotSource.Play();
     }
 
-    private void PlayLoopingSound(AudioClip clip)
+    private void PlayCrowdVariationSound(AudioClip clip, float volume = 1f)
     {
-        loopingSource.clip = clip;
-        loopingSource.Play();
+        oneShotSource.clip = clip;
+        oneShotSource.volume = volume;
+        oneShotSource.Play();
     }
 
     public void PlayGong()
@@ -42,28 +44,30 @@ public class SoundManager : Singleton<SoundManager>
 
     public void PlayGaspingCrowd()
     {
-        PlayOneShotSound(gaspingCrowd);
+        PlayCrowdVariationSound(gaspingCrowd);
     }
 
     public void PlayLaughingCrowd()
     {
-        PlayOneShotSound(laughingCrowd);
+        PlayCrowdVariationSound(laughingCrowd, 0.2f);
     }
 
     public void PlayApplaudingCrowd()
     {
-        PlayOneShotSound(applaudingCrowd);
+        PlayCrowdVariationSound(applaudingCrowd, 0.2f);
     }
 
     public void PlayShortApplaudingCrowd()
     {
-        PlayOneShotSound(shortApplaudingCrowd);
+        PlayCrowdVariationSound(shortApplaudingCrowd);
     }
 
     public void PlayFireworks()
     {
-        PlayLoopingSound(fireworks);
+        PlayOneShotSound(fireworks);
     }
+
+
 
     public void PlayRandomAttackSound()
     {
