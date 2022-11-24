@@ -5,10 +5,11 @@ using UnityEngine;
 public class SoundManager : Singleton<SoundManager>
 {
     [Header("Sources")]
-    [SerializeField] private AudioSource attackSound;
-    [SerializeField] private AudioSource damageReceivedSound;
+    [SerializeField] private AudioSource attackSource;
+    [SerializeField] private AudioSource damageReceivedSource;
     [SerializeField] private AudioSource oneShotSource;
-    [SerializeField] private AudioSource crowdVariationsSound;
+    [SerializeField] private AudioSource crowdVariationsSource;
+    [SerializeField] private AudioSource powerupSource;
 
     [Header("Clips")]
     [SerializeField] private AudioClip gong;
@@ -21,6 +22,7 @@ public class SoundManager : Singleton<SoundManager>
 
     [SerializeField] private List<AudioClip> attackSounds = new List<AudioClip>();
     [SerializeField] private List<AudioClip> damageReceivedSounds = new List<AudioClip>();
+    [SerializeField] private List<AudioClip> powerupsSounds = new List<AudioClip>();
 
 
     private void PlayOneShotSound(AudioClip clip, float volume = 1f)
@@ -72,15 +74,22 @@ public class SoundManager : Singleton<SoundManager>
     public void PlayRandomAttackSound()
     {
         var random = Random.Range(0, attackSounds.Count);
-        attackSound.clip = attackSounds[random];
-        attackSound.Play();
+        attackSource.clip = attackSounds[random];
+        attackSource.Play();
     }
 
     public void PlayRandomDamageReceivedSound()
     {
         var random = Random.Range(0, damageReceivedSounds.Count);
-        damageReceivedSound.clip = damageReceivedSounds[random];
-        damageReceivedSound.Play();
+        damageReceivedSource.clip = damageReceivedSounds[random];
+        damageReceivedSource.Play();
+    }
+
+    public void PlayRandomPowerupsSound()
+    {
+        var random = Random.Range(0, powerupsSounds.Count);
+        powerupSource.clip = powerupsSounds[random];
+        powerupSource.Play();
     }
 
     public void PlayOpponentDefeated()

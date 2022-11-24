@@ -66,6 +66,7 @@ public class CardPowerup : Card
         }
 
         user.playedCardsHistory.Add(this);
+        SoundManager.Instance.PlayRandomPowerupsSound();
     }
 
 
