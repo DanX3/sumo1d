@@ -64,7 +64,7 @@ public class OpponentManager : MonoBehaviour
         var usableMana = GameManager.Instance.manaSlots.manaUsed;
         foreach (Card card in GetRandomAction(usableMana))
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1.5f);
             opponent.PlayCard(card);
         }
         yield return new WaitForSeconds(2f);
