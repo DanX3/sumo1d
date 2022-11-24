@@ -14,7 +14,7 @@ public class DeckManager : MonoBehaviour
     private List<Card> _hand = new List<Card>();
     private Stack<Card> _discardPile = new Stack<Card>();
 
-    private const float drawDelay = 0.5f;
+    private const float drawDelay = 0.3f;
     private const float reshuffleDelay = 0.2f;
 
 
