@@ -32,14 +32,13 @@ public class Rewards : MonoBehaviour
         critical.SetAttribute(player);
 
         foreach (var row in FindObjectsOfType<IncreaseAttributeRow>())
-        {
-            Debug.LogWarning(row.name);
             row.SetAttribute(player);
-        }
+
+        foreach (var row in FindObjectsOfType<IncreaseAttributeRow>())
+            row.Select(false);
 
         for (int i = 0; i < 3; i++)
         {
-
             var newCard = Instantiate(cards[Random.Range(0, cards.Count)], cardAddParent);
             newCard.gameObject.AddComponent<CardAdded>();
         }
